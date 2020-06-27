@@ -81,6 +81,20 @@
 
 
 		<script>
+		
+		var listAmount = 39;
+		var status = 0;
+	
+		$(window).scroll(function() {
+		
+		if(((window.scrollY + window.innerHeight) / $('body').prop("scrollHeight") * 100) > 80){
+			if (status == 0) {
+				status = 1;
+			
+			// 에이작스
+			}		
+	}
+});
 
 		function prPen(value){
 			$.ajax({

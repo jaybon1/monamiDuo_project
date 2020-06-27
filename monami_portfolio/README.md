@@ -16,10 +16,10 @@ alter user monami default tablespace users quota unlimited on users;
 ## 테이블
 ```sql
 CREATE TABLE users(
-	id number primary key,
+  	id number primary key,
     username varchar2(100) not null unique,
     password varchar2(100) not null,
-	phonenumber number not null,
+  	phonenumber number not null,
     email varchar2(100) not null,
     address varchar2(100) not null,
     userProfile varchar2(200),
@@ -28,7 +28,7 @@ CREATE TABLE users(
 ) ;
 
 CREATE TABLE board(
-	id number primary key,
+  	id number primary key,
     userId number,
     title varchar2(100) not null,
     content clob,
@@ -38,13 +38,22 @@ CREATE TABLE board(
 );
 
 CREATE TABLE reply(
-	id number primary key,
+  	id number primary key,
     userId number,
     boardId number,
     content varchar2(300) not null,
     createDate timestamp,
     foreign key (userId) references users (id) on delete set null,
     foreign key (boardId) references board (id) on delete cascade
+);
+
+CREATE TABLE items(
+  	id number primary key,
+    imgUrl varchar2(300),
+    name varchar2(200),
+    price varchar2(100),
+    tag VARCHAR2(100),
+    value VARCHAR2(100)
 );
 ```
 
@@ -59,6 +68,10 @@ CREATE SEQUENCE BOARD_SEQ
   INCREMENT BY 1;
   
 CREATE SEQUENCE REPLY_SEQ
+  START WITH 1
+  INCREMENT BY 1;
+
+CREATE SEQUENCE ITEMS_SEQ
   START WITH 1
   INCREMENT BY 1;
 ```
