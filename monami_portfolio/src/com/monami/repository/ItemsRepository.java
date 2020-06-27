@@ -26,7 +26,7 @@ public class ItemsRepository {
 
 	// 아이템 받기
 	public List<Items> findAllItems() { // object 받기(안에 내용 다 받아야 하니까)
-		final String SQL = "SELECT id, imgUrl, name, price,value FROM items";
+		final String SQL = "SELECT id, imgUrl, name, price, value FROM items";
 		List<Items> items = new ArrayList<>();
 		try {
 			conn = DBConn.getConnection(); // DB에 연결
@@ -79,17 +79,22 @@ public class ItemsRepository {
 	
 	// 아이템  찾기
 	public List<Items> findByItem(String value) {
-		final String SQL = "SELECT id, value FROM items WHERE value=? ";																																															// update
+		final String SQL = "SELECT id, imgUrl, name, price FROM items WHERE value=? ";																																															// update
 		List<Items> items = new ArrayList<>();
 		try {
 			conn = DBConn.getConnection(); // DB에 연결
 			pstmt = conn.prepareStatement(SQL);
 			// 물음표 완성하기
 			pstmt.setString(1, value);
+			
+			rs = pstmt.executeQuery();
+			
 			while(rs.next()) {
 				Items item = Items.builder()
 								.id(rs.getInt(1))
-								.value(rs.getString(2))
+								.imgUrl(rs.getString(2))
+								.name(rs.getString(3))
+								.price(rs.getString(4))
 								.build();
 				items.add(item);
 			}

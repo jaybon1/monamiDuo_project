@@ -26,7 +26,7 @@
 			<div class="product__menu">
 				<p>PRODUCT</p>
 				<ul>
-					<li class="product__tit prPen" onclick="prPen('${items.value}')" style="font-weight: 900; font-size: 20px; padding: 10px 0;">프리미엄 펜</li>
+					<li class="product__tit prPen" onclick="productList('prPen')" style="font-weight: 900; font-size: 20px; padding: 10px 0;"><a href="#">프리미엄 펜</a></li>
 					<li><a href="#">153프리미엄</a></li>
 					<li><a href="#">데스크펜/스마트펜</a></li>
 					<li><a href="#">파카</a></li>
@@ -36,7 +36,7 @@
 				</ul>
 
 				<ul>
-					<li class="product__tit pen" onclick="pen()" style="font-weight: 900; font-size: 20px; padding: 10px 0;"><a href="#">펜/펜슬</a></li>
+					<li class="product__tit pen" onclick="productList('pen')" style="font-weight: 900; font-size: 20px; padding: 10px 0;"><a href="#">펜/펜슬</a></li>
 					<li><a href="#">볼펜</a></li>
 					<li><a href="#">수성펜/사인펜</a></li>
 					<li><a href="#">연필/샤프</a></li>
@@ -44,21 +44,21 @@
 				</ul>
 
 				<ul>
-					<li class="product__tit mark" onclick="mark()" style="font-weight: 900; font-size: 20px; padding: 10px 0;"><a href="#">마카</a></li>
+					<li class="product__tit mark" onclick="productList('mark')" style="font-weight: 900; font-size: 20px; padding: 10px 0;"><a href="#">마카</a></li>
 					<li><a href="#">네임펜/유성매직</a></li>
 					<li><a href="#">생활/보드마카</a></li>
 					<li><a href="#">패브릭/세라믹마카</a></li>
 				</ul>
 
 				<ul>
-					<li class="product__tit brush" onclick="brush()" style="font-weight: 900; font-size: 20px; padding: 10px 0;"><a href="#">컬러링/브러쉬</a></li>
+					<li class="product__tit brush" onclick="productList('brush')" style="font-weight: 900; font-size: 20px; padding: 10px 0;"><a href="#">컬러링/브러쉬</a></li>
 					<li><a href="#">컬러링펜</a></li>
 					<li><a href="#">브러쉬펜</a></li>
 					<li><a href="#">미술용품</a></li>
 				</ul>
 
 				<ul>
-					<li class="product__tit desionSt" onclick="desionSt()" style="font-weight: 900; font-size: 20px; padding: 10px 0;"><a href="#">디자인 문구</a></li>
+					<li class="product__tit designSt" onclick="productList('designSt')" style="font-weight: 900; font-size: 20px; padding: 10px 0;"><a href="#">디자인 문구</a></li>
 					<li><a href="#">몰스킨</a></li>
 					<li><a href="#">다이어리/노트</a></li>
 					<li><a href="#">카드/봉투</a></li>
@@ -82,27 +82,29 @@
 
 		<script>
 		
-		var listAmount = 39;
+		var listAmount = 40;
 		var status = 0;
 	
 		$(window).scroll(function() {
-		
+			
+		// 스크롤이 80% 이상이 되면 해당 컨텐츠가 자동 생성
 		if(((window.scrollY + window.innerHeight) / $('body').prop("scrollHeight") * 100) > 80){
 			if (status == 0) {
 				status = 1;
 			
 			// 에이작스
 			}		
-	}
-});
+		}
+	});
 
-		function prPen(value){
+		function productList(value){
 			$.ajax({
 				type:"get",
-				url:"/monami/board?cmd=product&productList="+value,
+				url:"/monami/board?cmd=productList&value="+value,
 				dataType:"json"
 			}).done(function(result){
-				$("#product__con").empty();
+				console.log(result);
+				$(".product__con__wrap").empty();
 
 				// result의 product 가져오기 (forEach)
 				for(var items of result) {
@@ -116,17 +118,14 @@
 						"				<span class=\"txt-price\">"+items.price+"</span>\r\n" + 
 						"				<span class=\"tag\"></span>\r\n" + 
 						"			</div>"
-						$("#product__con").append(string);					
+						$(".product__con__wrap").append(string);					
 					
 				}
 			}).fail(function(error){
-				alert(error);
+				console.log(error);
 			});
 		}
 		
-		function pen(value){
-		}
-
 
 		// 아코디언 메뉴 
 // 		var acc = document.getElementsByClassName("product__tit");
