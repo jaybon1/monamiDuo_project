@@ -13,12 +13,13 @@
 				<a href="/monami/users?cmd=update">회원정보수정</a> 
 				<a href="/monami/users?cmd=order">주문관리</a> 
 				<a href="/monami/users?cmd=logout">로그아웃</a>
-			</c:otherwise>
-		</c:choose>	
 				<div class="count__con">
 					<a href="/monami/users?cmd=cart"><i class="large material-icons">shopping_basket</i></a> 
 					<span class="count">0</span>
 				</div>
+			</c:otherwise>
+		</c:choose>	
+				
 				<a href="#"><i class="large material-icons">search</i></a>
 		</div>
 		<!--end of local-nav-links-->

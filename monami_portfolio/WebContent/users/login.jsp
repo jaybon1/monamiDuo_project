@@ -28,6 +28,14 @@
 					<p>
 						<input type="submit" value="google 로그인" class="btn" style="background-color: #217Af0">
 					</p>
+					
+					<p>
+						<input type="submit" value="naver 로그인" class="btn" style="background-color: #2DB400">
+					</p>
+					
+					<p>
+						<input type="submit" value="kakao 로그인" class="btn" style="background-color: #ffe812; color:#000000;">
+					</p>
 					<hr>
 					
 					<!-- 아이디, 비밀번호 -->
