@@ -1,0 +1,151 @@
+@charset "UTF-8";
+body {
+	margin: 0 auto;
+}
+
+body, table, div, p, span {
+	font-family: 'Noto Sans KR';
+}
+
+#main_container {
+	background: rgba(0, 0, 0, 0.5);
+	height: 100vh;
+}
+
+a {
+	text-decoration: none;
+	color: #333;
+}
+
+#join {
+	width: 600px;
+	height: 600px;
+	margin: 0 auto;
+	/* position: relative; */
+	/* background:#ddd; */
+}
+
+#join_form {
+	/* text-align:center; */
+	border-radius: 10px;
+/* 	padding: 30px 50px; */
+	padding: 50px 80px;
+	background: #fff;
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.join {
+	font-size: 20px;
+	font-weight: 600;
+	color: #333;
+}
+
+.size {
+	width: 300px;
+	height: 30px;
+	padding-left: 10px;
+	background-color: #f4f4f4;
+	/* margin-left:10px; */
+	border: none;
+	border-radius: 5px;
+}
+
+.btn {
+	width: 310px;
+	height: 40px;
+	font-size: 15px;
+	background-color: #df3278;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.btn:hover {
+	background: #ca296a;
+	transition:.3s all;
+}
+
+hr {
+	margin-top: 20px;
+	background: #eee;
+}
+
+.find {
+	color: #ddd;
+	font-size: 12px;
+}
+
+.find span {
+	padding-left: 10px;
+}
+
+.find span::before {
+	content: '|';
+	color: #333;
+	padding-right: 10px;
+}
+
+.find span:nth-child(1):before {
+	content: none;
+}
+
+.find span:nth-child(1) {
+	padding-left: 0px;
+}
+
+.find a:hover {
+	color: #707070;
+}
+
+.num1 {
+	width: 60px;
+	text-align: left;
+}
+
+.num2 {
+	width: 235px;
+}
+
+.join_form_con p {
+	padding-top: 10px;
+}
+
+.jusoBtn{
+	background:#666;
+	padding:9px 25px;
+	border-radius: 5px;
+	color:white;
+	font-size:12px;
+}
+
+.jusoBtn:hover{
+	background:#333;
+	transition:.3s all;
+}
+.join_p{
+	text-align: left; 
+	font-size: 12px; 
+	color: #666;
+}
+
+.idCheck{
+	background:#217Af0;
+	padding:9px 25px;
+	border-radius: 5px;
+	color:white;
+	font-size:12px;
+}
+
+.idCheck:hover{
+	background:black;
+	transition:.3s all;
+}
+
+.form-control:disabled, .form-control[readonly]{
+	background:rgba(0,0,0,0.2);
+}

@@ -1,0 +1,220 @@
+
+.bx-wrapper{
+  margin-top:98px;
+  margin-bottom:0px;
+}
+
+
+/*********************** about__con1영역 *************************/
+
+.about__con1__tit{
+    font-family: 'Roboto';
+    font-size:35px;
+    font-weight: 900px;
+    letter-spacing: -3px;
+    border-bottom:3px solid #111;
+    max-width:1080px;
+    text-align:right;
+    margin-bottom:50px;
+  }
+  
+  
+  .about__con1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1080px;
+    height: 700px;
+    margin:0 auto;
+    position: relative;
+  }
+  
+  
+  .about__con1 h2{
+    letter-spacing: -3.8px;
+    text-align: center;
+    margin-bottom:30px;
+  }
+  
+  .about__con1 div{
+    width:50%;
+    text-align: center;
+  }
+  
+  
+  
+  /*********************** about__con2영역 *************************/
+  
+  .about__con2{
+    padding-top:70px;
+    padding-top:70px;
+    max-width: 100%;
+    height: 850px;
+  
+    background: url('../images/black.jpg') no-repeat;
+    background-size: cover;
+  }
+  
+  
+  .view__more{
+    border:1px solid rgba(0,0,0,0.5);
+    padding:15px 60px;
+  }
+
+  
+  .view__more:hover{
+    background-color: black;
+    color:white;
+    transition:linear;
+    transition-duration: .3s;
+  }
+  
+  .about__con2__tit{
+    max-width:1080px;
+    margin:0 auto;
+  }
+  
+  .about__con2__tit nav{
+    font-size:30px;
+    letter-spacing: -4px;
+    color:white;
+  }
+  
+  .about__con2__tit p{
+    font-size :20px;
+    font-weight: 200;
+    margin-bottom:60px;
+    color:#999;
+  }
+  
+  .about__con2__img{
+    display:flex;
+    justify-content:flex-end;
+    flex-wrap: wrap;
+    height:370px;
+  }
+  
+  .about__con2__img a{
+    width:370px;
+    background-color: #fff;
+  }
+  
+  .about__con2__img a:hover{
+    background-color: rgba(0,0,0,0.2);
+    transition-timing-function: ease-in;
+    transition-duration: .3s;
+    color:white;
+  }
+  
+  .about__con2__img a:nth-of-type(2){
+    background:url('../images/pen2.png') no-repeat ;
+  }
+  
+  .about__con2__img a:nth-of-type(3){
+    background:url('https://dfrkkcv2hg1jc.cloudfront.net/data/product_en/2010209101_file6_151062745224x4raxzu6.jpg') no-repeat center;
+    background-size: cover;
+  }
+  
+  
+  .about__con2__img a:nth-of-type(4){
+    /* background:url('http://monamiconcept.com/wp-content/uploads/2017/12/mnm_96A5477_2.jpg') no-repeat center; */
+    
+    background-color: gold;
+    background-size: cover;
+  }
+  
+  
+  .about__con2__img p{
+    display: none;
+    font-size:20px;
+    text-align: center;
+    font-weight: 900;
+    padding:20px 0;
+    color:#333;
+    letter-spacing: -3px;
+  }
+  
+  /*********************** about__con3영역 *************************/
+  .about__con3{
+    display: flex;
+    max-width: 1080px;
+    align-items: center;
+    justify-content: space-between;
+    height: 500px;
+    background-color: white;
+    color:#333;
+    margin:0 auto;
+  }
+  
+  .about__con3 p:nth-of-type(1){
+    font-size:25px;
+    font-weight: 100;
+    letter-spacing: -3px;
+    width:80%;
+  }
+  
+  .about__con3 p:nth-of-type(2){
+    width: 17%;
+  }
+  
+  
+  
+.main__container header{
+  width:100%;
+  background:white;
+  border-top:3px solid #111;
+  top:0;
+  left:0;
+  width:100%;
+  position: relative;
+  position: fixed;
+  box-sizing: content-box;
+  z-index: 10000;
+}
+
+.about__main{
+  margin-top:100px;
+  /* height: 800px; */
+  /* background-image: url('../images/about_main.jpg'); */
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position:center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo{
+   width:100px;
+   height: 50px;
+   position: absolute;
+   top:10%;
+   left:2%;
+}
+
+.main_con{
+    height: 100vh;
+    width: 100%;
+    background: #fff;
+    overflow: hidden;
+}
+
+ /* 모바일에 사용될 미디어쿼리*/
+ @media (max-width: 768px) {
+  .about__con1{
+    display: grid;
+  }
+  .about__con1 div{
+    width:100%;
+    margin:70px 0 20px;
+  }
+.bx-wrapper{
+  margin-top:100px;
+}
+.about__con2{
+  padding-top:160px;
+}
+.about__con2__tit{
+  display: none;
+}
+};

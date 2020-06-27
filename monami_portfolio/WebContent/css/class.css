@@ -1,0 +1,173 @@
+.main__container{
+    width:100%;
+}
+
+.class__menu{
+    max-width: 1080px;
+    margin: 0 auto;
+    margin-top:200px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.class__menu p{
+    width:100%;
+    text-align: center;
+    font-size:40px;
+    font-weight: 400;
+    margin-bottom: 50px;
+    border-bottom: 3px solid #111;
+}
+
+.info{
+	display:block;
+	min-height:89px;
+	margin-top:12px;
+	font-size:14px;
+	line-height:24px;
+}
+
+.info .txt_brand{
+	display:block;
+	margin-bottom:9px;
+	color:#999;
+	font-weight:500;
+	font-size:13px;
+}
+
+.txt-price{
+	display: block;
+	color:#ff3c00;
+	font-weight:900;
+}
+
+.tag{
+	display:block;
+	margin-top:14px;
+	min-height:17px;
+	font-size: 0;
+	letter-spacing:0;
+}
+
+.txt-ti{
+	display: block;
+}
+
+.class__menu li{
+    font-size:17px;
+}
+
+.class__menu li a:hover{
+    font-weight: 900;
+    color:#DF0101;
+} 
+
+.class__con__wrap div:before{
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
+
+.class__con__wrap{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    max-width: 1080px;
+    margin: 0 auto;
+    margin-top:50px;
+    margin-bottom:100px;
+}
+
+.class__con__wrap div{
+    position: relative;
+    flex-basis: calc(33.333% - 10px);
+    /* background-color: chocolate; */
+    margin: 5px;
+}
+
+
+
+.class__con1{
+    background: url('http://monamiconcept.com/wp-content/uploads/2020/03/%EC%BB%A8%EC%85%89%EC%8A%A4%ED%86%A0%EC%96%B4-%EC%9B%90%EB%8D%B0%EC%9D%B4%ED%81%B4%EB%9E%98%EC%8A%A4-POP_online_SNS-04.jpg') no-repeat;
+    background-size: contain;
+}
+
+.class__con2{
+    background: url('http://monamiconcept.com/wp-content/uploads/2020/01/200202_%EC%9D%B8%EC%82%AC%EB%8F%99_%EC%9B%90%EB%8D%B0%EC%9D%B4%ED%81%B4%EB%9E%98%EC%8A%A4_%EC%BB%A4%EB%B2%84-05.jpg') no-repeat;
+    background-size: contain;
+}
+
+.class__con3{
+    background: url('http://monamiconcept.com/wp-content/uploads/2020/01/200118_%EC%9B%90%EB%8D%B0%EC%9D%B4%ED%81%B4%EB%9E%98%EC%8A%A4_%EB%B3%B8%EC%82%AC%EC%88%98%EC%A7%80%EC%A0%90_%ED%8C%A8%EB%B8%8C%EB%A6%AD%EB%A7%88%EC%B9%B4%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B4_%EC%BB%A4%EB%B2%84-04.jpg') no-repeat;
+    background-size: contain;
+}
+
+.class__con4{
+    background: url('http://monamiconcept.com/wp-content/uploads/2019/12/200112_%EC%9B%90%EB%8D%B0%EC%9D%B4%ED%81%B4%EB%9E%98%EC%8A%A4_%EC%9D%B8%EC%82%AC%EB%8F%99%EC%A0%90_%EB%B6%88%EB%A0%9B%EC%A0%80%EB%84%90_%EC%BB%A4%EB%B2%84-05.jpg') no-repeat;
+    background-size: contain;
+}
+
+.class__con5{
+    background: url('http://monamiconcept.com/wp-content/uploads/2019/12/%EC%BB%A8%EC%85%89%EC%8A%A4%ED%86%A0%EC%96%B4-%EC%9B%90%EB%8D%B0%EC%9D%B4%ED%81%B4%EB%9E%98%EC%8A%A4-POP_online_SNS-04.jpg') no-repeat;
+    background-size: contain;
+}
+
+.class__con6{
+    background: url('http://monamiconcept.com/wp-content/uploads/2019/12/191221_%EB%B3%B8%EC%82%AC%EC%88%98%EC%A7%80%EC%A0%90_%EB%A7%88%ED%8A%B8%EB%A3%8C%EC%8B%9C%EC%B9%B4_%EC%BB%A4%EB%B2%84-04.jpg') no-repeat;
+    background-size: contain;
+}
+
+.class__con7{
+    background: url('http://monamiconcept.com/wp-content/uploads/2019/12/191221_%EB%B3%B8%EC%82%AC%EC%88%98%EC%A7%80%EC%A0%90_%EB%A7%88%ED%8A%B8%EB%A3%8C%EC%8B%9C%EC%B9%B4_%EC%BB%A4%EB%B2%84-04.jpg') no-repeat;
+    background-size: contain;
+}
+
+.class__con8{
+    background: url('http://monamiconcept.com/wp-content/uploads/2019/12/191215_%EC%9D%B8%EC%82%AC%EB%8F%99%EC%A0%90_%ED%81%AC%EB%A6%AC%EC%8A%A4%EB%A7%88%EC%8A%A4%EB%8F%99%ED%99%94%EC%B1%85_COVER-05.jpg') no-repeat;
+    background-size: contain;
+}
+
+.class__con9{
+    background: url('http://monamiconcept.com/wp-content/uploads/2019/11/1207_%EB%B3%B8%EC%82%AC%EC%88%98%EC%A7%80%EC%A0%90_%EC%9B%94%EB%B0%B0%EB%84%88_%EC%BB%A4%EB%B2%84-04.jpg') no-repeat;
+    background-size: contain;
+}
+
+.class__con10{
+    background: url('http://monamiconcept.com/wp-content/uploads/2019/11/191201_%EC%9D%B8%EC%82%AC%EB%8F%99%EC%A0%90_%ED%81%AC%EB%A6%AC%EC%8A%A4%EB%A7%88%EC%8A%A4%EB%8F%99%ED%99%94%EC%B1%85_COVER-05.jpg') no-repeat;
+    background-size: contain;
+}
+
+.class__con11{
+    background: url('http://monamiconcept.com/wp-content/uploads/2019/11/%EC%BB%A8%EC%85%89%EC%8A%A4%ED%86%A0%EC%96%B4-%EC%9B%90%EB%8D%B0%EC%9D%B4%ED%81%B4%EB%9E%98%EC%8A%A4-POP_online_SNS-04.jpg') no-repeat;
+    background-size: contain;
+}
+
+.class__con12{
+    background: url('http://monamiconcept.com/wp-content/uploads/2019/11/1911196_인사동점_원데이클래스_컬러트윈브러쉬편지봉투_커버-05.jpg') no-repeat;
+    background-size: contain;
+}
+
+.class__con13{
+    background: url('http://monamiconcept.com/wp-content/uploads/2019/11/191123_%EB%B3%B8%EC%82%AC%EC%88%98%EC%A7%80%EC%A0%90_%EC%BB%AC%EB%9F%AC%ED%8A%B8%EC%9C%88%EB%B8%8C%EB%9F%AC%EC%89%AC%EB%A1%9C-%EB%8B%AC%EB%A0%A5%EB%A7%8C%EB%93%A4%EA%B8%B0_%EC%BB%A4%EB%B2%84-04.jpg') no-repeat;
+    background-size: contain;
+}
+
+.class__con14{
+    background: url('http://monamiconcept.com/wp-content/uploads/2019/10/191110_원데이클래스_프러스펜엽서_오유_cover-05.jpg') no-repeat;
+    background-size: contain;
+}
+
+.class__con__wrap div:before{
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
+
+@media (max-width: 768px) {
+    .class__con__wrap div{
+        flex-grow: 1;
+        flex-basis:100%;
+    }
+};
