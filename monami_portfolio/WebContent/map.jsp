@@ -11,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;900&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=1skwdhjb4c"></script>
 <title>map</title>
 </head>
 <body>
@@ -46,26 +47,27 @@
 				<h2>찾아오시는 길</h2>
 				<p>해당 지점을 클릭하시면 지점 위치를 확인 하실 수 있습니다.</p>
 				<div class="map__api">
-					<a href=#><img src="http://prt.map.naver.com/mashupmap/print?key=p1512648006831_-1492038271"></a>
+					<div id="map" style="width: 534px; height: 418px;"></div>
+<!-- 					<a href=#><img src="http://prt.map.naver.com/mashupmap/print?key=p1512648006831_-1492038271"></a> -->
 				</div>
 				<div class="map__tit">
 					<h3>
-						<a href="#">본사 수지점 [스토리 연구소]</a>
+						<a href="javascript:void(0);" onclick="changeMap(0)">본사 수지점 [스토리 연구소]</a>
 					</h3>
 					<h3>
-						<a href="#">인사동점 [스토리 연구소]</a>
+						<a href="javascript:void(0);" onclick="changeMap(1)">인사동점 [스토리 연구소]</a>
 					</h3>
 					<h3>
-						<a href="#">롯데백화점 부산점[워크룸]</a>
+						<a href="javascript:void(0);" onclick="changeMap(2)">롯데백화점 부산점[워크룸]</a>
 					</h3>
 					<h3>
-						<a href="#">에버랜드점 [꿈의 공장]</a>
+						<a href="javascript:void(0);" onclick="changeMap(3)">에버랜드점 [꿈의 공장]</a>
 					</h3>
 					<h3>
-						<a href="#">DDP점 [일,월, 년. 삶의 기록]</a>
+						<a href="javascript:void(0);" onclick="changeMap(4)">DDP점 [일,월, 년. 삶의 기록]</a>
 					</h3>
 					<h3>
-						<a href="#">MCC 합정</a>
+						<a href="javascript:void(0);" onclick="changeMap(5)">MCC 합정</a>
 					</h3>
 				</div>
 			</div>
@@ -75,6 +77,60 @@
 		<%@include file="include/footer.jsp"%>
 
 	</div>
+	<script>
+	
+		/*var mapOptions = {
+		 center: new naver.maps.LatLng(35.1559322, 129.0587823),
+		 zoom: 17
+		 };*/
+		//모나미 본사
+		var map = new naver.maps.Map('map', {
+			center : new naver.maps.LatLng(37.335537, 127.100666),
+			zoom : 15
+		});
+
+		var marker = new naver.maps.Marker({
+			position : new naver.maps.LatLng(37.335537, 127.100666),
+			map : map
+		});
+		
+		function changeMap(num) {
+			
+			var lat;
+			var lng;
+			
+			if(num == 0){ // 본사
+				lat = 37.335537;
+				lng = 127.100666;
+			} else if(num == 1){ // 인사동점
+				lat = 37.574385;
+				lng = 126.983736;
+			} else if(num == 2){ // 롯데백화점
+				lat = 35.156842;
+				lng = 129.056675;
+			} else if(num == 3){ // 에버랜드
+				lat = 37.294088;
+				lng = 127.202528;
+			} else if(num == 4){ // ddp
+				lat = 37.574385;
+				lng = 126.983736;
+			} else if(num == 5){ // 합정
+				lat = 37.546313;
+				lng = 126.914180;
+			}
+			
+			map = new naver.maps.Map('map', {
+				center : new naver.maps.LatLng(lat, lng),
+				zoom : 15
+			});
+
+			marker = new naver.maps.Marker({
+				position : new naver.maps.LatLng(lat, lng),
+				map : map
+			});
+		}
+
+	</script>
 	<script src="js/index.js"></script>
 
 </body>

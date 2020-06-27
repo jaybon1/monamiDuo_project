@@ -21,7 +21,6 @@ public class ProductHomeAction implements Action {
 		List<Items> itemss = itemsRepository.findAllItems();
 		
 		request.setAttribute("itemss",itemss);
-		System.out.println(itemss.get(0).getValue());
 
 		RequestDispatcher dis = request.getRequestDispatcher("product.jsp");
 		dis.forward(request, response);
