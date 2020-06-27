@@ -73,8 +73,13 @@
 			<!-- items:모델 / itemss:list배열 -->
 			<c:forEach var="items" items="${itemss}">
 				<div id="product__con" style="background:url('${items.imgUrl}') no-repeat; background-size:contain; cursor:pointer">
-					<span class="info"> <span class="txt_brand">Monami / 모나미</span> <span class="txt-ti">${items.name}</span>
-					</span> <span class="txt-price">${items.price}</span> <span class="tag"></span>
+					<a href="/monami/board?cmd=productDetail">
+						<span class="info"> 
+							<span class="txt_brand">Monami / 모나미</span> 
+							<span class="txt-ti">${items.name}</span>
+						</span> <span class="txt-price">${items.price}</span> 
+						<span class="tag"></span>
+					</a>
 				</div>
 			</c:forEach>
 		</section>
@@ -111,12 +116,14 @@
 
 					var string = // 다른 곳 java파일에 ""안에 붙여넣으면 자동으로 string화 		
 						"			<div class=\"product__con\" style=\"background:url('"+items.imgUrl+"') no-repeat; background-size:contain; cursor:pointer\">\r\n" + 
+						"				<a href=\"/monami/board?cmd=productDetail\">" +
 						"				<span class=\"info\">\r\n" + 
 						"					<span class=\"txt_brand\">Monami / 모나미</span>\r\n" + 
 						"					<span class=\"txt-ti\">"+items.name+"</span>\r\n" + 
 						"				</span>\r\n" + 
 						"				<span class=\"txt-price\">"+items.price+"</span>\r\n" + 
 						"				<span class=\"tag\"></span>\r\n" + 
+						"				</a>\r\n"	
 						"			</div>"
 						$(".product__con__wrap").append(string);					
 					
