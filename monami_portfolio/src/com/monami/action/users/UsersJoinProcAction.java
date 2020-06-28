@@ -35,11 +35,17 @@ public class UsersJoinProcAction implements Action{
 			return; // 위의 사항 중 하나라도 해당되면 아예 실행이 안되게 설정
 		}
 		
+		// 카카오 아이디와 구분하기 위해 회원가입시 _를 받지 않는다.
+		if(request.getParameter("username").contains("_")) {
+			Script.back("회원 아이디에 _를 넣을 수 없습니다.", response);
+			return;
+		}
+		
 		// 1. parameter 받기 (X-www.form-urlencoded 라는 MIME 타입 key=value)
 		String username = request.getParameter("username");
 		String rawpassword = request.getParameter("password");
 		String password = SHA256.encodeSha256(rawpassword);
-		int phonenumber = Integer.parseInt(request.getParameter("phonenumber"));
+		String phonenumber =request.getParameter("phonenumber");
 		String email = request.getParameter("email"); // e-mail 형식에 대한 유효성 검사도 시행해줘야함
 		String address = request.getParameter("address");
 //		String roadFullAddr = request.getParameter("roadFullAddr");
@@ -47,13 +53,13 @@ public class UsersJoinProcAction implements Action{
 		
 		// 2. User 오브젝트 변환
 		Users user = Users.builder()
-					.username(username)
-					.password(password)
-					.phonenumber(phonenumber)
-					.email(email)
-					.address(address)
-					.userRole(userRole)
-					.build();
+				.username(username)
+				.password(password)
+				.phonenumber(phonenumber)
+				.email(email)
+				.address(address)
+				.userRole(userRole)
+				.build();
 		
 		// 3. DB연결 - UserRepository의 save() 호출
 		UsersRepository userRepository = UsersRepository.getInstance();

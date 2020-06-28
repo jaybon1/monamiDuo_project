@@ -32,7 +32,7 @@ public class UsersRepository {
 			// 물음표 완성하기
 			pstmt.setString(1, user.getUsername());
 			pstmt.setString(2, user.getPassword());
-			pstmt.setInt(3, user.getPhonenumber());
+			pstmt.setString(3, user.getPhonenumber());
 			pstmt.setString(4, user.getEmail());
 			pstmt.setString(5, user.getAddress());
 			pstmt.setString(6, user.getUserRole()); // user권한 (종류는 user, admin)
@@ -45,11 +45,11 @@ public class UsersRepository {
 		}
 		return -1; // 실패시
 	}
+	
+	// 회원정보(카카오, 네이버)
+	public Users findUserInfoByUsername(String username) {
 
-	// 회원정보 찾기
-	public int findByUsername(String username) {
-
-		final String SQL = "SELECT count(*) " + "FROM users WHERE username=?";
+		final String SQL = "SELECT * FROM users WHERE username=?";
 		Users user = null;
 		try {
 			conn = DBConn.getConnection(); // DB에 연결
@@ -60,17 +60,54 @@ public class UsersRepository {
 
 			// if 돌려서 rs -> java오브젝트에 집어넣기
 			rs = pstmt.executeQuery();
-			if (rs.next()) { // 못찾으면 0, 찾으면 1
-				return rs.getInt(1); // 첫번째, SQL index시작이 1 / 0 or 1
+
+			if (rs.next()) {
+				user = Users.builder()
+						.id(rs.getInt("id"))
+						.username(rs.getString("username"))
+						.email(rs.getString("email"))
+						.address(rs.getString("address"))
+						.userProfile(rs.getString("userProfile"))
+						.userRole(rs.getString("userRole"))
+						.createDate(rs.getTimestamp("createDate"))
+						.build();
 			}
+
+			return user;
+
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println(TAG + "findByUsernameAndPassword : " + e.getMessage());
+			System.out.println(TAG + "findUserInfoByUsername : " + e.getMessage());
 		} finally {
 			DBConn.close(conn, pstmt, rs);
 		}
-		return -1; // DB오류시 -1
+
+		return null; // 실패시
 	}
+	
+	// 회원 정보찾기
+		public int findByUsername(String username) {
+
+			final String SQL = "SELECT count(*) " + "FROM users WHERE username=?";
+			Users user = null;
+			try {
+				conn = DBConn.getConnection(); // DB에 연결
+				pstmt = conn.prepareStatement(SQL);
+				// 물음표 완성하기
+				pstmt.setString(1, username);
+				// if 돌려서 rs -> java오브젝트에 집어넣기
+				rs = pstmt.executeQuery();
+				if (rs.next()) { // 못찾으면 0, 찾으면 1
+					return rs.getInt(1); // 첫번째, SQL index시작이 1 / 0 or 1
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println(TAG + "findByUsernameAndPassword : " + e.getMessage());
+			} finally {
+				DBConn.close(conn, pstmt, rs);
+			}
+			return -1; // DB오류시 -1
+		}
 
 	// 아이디 비밀번호 찾기
 	public Users findByUsernameAndPassword(String username, String password) {
@@ -91,7 +128,7 @@ public class UsersRepository {
 				user = new Users(); // 무조건 null이 아니라는 의미
 				user.setId(rs.getInt("id"));
 				user.setUsername(rs.getString("username"));
-				user.setPhonenumber(rs.getInt("phonenumber"));
+				user.setPhonenumber(rs.getString("phonenumber"));
 				user.setEmail(rs.getString("email"));
 				user.setAddress(rs.getString("address"));
 				user.setUserProfile(rs.getString("userProfile"));
@@ -117,7 +154,7 @@ public class UsersRepository {
 			pstmt = conn.prepareStatement(SQL);
 			// 물음표 완성하기
 			pstmt.setString(1, user.getPassword());
-			pstmt.setInt(2, user.getPhonenumber());
+			pstmt.setString(2, user.getPhonenumber());
 			pstmt.setString(3, user.getEmail());
 			pstmt.setString(4, user.getAddress());
 			pstmt.setInt(5, user.getId());
@@ -147,7 +184,7 @@ public class UsersRepository {
 				user = Users.builder()
 						.id(rs.getInt("id"))
 						.username(rs.getString("username"))
-						.phonenumber(rs.getInt("phonenumber"))
+						.phonenumber(rs.getString("phonenumber"))
 						.email(rs.getString("email"))
 						.address(rs.getString("address"))
 						.createDate(rs.getTimestamp("createDate"))

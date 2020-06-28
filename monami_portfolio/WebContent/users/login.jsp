@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>loginPage</title>
-<link rel="stylesheet" href="css/default.css">
+<link rel="stylesheet" href="/monami/css/default.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <style>
@@ -34,7 +34,7 @@
 					</p>
 					
 					<p>
-						<input type="submit" value="kakao 로그인" class="btn" style="background-color: #ffe812; color:#000000;">
+							<input type="button" value="kakao 로그인" class="btn" style="background-color: #ffe812; color:#000000;" onclick="kakao()">
 					</p>
 					<hr>
 					
@@ -58,9 +58,18 @@
 				</p>
 			</div>
 			<div>
+				<script>
+				/*kakao*/
+				function kakao(){
+					window.open("https://kauth.kakao.com/oauth/authorize?client_id=b465c518547e52041228dd168891c8f0&redirect_uri=http://localhost:8000/monami/oauth/kakao?cmd=callback&response_type=code");
+				}
+				</script>
+				
 				<script src="js/index.js"></script>
 			</div>
 		</div>
+		
+		
 	</div>	
 </body>
 </html>

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.monami.action.Action;
+import com.monami.model.Users;
 import com.monami.repository.UsersRepository;
 import com.monami.util.Script;
 
@@ -24,7 +25,15 @@ public class UsersUsernameCheckAction implements Action{
 		}
 		
 		UsersRepository usersRepository = UsersRepository.getInstance();
-		int result = usersRepository.findByUsername(username);
-		Script.outText(result+"", response); //+""문자로 리턴
+//		int result = usersRepository.findByUsername(username);
+		Users user = usersRepository.findUserInfoByUsername(username);
+		
+		if(user == null) {
+			Script.outText("0", response);
+		}else {
+			Script.outText("1", response);
+		}
+		
+//		Script.outText(result+"", response); //+""문자로 리턴
 	}
 }

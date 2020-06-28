@@ -14,15 +14,19 @@ import com.monami.action.board.BoardHomeAction;
 import com.monami.action.board.ClassHomeAction;
 import com.monami.action.board.MapHomeAction;
 import com.monami.action.board.ProductHomeAction;
+import com.monami.action.board.ProductListAction;
+import com.monami.action.board.productDetailAction;
+import com.monami.action.kakao.KakaoCallbackAction;
+import com.monami.action.kakao.KakaoJoinProcAction;
 import com.monami.action.test.JsoupTestAction;
 
 // http://localhost:8000/blog/board
-@WebServlet("/test")
-public class TestController extends HttpServlet {
-	private final static String TAG = "TestController  : ";
+@WebServlet("/oauth/kakao")
+public class KakaoController extends HttpServlet {
+	private final static String TAG = "KakaoController  : ";
 	private static final long serialVersionUID = 1L;
 
-	public TestController() {
+	public KakaoController() {
 		super();
 	}
 
@@ -38,7 +42,6 @@ public class TestController extends HttpServlet {
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// http://localhost:8000/blog/user?cmd=join
 		String cmd = request.getParameter("cmd");
 		System.out.println(TAG + "router : " + cmd);
 		Action action = router(cmd);
@@ -48,9 +51,11 @@ public class TestController extends HttpServlet {
 	// Controller에서 파일이 생성되고, 라우터를 타면 return 값으로 객체를 생성시켜주고, action이라는 변수에 넣어주고
 	// execute로 실행
 	public Action router(String cmd) {
-		if (cmd.equals("test")) {
+		if (cmd.equals("callback")) {
 			// 회원가입 페이지로 이동
-			return new JsoupTestAction();
+			return new KakaoCallbackAction();
+		}else if(cmd.equals("joinProc")) {
+			return new KakaoJoinProcAction();
 		}
 		return null;
 	}
