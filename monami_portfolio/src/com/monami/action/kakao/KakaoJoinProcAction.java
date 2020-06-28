@@ -1,6 +1,7 @@
 package com.monami.action.kakao;
 
 import java.io.IOException;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,26 +19,34 @@ public class KakaoJoinProcAction implements Action{
 		// 0. 유효성 검사
 		if
 		(
-				request.getParameter("username") == null ||
-				request.getParameter("username").equals("") ||
-				request.getParameter("email") == null ||
-				request.getParameter("email").equals("")
+				request.getParameter("username") == null|| // 값이 X
+				request.getParameter("username").equals("")|| // 공백
+				request.getParameter("email") == null|| // 값이 X
+				request.getParameter("email").equals("")|| // 공백
+				request.getParameter("phonenumber") == null|| // 값이 X
+				request.getParameter("phonenumber").equals("")|| // 공백
+				request.getParameter("address") == null ||
+				request.getParameter("address").equals("")
 
 		) {
-			return;
+			Script.getMessage("비정상적 접근", response);
+			return; // 위의 사항 중 하나라도 해당되면 아예 실행이 안되게 설정
 		}
 
 		// 1. 파라메터 받기 (x-www-form-urlencoded 라는 MIME타입 key=value)
 		String username = request.getParameter("username");
 		String email = request.getParameter("email");
+		String phonenumber = request.getParameter("tel") +"_"+ request.getParameter("phonenumber");
+		String address = request.getParameter("address");
 		String userRole = RoleType.USER.toString();
 
 		// 2. User 오브젝트 변환
 		Users user = Users.builder()
 				.username(username)
-				.password("")
+				.password(UUID.randomUUID().toString())
 				.email(email)
-				.address("")
+				.phonenumber(phonenumber)
+				.address(address)
 				.userRole(userRole)
 				.build();
 
@@ -47,7 +56,7 @@ public class KakaoJoinProcAction implements Action{
 
 		// 4. index.jsp 페이지로 이동
 		if(result == 1) {
-			Script.href("회원가입에 성공하였습니다.", "/monami/user?cmd=login", response);
+			Script.href("회원가입에 성공하였습니다.", "/monami/users?cmd=login", response);
 		}else {
 			Script.back("회원가입에 실패하였습니다.", response);
 		}

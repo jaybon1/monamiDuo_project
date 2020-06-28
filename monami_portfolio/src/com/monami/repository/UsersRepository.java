@@ -46,56 +46,10 @@ public class UsersRepository {
 		return -1; // 실패시
 	}
 	
-	// 회원정보(카카오, 네이버)
-	public Users findUserInfoByUsername(String username) {
-
-<<<<<<< HEAD
-		final String SQL = "SELECT * FROM users WHERE username=?";
-=======
+	// 회원정보(카카오, 네이버로그인)
 	public Users findUserInfoByUsername(String username) {
 
 		final String SQL = "SELECT * FROM users WHERE username=?";
-		Users user = null;
-		try {
-			conn = DBConn.getConnection(); // DB에 연결
-			pstmt = conn.prepareStatement(SQL);
-
-			// 물음표 완성하기
-			pstmt.setString(1, username);
-
-			// if 돌려서 rs -> java오브젝트에 집어넣기
-			rs = pstmt.executeQuery();
-			
-			if (rs.next()) {
-				user = Users.builder()
-						.id(rs.getInt("id"))
-						.username(rs.getString("username"))
-						.email(rs.getString("email"))
-						.address(rs.getString("address"))
-						.userProfile(rs.getString("userProfile"))
-						.userRole(rs.getString("userRole"))
-						.createDate(rs.getTimestamp("createDate"))
-						.build();
-			}
-		
-			return user;
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println(TAG + "findUserInfoByUsername : " + e.getMessage());
-		} finally {
-			DBConn.close(conn, pstmt, rs);
-		}
-
-		return null; // 실패시
-	}
-	
-	
-	// 회원정보 찾기
-	public int findByUsername(String username) {
-
-		final String SQL = "SELECT count(*) " + "FROM users WHERE username=?";
->>>>>>> 5712be2b36c453416db3e83cbd7691d86869d1a2
 		Users user = null;
 		try {
 			conn = DBConn.getConnection(); // DB에 연결

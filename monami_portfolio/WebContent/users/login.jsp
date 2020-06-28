@@ -17,7 +17,7 @@
 	<div id="main_container">
 
 		<!-- header 영역 -->
-		<%@include file="../include/header.jsp"%>
+		<%@include file="/include/header.jsp"%>
 
 		<div id="login">
 			<div id="login_form">
@@ -25,16 +25,16 @@
 				<form action="/monami/users?cmd=loginProc" method="post" class="login_form_con">
 					<h3 class="login" style="letter-spacing: -1px;">로그인</h3>
 
-					<p>
+					<!--p>
 						<input type="submit" value="google 로그인" class="btn" style="background-color: #217Af0">
-					</p>
+					</p-->
 					
 					<p>
 						<input type="button" onclick="naverLogin()" value="naver 로그인" class="btn" style="background-color: #2DB400">
 					</p>
 					
 					<p>
-							<input type="button" value="kakao 로그인" class="btn" style="background-color: #ffe812; color:#000000;" onclick="kakao()">
+						<input type="button" onclick="kakaoLogin()" value="kakao 로그인" class="btn" style="background-color: #ffe812; color:#000000;">
 					</p>
 					<hr>
 					
@@ -60,27 +60,19 @@
 			<div>
 				<script>
 				/*kakao*/
-				function kakao(){
+				function kakaoLogin(){
 					window.open("https://kauth.kakao.com/oauth/authorize?client_id=b465c518547e52041228dd168891c8f0&redirect_uri=http://localhost:8000/monami/oauth/kakao?cmd=callback&response_type=code");
+				}
+
+				/*naver*/
+				function naverLogin(){
+					location.href = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=Hqg55mpDPpjniVLwwGPK&redirect_uri=http://localhost:8000/monami/oauth/naver?cmd=callback&state=1234567890";
 				}
 				</script>
 				
 				<script src="js/index.js"></script>
 			</div>
 		</div>
-<<<<<<< HEAD
-		
-		
 	</div>	
-=======
-	</div>
-	<script type="text/javascript">
-	
-		function naverLogin(){
-			location.href = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=Hqg55mpDPpjniVLwwGPK&redirect_uri=http://localhost:8000/monami/oauth/naver?cmd=callback&state=1234567890";
-		}
-	
-	</script>
->>>>>>> 5712be2b36c453416db3e83cbd7691d86869d1a2
 </body>
 </html>

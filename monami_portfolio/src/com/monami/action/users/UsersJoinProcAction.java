@@ -45,11 +45,7 @@ public class UsersJoinProcAction implements Action{
 		String username = request.getParameter("username");
 		String rawpassword = request.getParameter("password");
 		String password = SHA256.encodeSha256(rawpassword);
-<<<<<<< HEAD
-		String phonenumber =request.getParameter("phonenumber");
-=======
 		String phonenumber = request.getParameter("phonenumber");
->>>>>>> 5712be2b36c453416db3e83cbd7691d86869d1a2
 		String email = request.getParameter("email"); // e-mail 형식에 대한 유효성 검사도 시행해줘야함
 		String address = request.getParameter("address");
 //		String roadFullAddr = request.getParameter("roadFullAddr");

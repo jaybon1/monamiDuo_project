@@ -1,33 +1,84 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>카카오 로그인 추가 정보 구성창</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>loginPage</title>
+<link rel="stylesheet" href="/monami/css/default.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+<%@include file="/css/join.css"%>
+</style>
 </head>
 <body>
-	<div class="container">
-	<h1>카카오 로그인 추가 정보 구성창</h1>
-	<form action="/monami/oauth/kakao?cmd=joinProc" method="POST" class="was-validated">
+<div id="main_container">
+		
+		<!-- header 영역 -->
+		<%@include file="/include/header.jsp"%>
 
-	  <div class="form-group">
-	    <label for="username">Username:</label>
+		<div id="join">
+			<div id="join_form">
+				<!--회원가입 폼-->
+				<form class="join_form_con" action="/monami/oauth/kakao?cmd=joinProc" method="post">
+					<h3 class="join" style="letter-spacing: -1px;">카카오 로그인 추가 정보</h3>
+					<hr>
+					
+					<!--아이디-->
+					<p class="join_p">username</p>
+					<input value="${kakaoProfile.id}_kakao" type="text" id="username" name="username" placeholder="아이디" class="size" style="background:rgba(0,0,0,0.2)" required>
+					<p></p>
+					
+					
+					
+					<p class="join_p">E-mail</p> 
+					 <c:choose>
+					    <c:when test="${empty kakaoProfile.kakao_account.email}">
+					    	<input type="email" id="email" name="email" placeholder="이메일" class="size" required>
+					    </c:when>
+					    <c:otherwise>
+					    	<input value="${kakaoProfile.kakao_account.email}" type="email" class="size" id="email" placeholder="Enter Email" name="email" required>
+					    </c:otherwise>
+	   				 </c:choose>
+					
 
-	    <input value="${kakaoProfile.id}_kakao" type="text" class="form-control" id="username" placeholder="Enter username" name="username" required readonly>
-	    <div class="valid-feedback">Valid.</div>
-	    <div class="invalid-feedback">Please fill out this field.</div>
-	  </div>
+					<!--전화번호-->
+					<p class="join_p">Mobile Phone</p> 
+						<select class="size num1" name="tel">
+							<option value="skt" selected>SKT</option>
+							<option value="kt" selected>KT</option>
+							<option value="lg" selected>LG</option>
+						</select> 
+					<input type="number" id="phonenumber" name="phonenumber" placeholder="-빼고 숫자만 입력" class="size num2" required>
+					
+					
+					
+					<!--주소-->
+					<p class="join_p">Address</p>
+					<input type="text" id="address" name="address" placeholder="주소" class="size" style="width:220px; margin-bottom: 10px">
+					<button type="button" class="jusoBtn" onClick="goPopup();">검색</button>
+					
+					<br>
+					
+					<p>
+						<input type="submit" value="회원가입 완료" class="btn" style="background-color: #ffe812; color:#000000;">
+					</p>
+				</form>
 
-	  <div class="form-group">
-	    <label for="email">Email:</label>
-	    <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" required>
-	    <div class="valid-feedback">Valid.</div>
-	    <div class="invalid-feedback">Please fill out this field.</div>
-	  </div>
-
-	  <button type="submit" class="btn btn-primary">회원가입완료</button>
-	</form>
-</div>
+				<hr>
+				<p class="find">
+					<span><a href="/monami/users?cmd=login">로그인 페이지로 이동</a></span>
+				</p>
+			</div>
+		</div>
+	<script src="/blog/js/join.js"></script>	
+	</div>
+	
+	<%@ include file="/include/footer.jsp" %>
+	<script>
+		alert("주소와 전화번호 입력이 필요합니다.");
+	</script>
 </body>
 </html>

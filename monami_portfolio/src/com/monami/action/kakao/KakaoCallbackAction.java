@@ -91,29 +91,14 @@ public class KakaoCallbackAction implements Action {
 
 		if(principal != null) { // 기존회원이면 그냥 세션 넣고 로그인 진행
 			session.setAttribute("principal", principal);
-			Script.href("카카오 로그인 완료", "/monami/about.jsp", response);
+			Script.href("카카오 로그인 완료", "/monami/board?cmd=about", response);
 			
 		}else { // 기존회원이 아니면 회원가입 후 로그인 진행
 			
-			// email 값이 없으면 추가 회원정보 받으러 이동
-			if(kakaoProfile.getKakao_account().getEmail() == null ||
-				kakaoProfile.getKakao_account().getEmail().equals("")) {
-				request.setAttribute("kakaoProfile", kakaoProfile);
-				
-				RequestDispatcher dis = request.getRequestDispatcher("/user/KakaoOauthJoin.jsp");
-				dis.forward(request, response);
-				
-			}else { // email 값이 있으면 바로 회원가입 및 로그인 진행
-				String username = kakaoProfile.getId();
-				username += "_kakao";
-				Users user = Users.builder()
-						.username(username)
-						.email(kakaoProfile.getKakao_account().getEmail())
-						.build();
-				session.setAttribute("principal", user);
-
-				Script.href("카카오 회원가입 및 로그인 완료", "/monami/about.jsp", response);
-			}
+			request.setAttribute("kakaoProfile", kakaoProfile);
+			RequestDispatcher dis = 
+					request.getRequestDispatcher("/users/kakaoOauthJoin.jsp");
+			dis.forward(request, response);
 
 		}
 

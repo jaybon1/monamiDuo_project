@@ -38,7 +38,7 @@ public class NaverJoinProcAction implements Action{
 		// 1. parameter 받기 (X-www.form-urlencoded 라는 MIME 타입 key=value)
 		String username = request.getParameter("username");
 		String email = request.getParameter("email"); // e-mail 형식에 대한 유효성 검사도 시행해줘야함
-		String phonenumber = request.getParameter("phonenumber");
+		String phonenumber = request.getParameter("tel") +"_"+ request.getParameter("phonenumber");
 		String address = request.getParameter("address");
 		
 		String userRole = RoleType.USER.toString(); // 마음대로 넣는 걸 방지하기 위해 enum으로 설정

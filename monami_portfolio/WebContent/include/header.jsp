@@ -29,7 +29,7 @@
 	<nav class="global-nav">
 		<div>
 			<ul class="global-nav-links">
-				<a href="/monami/board?cmd=home" class="product-name"><img src="images/logo.png"></a>
+				<a href="/monami/board?cmd=home" class="product-name"><img src="/monami/images/logo.png"></a>
 				<li><a href="/monami/board?cmd=about" class="global-nav-item">ABOUT</a></li>
 				<li><a href="/monami/board?cmd=product" class="global-nav-item">PRODUCT</a></li>
 				<li><a href="/monami/board?cmd=class" class="global-nav-item">CLASS</a></li>
