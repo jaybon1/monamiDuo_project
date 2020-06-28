@@ -30,7 +30,7 @@
 					</p>
 					
 					<p>
-						<input type="submit" value="naver 로그인" class="btn" style="background-color: #2DB400">
+						<input type="button" onclick="naverLogin()" value="naver 로그인" class="btn" style="background-color: #2DB400">
 					</p>
 					
 					<p>
@@ -61,6 +61,13 @@
 				<script src="js/index.js"></script>
 			</div>
 		</div>
-	</div>	
+	</div>
+	<script type="text/javascript">
+	
+		function naverLogin(){
+			location.href = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=Hqg55mpDPpjniVLwwGPK&redirect_uri=http://localhost:8000/monami/oauth/naver?cmd=callback&state=1234567890";
+		}
+	
+	</script>
 </body>
 </html>
