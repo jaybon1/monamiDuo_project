@@ -6,9 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/default.css">
+<link rel="stylesheet" href="css/order.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel="stylesheet" href="css/order.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;900&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -38,9 +38,9 @@
 				<div class="cont-area">
 					<section class="lately">
 						<h4 class="tit">상품관리</h4>
-						<div class="btn-titarea">
-							<a href="#" class="btn-more">주문목록보기</a>
-						</div>
+<!-- 						<div class="btn-titarea"> -->
+<!-- 							<a href="#" class="btn-more">주문목록보기</a> -->
+<!-- 						</div> -->
 			
 								<div class="step-wrap">
 									<table class="table">
@@ -54,7 +54,7 @@
 									    </thead>
 									    <tbody>
 									    
-									    	<c:forEach var="item" items="${itemList }">
+									    	<c:forEach var="item" items="${itemList}">
 										      <tr>
 										        <td>${item.value }</td>
 										        <td>${item.name }</td>
