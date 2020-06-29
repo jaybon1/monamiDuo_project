@@ -1,6 +1,7 @@
 package com.monami.action.admin;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,7 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.monami.action.Action;
+import com.monami.model.Items;
 import com.monami.model.Users;
+import com.monami.repository.ItemsRepository;
 import com.monami.util.Script;
 
 public class AdminProductAction implements Action{
@@ -23,6 +26,11 @@ public class AdminProductAction implements Action{
 			Script.getMessage("잘못된 접근입니다.", response);
 			
 		} else {
+			
+			ItemsRepository itemsRepository = ItemsRepository.getInstance();
+			List<Items> itemList = itemsRepository.find20ItemsByPage(0);
+			
+			request.setAttribute("itemList", itemList);
 			
 			RequestDispatcher dis = request.getRequestDispatcher("admin/adminProduct.jsp");
 			dis.forward(request, response);	

@@ -53,34 +53,19 @@
 									      </tr>
 									    </thead>
 									    <tbody>
-									      <tr>
-									        <td>프리미엄펜</td>
-									        <td>153블라썸</td>
-									        <td>20,000원</td>
-									        <td>
-										        <button type="button" class="btn btn-secondary">상품수정</button>
-										        <button type="button" class="btn btn-danger">상품삭제</button><span></span>
-									        </td>
-									        
-									      </tr>
-									      <tr>
-									        <td>Mary</td>
-									        <td>Moe</td>
-									        <td>mary@example.com</td>
-									        <td>
-										        <button type="button" class="btn btn-secondary">상품수정</button>
-										        <button type="button" class="btn btn-danger">상품삭제</button><span></span>
-									        </td>
-									      </tr>
-									      <tr>
-									        <td>July</td>
-									        <td>Dooley</td>
-									        <td>july@example.com</td>
-									        <td>
-										        <button type="button" class="btn btn-secondary">상품수정</button>
-										        <button type="button" class="btn btn-danger">상품삭제</button><span></span>
-									        </td>
-									      </tr>
+									    
+									    	<c:forEach var="item" items="${itemList }">
+										      <tr>
+										        <td>${item.value }</td>
+										        <td>${item.name }</td>
+										        <td>${item.price }</td>
+										        <td>
+											        <button type="button" class="btn btn-secondary">상품수정</button>
+											        <button type="button" class="btn btn-danger" onclick="">상품삭제</button><span></span>
+										        </td>
+										      </tr>
+									    	</c:forEach>
+									      	
 									    </tbody>
 									  </table>
 								</div>

@@ -53,6 +53,38 @@ public class ItemsRepository {
 		return null; // 실패시
 	}
 	
+	public List<Items> find20ItemsByPage(int page) { // object 받기(안에 내용 다 받아야 하니까)
+		final String SQL = 
+				"SELECT /*+ index_desc(items ITEMS_PK)  */ id, imgurl, name, price, value " + 
+				"FROM items " + 
+				"OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY ";
+		List<Items> itemList = new ArrayList<>();
+		try {
+			conn = DBConn.getConnection(); // DB에 연결
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, page*20);
+			// while 돌려서 rs -> java오브젝트에 집어넣기
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Items item = Items.builder()
+								.id(rs.getInt(1))
+								.imgUrl(rs.getString(2))
+								.name(rs.getString(3))
+								.price(rs.getString(4))
+								.value(rs.getString(5))
+								.build();
+				itemList.add(item);
+			}
+			return itemList;
+		} catch (SQLException e) {
+			e.printStackTrace(); 
+			System.out.println(TAG + "find20Items : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt, rs);
+		}
+		return null; // 실패시
+	}
+	
 	// 아이템 넣기
 	public int insertItem(Items item, String value) { // object 받기(안에 내용 다 받아야 하니까) // insert하고 싶으면 save
 		final String SQL = "INSERT INTO items(id, imgUrl, name, price, value) " + "VALUES(ITEMS_SEQ.nextval,?,?,?,?)";																																															// update
