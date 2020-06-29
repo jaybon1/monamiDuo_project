@@ -33,10 +33,10 @@
 		<div>
 			<ul class="global-nav-links">
 				<a href="/monami/board?cmd=home" class="product-name"><img src="/monami/images/logo.png"></a>
-				<li><a href="/monami/board?cmd=about" class="global-nav-item">ABOUT</a></li>
-				<li><a href="/monami/board?cmd=product" class="global-nav-item">PRODUCT</a></li>
-				<li><a href="/monami/board?cmd=class" class="global-nav-item">CLASS</a></li>
-				<li><a href="/monami/board?cmd=map" class="global-nav-item">MAP</a></li>
+				<li><a href="/monami/board?cmd=about" class="global-nav-item" style="text-decoration: none;">ABOUT</a></li>
+				<li><a href="/monami/board?cmd=product" class="global-nav-item" style="text-decoration: none;">PRODUCT</a></li>
+				<li><a href="/monami/board?cmd=class" class="global-nav-item" style="text-decoration: none;">CLASS</a></li>
+				<li><a href="/monami/board?cmd=map" class="global-nav-item" style="text-decoration: none;">MAP</a></li>
 			</ul>
 		</div>
 		<!--end of global-nav-links-->

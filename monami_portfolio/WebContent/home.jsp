@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div class="container">
-		<header>
+		<header style="background:none;">
 			<h1 class="logo">
 				<a href="/monami/board?cmd=home">
 					<img src="images/logo_white.png" />
