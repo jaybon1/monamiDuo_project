@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.monami.action.Action;
+import com.monami.action.users.UsersAdminAction;
 import com.monami.action.users.UsersCartAction;
 import com.monami.action.users.UsersJoinAction;
 import com.monami.action.users.UsersJoinProcAction;
@@ -67,17 +68,20 @@ public class UsersController extends HttpServlet {
 			// 로그아웃
 			return new UsersLogoutAction();
 		} else if (cmd.equals("update")) {
-			// 회원 수정 페이지로 이동 (세션에 User 오브젝트를 가지고 있을 예정)
+			// 수정페이지로 이동
 			return new UsersUpdateAction();
 		}else if(cmd.equals("updateProc")) {
-			// 회원 수정을 진행 한 후 -> index.jsp로 이동
+			// 수정페이지로 이동헤서 작업
 			return new UsersUpdateProcAction();
 		}else if(cmd.equals("order")) {
-			// 회원 수정을 진행 한 후 -> index.jsp로 이동
+			// 주문관리 페이지 이동
 			return new UsersOrderAction();
 		}else if(cmd.equals("cart")) {
-			// 회원 수정을 진행 한 후 -> index.jsp로 이동
+			// 장바구니 페이지 이동 
 			return new UsersCartAction();
+		}else if(cmd.equals("admin")) {
+			// 관리자 페이지로 이동
+			return new UsersAdminAction();
 		}
 		
 		return null;

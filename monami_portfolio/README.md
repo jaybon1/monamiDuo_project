@@ -19,7 +19,7 @@ CREATE TABLE users(
   	id number primary key,
     username varchar2(100) not null unique,
     password varchar2(100) not null,
-  	phonenumber varchar2(13) not null,
+  	phonenumber varchar2(20) not null,
     email varchar2(100) not null,
     address varchar2(100) not null,
     userProfile varchar2(200),
