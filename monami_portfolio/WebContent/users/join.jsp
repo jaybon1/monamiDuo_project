@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <style>
-	<%@include file="../css/join.css"%>
+	<%@include file="/css/join.css"%>
 </style>
 </head>
 
@@ -17,7 +17,7 @@
 	<div id="main_container">
 		
 		<!-- header 영역 -->
-		<%@include file="../include/header.jsp"%>
+		<%@include file="/include/header.jsp"%>
 
 		<div id="join">
 			<div id="join_form">
@@ -70,7 +70,7 @@
 				</p>
 			</div>
 		</div>
-	<script src="/blog/js/join.js"></script>	
+	<script src="/monami/js/join.js"></script>	
 	</div>
 </body>
 </html>
