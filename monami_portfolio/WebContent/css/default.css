@@ -299,6 +299,7 @@ footer{
   .foot_btm .info address{
      font-size:14px;color:rgba(255,255,255,0.3);
      font-weight:300;
+     font-style:normal;
   }
   .foot_btm .info address span{display:inline-block;padding:0 10px;margin-bottom:3px;}
   .foot_btm .info .copy{font-size:12px;color:rgba(255,255,255,0.3);font-weight:300;}

@@ -140,3 +140,34 @@
 	font-weight:700;
 	font-style:normal;
 }
+
+/*review*/
+.review{
+	width:1100px;
+	margin:0 auto;
+}
+
+.review h2{
+	margin-top:100px;
+	font-size:25px;
+	text-align:left;
+	display: inline-block;
+}
+
+.review h2:nth-last-child(){
+	text-align:right;
+}
+
+.review_con{
+	display: flex;
+	justify-content:space-between;
+	align-items:center;
+	margin:0 auto;
+}
+.review_con_con{
+	width:24%;
+	height:300px;
+	margin-bottom:15px; 
+	background:#f1f1f1;
+	align-items:center;
+}

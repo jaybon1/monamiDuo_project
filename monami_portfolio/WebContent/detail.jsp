@@ -112,7 +112,30 @@
 				</div>
 				
 			</div>
-			<img src="https://d1bg8rd1h4dvdb.cloudfront.net/upload/imgServer/product/editor/77e61afd-7de2-6047-2845-fa4a733e21ac/20200414143538_P.jpg">
+			
+			<div>
+				<img src="https://d1bg8rd1h4dvdb.cloudfront.net/upload/imgServer/product/editor/77e61afd-7de2-6047-2845-fa4a733e21ac/20200414143538_P.jpg">
+			</div>
+			
+<!-- 			<div class="review"> -->
+<!-- 				<div class="review_info"> -->
+<!-- 					<h2>전체리뷰</h2> -->
+<!-- 					<h2>상품리뷰작성</h2> -->
+<!-- 				</div> -->
+<!-- 				<div class="review_con review_1"> -->
+<!-- 					<div class="review_con_con">첫번째 후기</div> -->
+<!-- 					<div class="review_con_con">첫번째 후기</div> -->
+<!-- 					<div class="review_con_con">첫번째 후기</div> -->
+<!-- 					<div class="review_con_con">첫번째 후기</div> -->
+<!-- 				</div> -->
+				
+<!-- 				<div class="review_con review_2"> -->
+<!-- 					<div class="review_con_con">두번째 후기</div> -->
+<!-- 					<div class="review_con_con">두번째 후기</div> -->
+<!-- 					<div class="review_con_con">두번째 후기</div> -->
+<!-- 					<div class="review_con_con">두번째 후기</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
 		</section>
 
 		<!-- footer 영역 -->

@@ -72,7 +72,7 @@
 		<section class="product__con__wrap">
 			<!-- items:모델 / itemss:list배열 -->
 			<c:forEach var="items" items="${itemss}">
-				<div id="product__con" style="background:url('${items.imgUrl}') no-repeat; background-size:contain; cursor:pointer">
+				<div id="product__con" style="background:url('${items.imgUrl}') no-repeat; background-size:contain; cursor:pointer;" onClick="location.href ='/monami/detail?cmd=detail'">
 					<a href="/monami/detail?cmd=detail">
 						<span class="info"> 
 							<span class="txt_brand">Monami / 모나미</span> 
