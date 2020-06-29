@@ -1,6 +1,7 @@
 package com.monami.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.monami.action.Action;
-import com.monami.action.users.UsersAdminAction;
 import com.monami.action.users.UsersCartAction;
 import com.monami.action.users.UsersJoinAction;
 import com.monami.action.users.UsersJoinProcAction;
@@ -79,9 +79,6 @@ public class UsersController extends HttpServlet {
 		}else if(cmd.equals("cart")) {
 			// 장바구니 페이지 이동 
 			return new UsersCartAction();
-		}else if(cmd.equals("admin")) {
-			// 관리자 페이지로 이동
-			return new UsersAdminAction();
 		}
 		
 		return null;

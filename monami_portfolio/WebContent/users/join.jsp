@@ -39,10 +39,10 @@
 
 					<!--전화번호-->
 					<p class="join_p">Mobile Phone</p> 
-						<select class="size num1">
-							<option value="1" selected>SKT</option>
-							<option value="2" selected>KT</option>
-							<option value="3" selected>LG</option>
+						<select class="size num1" name="tel">
+							<option value="skt" selected>SKT</option>
+							<option value="kt" selected>KT</option>
+							<option value="lg" selected>LG</option>
 						</select> 
 					<input type="number" id="phonenumber" name="phonenumber" placeholder="-빼고 숫자만 입력" class="size num2" required>
 					

@@ -41,7 +41,7 @@ public class UsersRepository {
 			e.printStackTrace();
 			System.out.println(TAG + "join : " + e.getMessage());
 		} finally {
-			DBConn.close(conn, pstmt, rs);
+			DBConn.close(conn, pstmt);
 		}
 		return -1; // 실패시
 	}
@@ -164,7 +164,7 @@ public class UsersRepository {
 			e.printStackTrace();
 			System.out.println(TAG + "update : " + e.getMessage());
 		} finally {
-			DBConn.close(conn, pstmt, rs);
+			DBConn.close(conn, pstmt);
 		}
 		return -1; // 실패시
 	}

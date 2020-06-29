@@ -26,12 +26,17 @@ public class UsersJoinProcAction implements Action{
 				request.getParameter("username").equals("")|| // 공백
 				request.getParameter("password") == null||
 				request.getParameter("password").equals("")||
+				request.getParameter("tel") == null||
+				request.getParameter("tel").equals("")||
+				request.getParameter("phonenumber") == null||
+				request.getParameter("phonenumber").equals("")||
 				request.getParameter("email") == null ||
 				request.getParameter("email").equals("")||
 				request.getParameter("address") == null||
 				request.getParameter("address").equals("")
 				
 		) {
+			Script.getMessage("비정상적인 접근", response);
 			return; // 위의 사항 중 하나라도 해당되면 아예 실행이 안되게 설정
 		}
 		
@@ -45,7 +50,7 @@ public class UsersJoinProcAction implements Action{
 		String username = request.getParameter("username");
 		String rawpassword = request.getParameter("password");
 		String password = SHA256.encodeSha256(rawpassword);
-		String phonenumber = request.getParameter("phonenumber");
+		String phonenumber = request.getParameter("tel") + "_" + request.getParameter("phonenumber");
 		String email = request.getParameter("email"); // e-mail 형식에 대한 유효성 검사도 시행해줘야함
 		String address = request.getParameter("address");
 //		String roadFullAddr = request.getParameter("roadFullAddr");
