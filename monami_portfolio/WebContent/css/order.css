@@ -10,22 +10,20 @@
 	margin-bottom: 50px;
 }
 
-.order__con1 {
+.order__con1{
 /* 	display: flex; */
 /* 	flex-wrap: wrap; */
 	/* align-items: center; */
 /* 	justify-content: center; */
 	max-width: 1080px;
-	height: 830px;
 	paddin:30px 0;
-	margin: 100px auto 0;
+	margin: 100px auto 30px;
 	position: relative;
 }
 
 .order__con1 .info{
 	position: relative;
 	height:150px;
-/* 	padding-left: 160px; */
 	box-sizing:border-box;
 	background: #f9f9f9;
 	border:1px solid #ddd;
