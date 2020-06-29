@@ -73,7 +73,7 @@
 			<!-- items:모델 / itemss:list배열 -->
 			<c:forEach var="items" items="${itemss}">
 				<div id="product__con" style="background:url('${items.imgUrl}') no-repeat; background-size:contain; cursor:pointer">
-					<a href="/monami/board?cmd=productDetail">
+					<a href="/monami/detail?cmd=detail">
 						<span class="info"> 
 							<span class="txt_brand">Monami / 모나미</span> 
 							<span class="txt-ti">${items.name}</span>
@@ -116,7 +116,7 @@
 
 					var string = // 다른 곳 java파일에 ""안에 붙여넣으면 자동으로 string화 		
 						"			<div class=\"product__con\" style=\"background:url('"+items.imgUrl+"') no-repeat; background-size:contain; cursor:pointer\">\r\n" + 
-						"				<a href=\"/monami/board?cmd=productDetail\">" +
+						"				<a href=\"/monami/detail?cmd=detail\">" +
 						"				<span class=\"info\">\r\n" + 
 						"					<span class=\"txt_brand\">Monami / 모나미</span>\r\n" + 
 						"					<span class=\"txt-ti\">"+items.name+"</span>\r\n" + 
