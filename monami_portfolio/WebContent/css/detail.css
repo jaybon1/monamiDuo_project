@@ -1,1 +1,173 @@
 @charset "UTF-8";
+.product_info {
+	display: flex;
+	justify-content: center;
+	border-bottom:1px solid #f1f1f1;
+	padding-bottom:50px;
+}
+
+.product_txt {
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	margin-left:50px;
+}
+
+.product_tit {
+	font-size: 16px;
+	display: inline-block;
+	width: 100%;
+}
+
+.product_txt strong {
+ 	font-weight: 500;
+/* 	padding-bottom: 20px; */
+/* 	border-bottom: 3px solid #111; */
+ 	letter-spacing: -4px;
+}
+
+.product_txt h2 {
+	width: 100%;
+	text-align: left;
+}
+
+.product_txt table {
+	width:100%;
+	margin: 30px auto;
+	text-align: left;
+}
+
+.product_txt table th{
+	font-size:16px;
+	
+}
+
+.product_txt table td {
+	padding:20px;
+	padding-right: 0px;
+}
+.product_img{
+	margin-top:20px;
+}
+.product_color {
+	display: flex;
+}
+
+
+.product_color li {
+	padding-right: 30px;
+}
+
+.info-color .info-color-detail{
+	display: flex;
+}
+
+.info-color th{
+	margin-right: 50px;
+}
+
+
+.info-color-detail li{
+	display: flex;
+	align-content: center;
+	width:100px;
+}
+
+.info-color-detail span{
+	display:inline-block;
+	width:64px;
+	vertical-align:bottom;
+	line-height:30px;
+}
+
+.info-color-detail img{
+	height: 25px;
+	margin-right:10px;
+}
+
+.info-spec{
+	border-bottom: 1px solid #f1f1f1;
+}
+
+.info-spec span{
+	display: inline-block;
+	margin-bottom: 4px;
+/* 	margin-right: 4px; */
+ 	padding:0 15px;
+	line-height: 36px;
+	background: #f1f1f1;
+	border-radius: 36px;
+}
+
+.info-weight li{
+	display: flex;
+	align-items: center;
+}
+
+.info-weight img{
+	padding-right: 10px;
+}
+
+.btn-gray{
+	display: inline-block;
+	padding:0 60px;
+	margin-right:10px;
+	height: 40px;
+	line-height: 38px;
+	font-size:16px;
+	background: #555;
+	box-sizing: border-box;
+	color:#fff;
+}
+
+.btn-black{
+	display: inline-block;
+	padding:0 60px;
+	height: 40px;
+	line-height: 38px;
+	font-size:16px;
+	background: #111;
+	box-sizing: border-box;
+	color:#fff;
+}
+
+.product-btn{
+	display: flex;
+}
+
+.txt-price em{
+	color:#ff3c00;
+	font-size:18px;
+	font-weight:700;
+	font-style:normal;
+}
+
+/*review*/
+.review{
+	width:1100px;
+	margin:0 auto;
+}
+
+.review h2{
+	margin-top:100px;
+	font-size:25px;
+	text-align:left;
+	display: inline-block;
+}
+
+.review h2:nth-last-child(){
+	text-align:right;
+}
+
+.review_con{
+	display: flex;
+	justify-content:space-between;
+	align-items:center;
+	margin:0 auto;
+}
+.review_con_con{
+	width:24%;
+	height:300px;
+	margin-bottom:15px; 
+	background:#f1f1f1;
+	align-items:center;
+}
