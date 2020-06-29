@@ -61,7 +61,7 @@
 										        <td>${item.price }</td>
 										        <td>
 											        <button type="button" class="btn btn-secondary">상품수정</button>
-											        <button type="button" class="btn btn-danger" onclick="">상품삭제</button><span></span>
+											        <button type="button" class="btn btn-danger" onclick="deleteItem(${item.id}, ${page})">상품삭제</button><span></span>
 										        </td>
 										      </tr>
 									    	</c:forEach>
@@ -79,6 +79,15 @@
 		<%@include file="../include/footer.jsp"%>
 
 	</div>
+	<script type="text/javascript">
+		
+		function deleteItem(id, page) {
+			
+			location.href = "/monami/admin?cmd=productDeleteProc&id="+id+"&page="+page;
+			
+		}
+	
+	</script>
 	<script src="js/index.js"></script>
 
 </body>

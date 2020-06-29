@@ -23,7 +23,29 @@ public class ItemsRepository {
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
-
+	
+	
+	public int deleteById(int id) { // object 받기(안에 내용 다 받아야 하니까)
+		
+		final String SQL = "DELETE FROM items WHERE id = ?";
+		
+		try {
+			conn = DBConn.getConnection(); // DB에 연결
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, id);
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(TAG + "deleteById : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt);
+		}
+		
+		return -1; // 실패시
+		
+	}
+	
+	
 	// 아이템 받기
 	public List<Items> findAllItems() { // object 받기(안에 내용 다 받아야 하니까)
 		final String SQL = "SELECT id, imgUrl, name, price, value FROM items";

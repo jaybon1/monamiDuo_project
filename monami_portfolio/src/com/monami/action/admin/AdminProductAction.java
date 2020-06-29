@@ -27,13 +27,16 @@ public class AdminProductAction implements Action{
 			
 		} else {
 			
+			int page = Integer.parseInt(request.getParameter("page"));
+			
 			ItemsRepository itemsRepository = ItemsRepository.getInstance();
-			List<Items> itemList = itemsRepository.find20ItemsByPage(0);
+			List<Items> itemList = itemsRepository.find20ItemsByPage(page);
 			
 			request.setAttribute("itemList", itemList);
+			request.setAttribute("page", page);
 			
 			RequestDispatcher dis = request.getRequestDispatcher("admin/adminProduct.jsp");
-			dis.forward(request, response);	
+			dis.forward(request, response);
 			
 		}
 	}
