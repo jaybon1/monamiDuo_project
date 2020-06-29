@@ -232,6 +232,74 @@ button {
 
 
 
+/*sticky 영역*/
+/*sticky 영역*/
+.l-popup__buttons {
+	width:216px;
+	height:216px;
+	position:fixed;
+	top:700px;
+	right:50px;
+	text-align:center;
+	z-index:10000;
+	border-radius:108px;
+	overflow:hidden;
+}
+
+.l-popup__button {
+	display:inline-block;
+	position:relative;
+	width:219px;
+	height:219px;
+	padding-top:115px;
+	background:url('http://www.monami.com/images/main/l-popup__button.png') no-repeat;
+	background-position:center top;
+	text-align:center;
+	margin-left:-1px;
+	margin-top:-1px;
+	box-sizing:border-box;
+}
+
+
+.l-popup__button-txt {
+	display:inline-block;
+	position:relative;
+	width:153px;
+	min-height:43px;
+	padding:11px 39px 11px 0;
+  	border-radius:43px;
+	-webkit-border-radius:43px;
+	background-color:#fff;
+	color:#222;
+	font-size:15px;
+	box-sizing:border-box;
+}
+
+.l-popup__button-txt::before {
+	content:"";
+	display:block;
+	position:absolute;
+	top:3px;
+	right:4px;
+	width:37px;
+	height:37px;
+	background:url('http://www.monami.com/images/main/l-popup__icon.png') no-repeat;
+}
+
+.l-popup__button--close {
+	display:block;
+	position:absolute;
+	bottom:13px;
+	left:50%;
+	margin-left:-9px;
+	width:36px;
+	height:28px;
+	background:url('http://www.monami.com/images/main/l-popup__button--close.png') no-repeat;
+	text-indent:-9999px;
+}
+
+
+
 
 /***************************** footer 영역*****************************/
 footer{

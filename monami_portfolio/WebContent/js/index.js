@@ -28,7 +28,7 @@ $(document).ready(function() {
 
 /*캐러셀*/
 $(document).ready(function () {
-  $( '.bx-wrapper' ).removeAttr( 'border' );
+  $('.bx-wrapper' ).removeAttr('border');
 });
 
 $('#toggle').click(function() {

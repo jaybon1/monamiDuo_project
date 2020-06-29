@@ -16,6 +16,7 @@ import com.monami.action.board.MapHomeAction;
 import com.monami.action.board.ProductHomeAction;
 import com.monami.action.board.ProductListAction;
 import com.monami.action.board.productDetailAction;
+import com.monami.action.board.productScrollProcAction;
 import com.monami.action.test.JsoupTestAction;
 
 // http://localhost:8000/blog/board
@@ -71,6 +72,9 @@ public class BoardController extends HttpServlet {
 		}else if (cmd.equals("productDetail")) {
 			// productList 페이지로 이동
 			return new productDetailAction();
+		}else if (cmd.equals("productScrollProc")) {
+			// productList 페이지로 이동
+			return new productScrollProcAction();
 		}
 		return null;
 	}

@@ -70,15 +70,11 @@
 		</section>
 
 		<section class="product__con__wrap">
-			<!-- items:모델 / itemss:list배열 -->
+<!-- 			items:모델 / itemss:list배열 -->
 			<c:forEach var="items" items="${itemss}">
 				<div id="product__con" style="background:url('${items.imgUrl}') no-repeat; background-size:contain; cursor:pointer;" onClick="location.href ='/monami/detail?cmd=detail'">
-					<a href="/monami/detail?cmd=detail">
-						<span class="info"> 
-							<span class="txt_brand">Monami / 모나미</span> 
-							<span class="txt-ti">${items.name}</span>
-						</span> <span class="txt-price">${items.price}</span> 
-						<span class="tag"></span>
+					<a href="/monami/detail?cmd=detail"> <span class="info"> <span class="txt_brand">Monami / 모나미</span> <span class="txt-ti">${items.name}</span>
+					</span> <span class="txt-price">${items.price}</span> <span class="tag"></span>
 					</a>
 				</div>
 			</c:forEach>
@@ -87,53 +83,77 @@
 
 		<script>
 		
-		var listAmount = 40;
+		var listAmount = 1;
 		var status = 0;
-	
-		$(window).scroll(function() {
-			
-		// 스크롤이 80% 이상이 되면 해당 컨텐츠가 자동 생성
-		if(((window.scrollY + window.innerHeight) / $('body').prop("scrollHeight") * 100) > 80){
-			if (status == 0) {
-				status = 1;
-			
-			// 에이작스
-			}		
-		}
-	});
-
+		
 		function productList(value){
 			$.ajax({
 				type:"get",
-				url:"/monami/board?cmd=productList&value="+value,
+				url:"/monami/board?cmd=productList&value=" + value,
 				dataType:"json"
 			}).done(function(result){
 				console.log(result);
 				$(".product__con__wrap").empty();
-
+				
 				// result의 product 가져오기 (forEach)
-				for(var items of result) {
-
-					var string = // 다른 곳 java파일에 ""안에 붙여넣으면 자동으로 string화 		
-						"			<div class=\"product__con\" style=\"background:url('"+items.imgUrl+"') no-repeat; background-size:contain; cursor:pointer\">\r\n" + 
-						"				<a href=\"/monami/detail?cmd=detail\">" +
-						"				<span class=\"info\">\r\n" + 
-						"					<span class=\"txt_brand\">Monami / 모나미</span>\r\n" + 
-						"					<span class=\"txt-ti\">"+items.name+"</span>\r\n" + 
-						"				</span>\r\n" + 
-						"				<span class=\"txt-price\">"+items.price+"</span>\r\n" + 
-						"				<span class=\"tag\"></span>\r\n" + 
-						"				</a>\r\n"	
-						"			</div>"
-						$(".product__con__wrap").append(string);					
+				for(var items of result) {			
 					
+					inputItem(items);
+
 				}
 			}).fail(function(error){
 				console.log(error);
 			});
-		}
+		} // ajax
 		
-
+		
+		$(window).scroll(function() {
+		// 스크롤이 80% 이상이 되면 해당 컨텐츠가 자동 생성
+		console.log(((window.scrollY + window.innerHeight) / $('body').prop("scrollHeight") * 100));
+		 if(((window.scrollY + window.innerHeight) / $('body').prop("scrollHeight") * 100) > 80) 
+		  {
+			 if(status == 0){
+			 	console.log("work");
+				 status = 1;
+				 $.ajax({
+					 type: "get",
+					 url: "/monami/board?cmd=productScrollProc&listAmount=" + listAmount,
+					 dataType: "json"
+				 }).done(function (result) {
+					console.log(result);
+					for(var items of result) {
+						inputItem(items);
+					}
+					
+					listAmount++;
+					if(result.length != 0){
+						status = 0;						
+					}
+					
+				}).fail(function (error) {
+					alert("실패");
+				})
+				 
+			 	}
+			}
+		});
+		
+		function inputItem(items) {
+			
+			var string = // 다른 곳 java파일에 ""안에 붙여넣으면 자동으로 string화 		
+				"			<div class=\"product__con\" style=\"background:url('"+items.imgUrl+"') no-repeat; background-size:contain; cursor:pointer\">\r\n" + 
+				"				<a href=\"/monami/detail?cmd=detail\">" +
+				"				<span class=\"info\">\r\n" + 
+				"					<span class=\"txt_brand\">Monami / 모나미</span>\r\n" + 
+				"					<span class=\"txt-ti\">"+items.name+"</span>\r\n" + 
+				"				</span>\r\n" + 
+				"				<span class=\"txt-price\">"+items.price+"</span>\r\n" + 
+				"				<span class=\"tag\"></span>\r\n" + 
+				"				</a>\r\n"	
+				"			</div>";
+				$(".product__con__wrap").append(string);
+		}
+	
 		// 아코디언 메뉴 
 // 		var acc = document.getElementsByClassName("product__tit");
 // 		var i;

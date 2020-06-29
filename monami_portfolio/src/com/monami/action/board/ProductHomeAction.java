@@ -18,7 +18,8 @@ public class ProductHomeAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		ItemsRepository itemsRepository = ItemsRepository.getInstance();
-		List<Items> itemss = itemsRepository.findAllItems();
+//		List<Items> itemss = itemsRepository.findAllItems();
+		List<Items> itemss = itemsRepository.find20ItemsByPage(0);
 		
 		request.setAttribute("itemss",itemss);
 

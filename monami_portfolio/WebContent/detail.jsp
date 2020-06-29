@@ -84,15 +84,15 @@
 								<td>무광 메탈 소재, 고급리필심(FX-4000) 장착</td>
 							</tr>
 
-<!-- 							<tr class="info-spec"> -->
-<!-- 								<th>주요특징</th> -->
-<!-- 								<td> -->
-<!-- 								<span>프리미엄펜</span> -->
-<!-- 								<span>153시리즈</span> -->
-<!-- 								<span>각인서비스</span> -->
-<!-- 								<span>부드러운필기감</span> -->
-<!-- 								</td> -->
-<!-- 							</tr> -->
+							<tr class="info-spec">
+								<th>주요특징</th>
+								<td>
+								<span>프리미엄펜</span>
+								<span>153시리즈</span>
+								<span>각인서비스</span>
+								<span>부드러운필기감</span>
+								</td>
+							</tr>
 						</tbody>
 						
 						<tbody class="pinfo-price">

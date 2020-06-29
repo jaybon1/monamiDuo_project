@@ -17,7 +17,12 @@
 	<div class="main__container">
 		<!-- header 영역 -->
 		<%@include file="include/header.jsp"%>
-
+		
+		<div class="l-popup__buttons">
+		  <a class="l-popup__button" href="http://monamiconcept.com/reservation/" target="_blank"><div class="l-popup__button-txt">예약하기</div></a>
+		  <a class="l-popup__button--close" onclick="jQuery(this).parent().hide(); return false;" href="#">예약하기 버튼 닫기</a>
+		</div>
+		
 		<section class="about__main bxslider">
 			<div>
 				<img src="images/about_main.jpg">
@@ -35,7 +40,7 @@
 				<h2>
 					펜, 종이 그리고 <b>모나미</b><br>평범하지만 특별합니다.
 				</h2>
-				<button class="view__more hideme" onclick="location.href='product.jsp' ">VIEW MORE</button>
+				<button class="view__more hideme" onclick="location.href='/monami/board?cmd=product' ">VIEW MORE</button>
 			</div>
 			<div class="hideme top">
 				<a><img src="images/paper_bg.jpg" /></a>
