@@ -14,7 +14,7 @@
 				<a href="/monami/users?cmd=order">주문관리</a> 
 				<a href="/monami/users?cmd=logout">로그아웃</a>
 				<c:if test="${sessionScope.principal.userRole eq 'ADMIN'}">
-					<a href="/monami/admin?cmd=product">관리</a>
+					<a href="/monami/admin?cmd=product&page=0">관리</a>
 				</c:if>
 				<div class="count__con">
 					<a href="/monami/users?cmd=cart"><i class="large material-icons">shopping_basket</i></a> 

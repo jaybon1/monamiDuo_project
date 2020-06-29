@@ -23,7 +23,29 @@ public class ItemsRepository {
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
-
+	
+	
+	public int deleteById(int id) { // object 받기(안에 내용 다 받아야 하니까)
+		
+		final String SQL = "DELETE FROM items WHERE id = ?";
+		
+		try {
+			conn = DBConn.getConnection(); // DB에 연결
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, id);
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(TAG + "deleteById : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt);
+		}
+		
+		return -1; // 실패시
+		
+	}
+	
+	
 	// 아이템 받기
 	public List<Items> findAllItems() { // object 받기(안에 내용 다 받아야 하니까)
 		final String SQL = "SELECT id, imgUrl, name, price, value FROM items";
@@ -97,6 +119,35 @@ public class ItemsRepository {
 			pstmt.setString(2, item.getName());
 			pstmt.setString(3, item.getPrice());
 			pstmt.setString(4, value);
+			
+			return pstmt.executeUpdate();
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(TAG + "insertItem : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt);
+		}
+		return -1; // 실패시
+	}
+	
+	public int insertItem(Items item) { // object 받기(안에 내용 다 받아야 하니까) // insert하고 싶으면 save
+		final String SQL = "INSERT INTO items(id, imgUrl, name, price, value, bodycolor, inkcolor, productspec, charac, maincharac, detailimgurl) " + "VALUES(ITEMS_SEQ.nextval,?,?,?,?,?,?,?,?,?,?)";																																															// update
+		try {
+			conn = DBConn.getConnection(); // DB에 연결
+			pstmt = conn.prepareStatement(SQL);
+			
+			// 물음표 완성하기
+			pstmt.setString(1, item.getImgUrl());
+			pstmt.setString(2, item.getName());
+			pstmt.setString(3, item.getPrice());
+			pstmt.setString(4, item.getValue());
+			pstmt.setString(5, item.getBodyColor());
+			pstmt.setString(6, item.getInkColor());
+			pstmt.setString(7, item.getProductSpec());
+			pstmt.setString(8, item.getCharac());
+			pstmt.setString(9, item.getMainCharac());
+			pstmt.setString(10, item.getDetailImgUrl());
 			
 			return pstmt.executeUpdate();
 				

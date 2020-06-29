@@ -9,11 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.monami.action.Action;
-import com.monami.action.board.AboutHomeAction;
-import com.monami.action.board.BoardHomeAction;
-import com.monami.action.board.ClassHomeAction;
-import com.monami.action.board.MapHomeAction;
-import com.monami.action.board.ProductHomeAction;
+import com.monami.action.test.JsoupTest2Action;
 import com.monami.action.test.JsoupTestAction;
 
 // http://localhost:8000/blog/board
@@ -51,6 +47,9 @@ public class TestController extends HttpServlet {
 		if (cmd.equals("test")) {
 			// 회원가입 페이지로 이동
 			return new JsoupTestAction();
+		} else if (cmd.equals("data")) {
+			// 회원가입 페이지로 이동
+			return new JsoupTest2Action();
 		}
 		return null;
 	}
