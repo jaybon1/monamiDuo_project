@@ -44,7 +44,7 @@ public class UsersUpdateProcAction implements Action{
 				int id = Integer.parseInt(request.getParameter("id"));
 				String rawPassword = request.getParameter("password");
 				String password = SHA256.encodeSha256(rawPassword);
-				int phonenumber = Integer.parseInt(request.getParameter("phonenumber"));
+				String phonenumber = request.getParameter("phonenumber");
 				String email = request.getParameter("email");
 				String address = request.getParameter("address");
 

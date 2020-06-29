@@ -13,7 +13,6 @@ a {
 }
 
 #main_container {
-	background: rgba(0, 0, 0, 0.5);
 	height: 100vh;
 }
 
@@ -33,12 +32,12 @@ a {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	border: 1px solid rgba(0, 0, 0, 0.2);
+	margin:50px 0;
 }
 
 .login {
-	font-size: 20px;
-	font-weight: 600;
+	font-size: 30px;
+	font-weight: 300;
 	color: #333;
 }
 
@@ -55,7 +54,7 @@ a {
 	width: 310px;
 	height: 40px;
 	font-size: 15px;
-	background-color: #df3278;
+	background-color: #333;
 	color: #fff;
 	border: none;
 	cursor: pointer;
@@ -63,7 +62,7 @@ a {
 }
 
 .btn:hover {
-	background: #ca296a;
+	background: #111;
 }
 
 hr {

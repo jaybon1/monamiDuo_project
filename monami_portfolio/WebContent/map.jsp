@@ -30,11 +30,11 @@
 		</section>
 
 		<section class="map__con1">
-			<div class="map__con1__img">
+			<div class="map__con1__img hideme top">
 				<h2>모나미 컨셉스토어</h2>
 				<button class="view__more">VIEW MORE</button>
 			</div>
-			<div class="map__con1__txt">
+			<div class="map__con1__txt hideme top">
 				<a><img src="https://d1bg8rd1h4dvdb.cloudfront.net/upload/imgServer/allmain/thema3/60/2020060414124366103.jpg" /></a>
 				<h3>무료한 일상의 재발견, 모나미 스토어</h3>
 				<p>펜, 종이 그리고 모나미</p>
@@ -42,7 +42,7 @@
 			</div>
 		</section>
 
-		<section class="map_sec2">
+		<section class="map_sec2 hideme right">
 			<div class="map__con2">
 				<h2>찾아오시는 길</h2>
 				<p>해당 지점을 클릭하시면 지점 위치를 확인 하실 수 있습니다.</p>

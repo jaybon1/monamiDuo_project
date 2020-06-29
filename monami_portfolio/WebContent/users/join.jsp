@@ -60,7 +60,7 @@
 					<br>
 					
 					<p>
-						<input type="submit" value="확인" class="btn">
+						<input type="submit" value="회원가입 완료" class="btn">
 					</p>
 				</form>
 

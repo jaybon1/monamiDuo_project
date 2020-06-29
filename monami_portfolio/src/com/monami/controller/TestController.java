@@ -19,7 +19,7 @@ import com.monami.action.test.JsoupTestAction;
 // http://localhost:8000/blog/board
 @WebServlet("/test")
 public class TestController extends HttpServlet {
-	private final static String TAG = "BoardController  : ";
+	private final static String TAG = "TestController  : ";
 	private static final long serialVersionUID = 1L;
 
 	public TestController() {

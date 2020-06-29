@@ -15,7 +15,7 @@ public class Users {
 	private int id;
 	private String username;
 	private String password;
-	private int phonenumber;
+	private String phonenumber;
 	private String email;
 	private String address;
 	private String userProfile;

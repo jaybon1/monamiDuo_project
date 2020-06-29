@@ -92,7 +92,7 @@
 				</div>
 				<div class="foot_top">
 					<h1>
-						<img src="images/logo_white.png" alt="푸터 모나미 로고">
+						<img src="/monami/images/logo_white.png" alt="푸터 모나미 로고">
 					</h1>
 					<ul class="fm">
 						<li><a href="home.jsp">회사소개</a></li>
