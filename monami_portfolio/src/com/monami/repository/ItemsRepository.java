@@ -262,4 +262,44 @@ public class ItemsRepository {
 		}
 		return null; // 실패시
 	}
+	
+	public Items findById(int id) {
+		final String SQL = "SELECT id, imgUrl, name, price, value, bodycolor, inkcolor, productspec, charac, maincharac, detailimgurl FROM items WHERE id = ? ";																																															// update
+		Items item = null;
+		try {
+			conn = DBConn.getConnection(); // DB에 연결
+			pstmt = conn.prepareStatement(SQL);
+			// 물음표 완성하기
+			pstmt.setInt(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				item = Items.builder()
+						.id(rs.getInt(1))
+						.imgUrl(rs.getString(2))
+						.name(rs.getString(3))
+						.price(rs.getString(4))
+						.value(rs.getString(5))
+						.bodyColor(rs.getString(6))
+						.inkColor(rs.getString(7))
+						.productSpec(rs.getString(8))
+						.charac(rs.getString(9))
+						.mainCharac(rs.getString(10))
+						.detailImgUrl(rs.getString(11))
+						.build();
+				
+			}
+			
+			return item;
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(TAG + "findById : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt);
+		}
+		return null; // 실패시
+	}
 }

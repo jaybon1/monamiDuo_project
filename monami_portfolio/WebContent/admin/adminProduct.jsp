@@ -59,7 +59,7 @@
 										        <td>${item.name }</td>
 										        <td>${item.price }</td>
 										        <td>
-											        <button type="button" class="btn btn-secondary">상품수정</button>
+											        <button type="button" class="btn btn-secondary"onclick="updateItem(${item.id}, ${page})">상품수정</button>
 											        <button type="button" class="btn btn-danger" onclick="deleteItem(${item.id}, ${page})">상품삭제</button><span></span>
 										        </td>
 										      </tr>
@@ -105,7 +105,15 @@
 	<script type="text/javascript">
 		
 		function insertItem() {
-			window.open("/monami/admin?cmd=productDetail", "", "width=600,height=800", "left=500,top=400")
+			
+			window.open("/monami/admin?cmd=productInput", "", "width=600,height=800", "left=500,top=400");
+			
+		}
+		
+		function updateItem(id, page) {
+			
+			window.open("/monami/admin?cmd=productUpdate&id="+id+"&page="+page, "", "width=600,height=800", "left=500,top=400");
+			
 		}
 	
 		function deleteItem(id, page) {

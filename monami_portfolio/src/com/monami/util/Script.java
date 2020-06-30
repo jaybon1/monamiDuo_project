@@ -91,4 +91,19 @@ public class Script {
 		}
 
 	}
+	
+	public static void useScript(String msg, String script, HttpServletResponse response) { // 뒤로가기
+		try {
+			response.setCharacterEncoding("utf-8");
+			PrintWriter out = response.getWriter();
+			response.setContentType("text/html; charser=utf-8");
+			out.println("<script>");
+			out.println("alert('" + msg + "')");
+			out.println(script);
+			out.println("</script>");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
 }

@@ -51,30 +51,13 @@
 										<c:otherwise>없음</c:otherwise>
 									</c:choose>
 								</option>
-								<c:choose>
-									<c:when test="${items.value eq 'prPen'}">
-										<option value="prPen">프리미엄펜</option>
-									</c:when>
-									<c:when test="${items.value eq 'pen'}">
-										<option value="pen">펜/펜슬</option>
-									</c:when>
-									<c:when test="${items.value eq 'mark'}">
-										<option value="mark">마카</option>
-									</c:when>
-									<c:when test="${items.value eq 'brush'}">
-										<option value="brush">컬러링/브러쉬</option>
-									</c:when>
-									<c:when test="${items.value eq 'designSt'}">
-										<option value="sw">디자인문구</option>
-									</c:when>
-									<c:otherwise>
-										<option value="prPen">프리미엄펜</option>
-										<option value="pen">펜/펜슬</option>
-										<option value="mark">마카</option>
-										<option value="brush">컬러링/브러쉬</option>
-										<option value="designSt">디자인문구</option>
-									</c:otherwise>
-								</c:choose>
+								
+								<option value="prPen">프리미엄펜</option>
+								<option value="pen">펜/펜슬</option>
+								<option value="mark">마카</option>
+								<option value="brush">컬러링/브러쉬</option>
+								<option value="designSt">디자인문구</option>
+										
 						</select></td>
 					</tr>
 					<tr>
