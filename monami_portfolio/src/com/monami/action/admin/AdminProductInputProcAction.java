@@ -16,16 +16,16 @@ public class AdminProductInputProcAction implements Action{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String imgUrl;
-		String name;
-		String price;
-		String value;
-		String bodyColor;
-		String inkColor;
-		String productSpec;
-		String charac;
-		String mainCharac;
-		String detailImgUrl;
+		String imgUrl = "";
+		String name = "";
+		String price = "";
+		String value = "";
+		String bodyColor = "";
+		String inkColor = "";
+		String productSpec = "";
+		String charac = "";
+		String mainCharac = "";
+		String detailImgUrl = "";
 		
 		Items item = Items.builder()
 				.imgUrl(imgUrl)
@@ -44,7 +44,7 @@ public class AdminProductInputProcAction implements Action{
 		int result = itemsRepository.insertItem(item);
 		
 		if(result == 1) {
-			Script.href("등록에 성공하였습니다.", uri, response);
+			Script.href("등록에 성공하였습니다.", "", response);
 		} else {
 			Script.back("등록에 실패하였습니다.", response);
 		}

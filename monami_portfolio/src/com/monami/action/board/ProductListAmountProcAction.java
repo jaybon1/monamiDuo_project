@@ -13,14 +13,16 @@ import com.monami.action.Action;
 import com.monami.model.Items;
 import com.monami.repository.ItemsRepository;
 
-public class ProductScrollProcAction implements Action{
+public class ProductListAmountProcAction implements Action{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int listAmount = Integer.parseInt(request.getParameter("listAmount"));
+		// value, page 값 다 가져오는 액션
+		String value = request.getParameter("value");
+		int page = Integer.parseInt(request.getParameter("listAmount"));
 		
 		ItemsRepository itemsRepository = ItemsRepository.getInstance();
-		List<Items> itemss = itemsRepository.find20ItemsByPage(listAmount);
+		List<Items> itemss = itemsRepository.find20ItemsByPage(page, value);
 		
 		Gson gson = new Gson();
 		String itemsList = gson.toJson(itemss);

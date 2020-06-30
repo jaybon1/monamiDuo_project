@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.monami.action.Action;
 
-public class productDetailAction implements Action{
+public class ProductDetailAction implements Action{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

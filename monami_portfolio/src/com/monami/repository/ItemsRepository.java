@@ -75,6 +75,8 @@ public class ItemsRepository {
 		return null; // 실패시
 	}
 	
+	
+	// 아이템 20개씩 출력
 	public List<Items> find20ItemsByPage(int page) { // object 받기(안에 내용 다 받아야 하니까)
 		final String SQL = 
 				"SELECT /*+ index_desc(items ITEMS_PK)  */ id, imgurl, name, price, value " + 
@@ -85,6 +87,41 @@ public class ItemsRepository {
 			conn = DBConn.getConnection(); // DB에 연결
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, page*20);
+			// while 돌려서 rs -> java오브젝트에 집어넣기
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Items item = Items.builder()
+								.id(rs.getInt(1))
+								.imgUrl(rs.getString(2))
+								.name(rs.getString(3))
+								.price(rs.getString(4))
+								.value(rs.getString(5))
+								.build();
+				itemList.add(item);
+			}
+			return itemList;
+		} catch (SQLException e) {
+			e.printStackTrace(); 
+			System.out.println(TAG + "find20Items : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt, rs);
+		}
+		return null; // 실패시
+	}
+	
+	// 파트별로 가져오기 (새로운 기능을 추가할 때는 새로 액션도 새로 추가 하기)
+	public List<Items> find20ItemsByPage(int page, String value) { // object 받기(안에 내용 다 받아야 하니까)
+		final String SQL = 
+				"SELECT /*+ index_desc(items ITEMS_PK)  */ id, imgurl, name, price, value " + 
+				"FROM items " + 
+				"WHERE value = ? " +
+				"OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY ";
+		List<Items> itemList = new ArrayList<>();
+		try {
+			conn = DBConn.getConnection(); // DB에 연결
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, value);
+			pstmt.setInt(2, page*20);
 			// while 돌려서 rs -> java오브젝트에 집어넣기
 			rs = pstmt.executeQuery();
 			while(rs.next()) {

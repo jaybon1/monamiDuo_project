@@ -70,26 +70,32 @@
 		</section>
 
 		<section class="product__con__wrap">
-<!-- 			items:모델 / itemss:list배열 -->
+			<!-- items:모델 / itemss:list배열  -->
 			<c:forEach var="items" items="${itemss}">
 				<div id="product__con" style="background:url('${items.imgUrl}') no-repeat; background-size:contain; cursor:pointer;" onClick="location.href ='/monami/detail?cmd=detail'">
-					<a href="/monami/detail?cmd=detail"> <span class="info"> <span class="txt_brand">Monami / 모나미</span> <span class="txt-ti">${items.name}</span>
-					</span> <span class="txt-price">${items.price}</span> <span class="tag"></span>
+					<a href="/monami/detail?cmd=detail">
+					<span class="info"> 
+						<span class="txt_brand">Monami / 모나미</span> 
+						<span class="txt-ti">${items.name}</span>
+					</span> 
+					<span class="txt-price">${items.price}</span> 
+					<span class="tag"></span>
 					</a>
 				</div>
 			</c:forEach>
-		</section>
-
+		</section> 
+		<!-- 전체 상품 뿌리는 코드 -->
 
 		<script>
 		
+		// 섹션별 상품 뿌리는 ajax
 		var listAmount = 1;
 		var status = 0;
 		
 		function productList(value){
 			$.ajax({
 				type:"get",
-				url:"/monami/board?cmd=productList&value=" + value,
+				url:"/monami/board?cmd=productList&value=" + value + "&listAmount" + listAmount,
 				dataType:"json"
 			}).done(function(result){
 				console.log(result);
@@ -97,14 +103,17 @@
 				
 				// result의 product 가져오기 (forEach)
 				for(var items of result) {			
-					
 					inputItem(items);
-
 				}
+				
+				// 초기화 
+				listAmount = 1;
+				status = 0;
+				
 			}).fail(function(error){
 				console.log(error);
 			});
-		} // ajax
+		}
 		
 		
 		$(window).scroll(function() {
@@ -137,6 +146,7 @@
 			 	}
 			}
 		});
+		
 		
 		function inputItem(items) {
 			
