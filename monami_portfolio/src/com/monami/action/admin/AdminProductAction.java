@@ -34,6 +34,7 @@ public class AdminProductAction implements Action{
 			
 			request.setAttribute("itemList", itemList);
 			request.setAttribute("page", page);
+			request.setAttribute("listSize", itemList.size());
 			
 			RequestDispatcher dis = request.getRequestDispatcher("admin/adminProduct.jsp");
 			dis.forward(request, response);

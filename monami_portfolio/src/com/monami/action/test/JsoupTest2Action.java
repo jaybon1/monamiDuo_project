@@ -1,6 +1,7 @@
 package com.monami.action.test;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -24,14 +25,47 @@ public class JsoupTest2Action implements Action {
 		
 		ItemsRepository itemsRepository = ItemsRepository.getInstance();
 		
-		for (int i = 4200; i < 7000; i++) {
-			String num = (10000+i+" ");
-			num = num.substring(num.length() - 5, num.length()-1);
-			Items item = JsoupTest2.JsoupItems("https://www.monamimall.com/w/product/productDetail.do?goodsNo=MG00000"+num);
-			System.out.println(num);
-			System.out.println(item.toString());
-			if(item.getName() != null && !item.getName().equals("")) {
-				itemsRepository.insertItem(item);
+		for (int i = 2501; i < 7000; i=i+50) {
+			
+			
+			List<Items> itemList = new ArrayList<>();
+			
+			for (int j = 1; j < 51; j++) {
+				
+				final String num = (10000+i+j+"").substring((10000+i+j+"").length() - 4, (10000+i+j+"").length());
+				System.out.println(num);
+				
+				new Thread(new Runnable() {
+					
+					@Override
+					public void run() {
+						
+						
+						Items item = JsoupTest2.JsoupItems("https://www.monamimall.com/w/product/productDetail.do?goodsNo=MG00000"+num);
+						System.out.println(item.toString());
+						itemList.add(item);
+						
+					}
+				}).start();
+				
+			}
+			
+			while (true) {
+				if (itemList.size()>49) {
+					break;
+				}
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+			for (Items item : itemList) {
+				if(item.getName() != null && !item.getName().equals("")) {
+					itemsRepository.insertItem(item);
+				}
 			}
 		}
 		
