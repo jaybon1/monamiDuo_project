@@ -6,6 +6,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<!-- url로 DB에 데이터 넣기 -->
 	<form action="/monami/test?cmd=test" method="post">
 		<input name="url" type="text"> 
 		<select name="value" id="value">

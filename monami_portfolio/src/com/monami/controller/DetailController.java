@@ -15,7 +15,7 @@ import com.monami.action.board.ClassHomeAction;
 import com.monami.action.board.MapHomeAction;
 import com.monami.action.board.ProductHomeAction;
 import com.monami.action.board.ProductListAction;
-import com.monami.action.board.productDetailAction;
+import com.monami.action.board.ProductDetailAction;
 import com.monami.action.detail.DetailAction;
 import com.monami.action.test.JsoupTestAction;
 

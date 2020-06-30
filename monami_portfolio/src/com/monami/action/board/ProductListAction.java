@@ -22,7 +22,8 @@ public class ProductListAction implements Action {
 		String value = request.getParameter("value");
 		
 		ItemsRepository itemsRepository = ItemsRepository.getInstance();
-		List<Items> itemss = itemsRepository.findByItem(value);
+		List<Items> itemss = itemsRepository.find20ItemsByPage(0, value); // 처음 뿌려줄 거니까 0 으로 시작
+		
 		
 		Gson gson = new Gson();
 		String itemssJson = gson.toJson(itemss);

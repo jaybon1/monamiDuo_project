@@ -34,19 +34,19 @@ public class JsoupTest2 {
 		Elements elementsCate = doc.select("#cateLocation2");
 		
 		if(elementsCate.select("option[selected='selected']").text().equals("프리미엄 펜")||
-				elementsCate.select("option[selected='selected']").text().equals("펜//펜슬")||
+				elementsCate.select("option[selected='selected']").text().equals("펜/펜슬")||
 				elementsCate.select("option[selected='selected']").text().equals("마카")||
-				elementsCate.select("option[selected='selected']").text().equals("컬러링//브러쉬")||
+				elementsCate.select("option[selected='selected']").text().equals("컬러링/브러쉬")||
 				elementsCate.select("option[selected='selected']").text().equals("디자인 문구")) {
 			
 			
 			if(elementsCate.select("option[selected='selected']").text().equals("프리미엄 펜")) {
 				item.setValue("prPen");
-			} else if(elementsCate.select("option[selected='selected']").text().equals("펜//펜슬")) {
+			} else if(elementsCate.select("option[selected='selected']").text().equals("펜/펜슬")) {
 				item.setValue("pen");
 			} else if(elementsCate.select("option[selected='selected']").text().equals("마카")) {
 				item.setValue("mark");
-			} else if(elementsCate.select("option[selected='selected']").text().equals("컬러링//브러쉬")) {
+			} else if(elementsCate.select("option[selected='selected']").text().equals("컬러링/브러쉬")) {
 				item.setValue("brush");
 			} else if(elementsCate.select("option[selected='selected']").text().equals("디자인 문구")) {
 				item.setValue("designSt");
