@@ -24,7 +24,7 @@ public class JsoupTest2Action implements Action {
 		
 		ItemsRepository itemsRepository = ItemsRepository.getInstance();
 		
-		for (int i = 4000; i < 4200; i++) {
+		for (int i = 4200; i < 7000; i++) {
 			String num = (10000+i+" ");
 			num = num.substring(num.length() - 5, num.length()-1);
 			Items item = JsoupTest2.JsoupItems("https://www.monamimall.com/w/product/productDetail.do?goodsNo=MG00000"+num);
