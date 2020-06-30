@@ -11,13 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.monami.action.Action;
 import com.monami.action.admin.AdminProductAction;
 import com.monami.action.admin.AdminProductDeleteProcAction;
-import com.monami.action.admin.AdminProductDetailAction;
 import com.monami.action.admin.AdminProductInputProcAction;
 import com.monami.action.admin.AdminProductUpdateProcAction;
 
 @WebServlet("/admin")
 public class AdminController extends HttpServlet {
-	private final static String TAG = "UsersController : ";
+	private final static String TAG = "AdminController : ";
 	private static final long serialVersionUID = 1L;
 
 	public AdminController() {
@@ -56,9 +55,9 @@ public class AdminController extends HttpServlet {
 		} else if (cmd.equals("productDeleteProc")) {
 			// 회원가입 페이지로 이동
 			return new AdminProductDeleteProcAction();
-		}else if (cmd.equals("productDetail")) {
-			// 회원가입 페이지로 이동
-			return new AdminProductDetailAction();
+		}else if (cmd.equals("productInputProc")) {
+			// 상품등록페이지로 이동
+			return new AdminProductInputProcAction();
 		}
 		
 		return null;

@@ -37,21 +37,10 @@
 				</div>
 				<div class="cont-area">
 					<section class="lately">
-<<<<<<< HEAD
 						<div style="display: flex; justify-content: space-between;">
 							<h4 class="tit">상품관리</h4>
 							<button type="button" class="btn btn-primary" onclick="insertItem()">상품등록</button>
 						</div>
-=======
-						<h4 class="tit">상품관리</h4>
-						<br />
-						<button type="button" class="btn btn-primary" onclick="">상품등록</button>
-						<br />
-<!-- 						<div class="btn-titarea"> -->
-<!-- 							<a href="#" class="btn-more">주문목록보기</a> -->
-<!-- 						</div> -->
-			
->>>>>>> 7f551c52f7fed058a9f4374848cf44ddb10a0106
 								<div class="step-wrap">
 									<table class="table">
 									    <thead>
