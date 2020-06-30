@@ -25,6 +25,7 @@ public class ItemDetailDto {
 	private List<String> mainCharacList;
 	private String detailImgUrl;
 	
+
 }
 
 

@@ -42,8 +42,6 @@ public class DetailAction implements Action{
 		if(item.getBodyColor() != null) {
 			String[] bodyColors = item.getBodyColor().split(",,");
 			for (int i = 0; i < bodyColors.length; i++) {
-				System.out.println(bodyColors[i]);
-				System.out.println(bodyColors[i].split("!!")[0]);
 				BodyColor bodyColor = BodyColor.builder()
 						.url(bodyColors[i].split("!!")[0])
 						.name(bodyColors[i].split("!!")[1])
