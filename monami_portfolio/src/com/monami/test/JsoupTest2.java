@@ -34,19 +34,19 @@ public class JsoupTest2 {
 		Elements elementsCate = doc.select("#cateLocation2");
 		
 		if(elementsCate.select("option[selected='selected']").text().equals("프리미엄 펜")||
-				elementsCate.select("option[selected='selected']").text().equals("펜//펜슬")||
+				elementsCate.select("option[selected='selected']").text().equals("펜/펜슬")||
 				elementsCate.select("option[selected='selected']").text().equals("마카")||
-				elementsCate.select("option[selected='selected']").text().equals("컬러링//브러쉬")||
+				elementsCate.select("option[selected='selected']").text().equals("컬러링/브러쉬")||
 				elementsCate.select("option[selected='selected']").text().equals("디자인 문구")) {
 			
 			
 			if(elementsCate.select("option[selected='selected']").text().equals("프리미엄 펜")) {
 				item.setValue("prPen");
-			} else if(elementsCate.select("option[selected='selected']").text().equals("펜//펜슬")) {
+			} else if(elementsCate.select("option[selected='selected']").text().equals("펜/펜슬")) {
 				item.setValue("pen");
 			} else if(elementsCate.select("option[selected='selected']").text().equals("마카")) {
 				item.setValue("mark");
-			} else if(elementsCate.select("option[selected='selected']").text().equals("컬러링//브러쉬")) {
+			} else if(elementsCate.select("option[selected='selected']").text().equals("컬러링/브러쉬")) {
 				item.setValue("brush");
 			} else if(elementsCate.select("option[selected='selected']").text().equals("디자인 문구")) {
 				item.setValue("designSt");
@@ -65,7 +65,7 @@ public class JsoupTest2 {
 					for (int j = 0; j < elements.select("td").get(i).select("li").size(); j++) {
 						
 						sb.append(elements.select("td").get(i).select("li").get(j).select("img").attr("src"));
-						sb.append("&&");
+						sb.append("^^");
 						sb.append(elements.select("td").get(i).select("li").get(j).select("span").text());
 						if(j < elements.select("td").get(i).select("li").size() - 1) {
 							sb.append(",,");
@@ -82,7 +82,7 @@ public class JsoupTest2 {
 						for (int j = 0; j < elements.select("td").get(i).select("li").size(); j++) {
 						
 						sb.append(elements.select("td").get(i).select("li").get(j).select("img").attr("src"));
-						sb.append("&&");
+						sb.append("^^");
 						sb.append(elements.select("td").get(i).select("li").get(j).select("span").text());
 						if(j < elements.select("td").get(i).select("li").size() - 1) {
 							sb.append(",,");
@@ -101,7 +101,7 @@ public class JsoupTest2 {
 					for (int j = 0; j < elements.select("td").get(i).select("li").size(); j++) {
 						
 						sb.append(elements.select("td").get(i).select("li").get(j).select("img").attr("src"));
-						sb.append("&&");
+						sb.append("^^");
 						sb.append(elements.select("td").get(i).select("li").get(j).text());
 						if(j < elements.select("td").get(i).select("li").size() - 1) {
 							sb.append(",,");
@@ -140,7 +140,7 @@ public class JsoupTest2 {
 					
 //					System.out.println("판매가");
 //					System.out.println(elements.select("td").get(i).select("em").text());
-					item.setPrice(elements.select("td").get(i).select("em").text());
+					item.setPrice(elements.select("td").get(i).select("span").select("em").text());
 					
 				}
 				

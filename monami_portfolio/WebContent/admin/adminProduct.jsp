@@ -30,7 +30,7 @@
 			<div class="mypage-inner">
 				<div class="lnb-area">
 					<ul>
-						<li class="lnb-depth1"><a href="#">상품관리</a></li>
+						<li class="lnb-depth1"><a href="http://localhost:8000/monami/admin?cmd=product&page=0">상품관리</a></li>
 						<li class="lnb-depth1"><a href="#">회원관리</a></li>
 						<li class="lnb-depth1"><a href="#">주문관리</a></li>
 					</ul>
@@ -38,6 +38,9 @@
 				<div class="cont-area">
 					<section class="lately">
 						<h4 class="tit">상품관리</h4>
+						<br />
+						<button type="button" class="btn btn-primary" onclick="">상품등록</button>
+						<br />
 <!-- 						<div class="btn-titarea"> -->
 <!-- 							<a href="#" class="btn-more">주문목록보기</a> -->
 <!-- 						</div> -->
@@ -75,6 +78,32 @@
 				</div>
 			</div>
 		</section>
+		<ul class="pagination justify-content-center">
+
+		<c:choose>
+			<c:when test="${listSize < 20}">
+				<li class="page-item"><a class="page-link" href="http://localhost:8000/monami/admin?cmd=product&page=${page-1}">Previous</a></li>
+				<li class="page-item disabled"><a class="page-link" href="http://localhost:8000/monami/admin?cmd=product&page=${page+1}">Next</a></li>
+			</c:when>
+
+			<c:when test="${param.page == 0}">
+				<li class="page-item disabled"><a class="page-link" href="http://localhost:8000/monami/admin?cmd=product&page=${page-1}">Previous</a></li>
+				<li class="page-item"><a class="page-link" href="http://localhost:8000/monami/admin?cmd=product&page=${page+1}">Next</a></li>
+			</c:when>
+
+			<%-- 			<c:when test="${boards.size() < 3}"> --%>
+
+			<c:otherwise>
+				<li class="page-item"><a class="page-link" href="http://localhost:8000/monami/admin?cmd=product&page=${page-1}">Previous</a></li>
+				<li class="page-item"><a class="page-link" href="http://localhost:8000/monami/admin?cmd=product&page=${page+1}">Next</a></li>
+			</c:otherwise>
+
+		</c:choose>
+	</ul>
+	<br />
+	<br />
+	<br />
+		
 		<!-- footer 영역 -->
 		<%@include file="../include/footer.jsp"%>
 
