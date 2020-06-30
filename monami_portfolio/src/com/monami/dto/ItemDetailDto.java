@@ -3,9 +3,9 @@ package com.monami.dto;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Builder;
 
 @Data
 @NoArgsConstructor
@@ -20,20 +20,11 @@ public class ItemDetailDto {
 	private String value;
 	private List<BodyColor> bodyColorList;
 	private List<InkColor> inkColorList;
-	private String productSpec;
+	private List<ProductSpec> productSpecList;
 	private String charac;
 	private List<String> mainCharacList;
 	private String detailImgUrl;
 	
-	public class BodyColor{
-		String url;
-		String name;
-	}
-	
-	public class InkColor{
-		String url;
-		String name;
-	}
 }
 
 

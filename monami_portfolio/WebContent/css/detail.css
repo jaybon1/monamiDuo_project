@@ -69,7 +69,7 @@
 .info-color-detail li{
 	display: flex;
 	align-content: center;
-	width:100px;
+	flex-wrap:wrap;
 }
 
 .info-color-detail span{

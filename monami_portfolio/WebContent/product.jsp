@@ -72,8 +72,8 @@
 		<section class="product__con__wrap">
 			<!-- items:모델 / itemss:list배열  -->
 			<c:forEach var="items" items="${itemss}">
-				<div id="product__con" style="background:url('${items.imgUrl}') no-repeat; background-size:contain; cursor:pointer;" onClick="location.href ='/monami/detail?cmd=detail'">
-					<a href="/monami/detail?cmd=detail">
+				<div id="product__con" style="background:url('${items.imgUrl}') no-repeat; background-size:contain; cursor:pointer;" onClick="location.href ='/monami/detail?cmd=detail&id=${items.id}'">
+					<a href="/monami/detail?cmd=detail&id=${items.id }">
 					<span class="info"> 
 						<span class="txt_brand">Monami / 모나미</span> 
 						<span class="txt-ti">${items.name}</span>
@@ -106,7 +106,7 @@
 					inputItem(items);
 				}
 				
-				// 초기화 
+				// 초기화
 				listAmount = 1;
 				status = 0;
 				
@@ -133,7 +133,6 @@
 					for(var items of result) {
 						inputItem(items);
 					}
-					
 					listAmount++;
 					if(result.length != 0){
 						status = 0;						
@@ -152,7 +151,7 @@
 			
 			var string = // 다른 곳 java파일에 ""안에 붙여넣으면 자동으로 string화 		
 				"			<div class=\"product__con\" style=\"background:url('"+items.imgUrl+"') no-repeat; background-size:contain; cursor:pointer\">\r\n" + 
-				"				<a href=\"/monami/detail?cmd=detail\">" +
+				"				<a href=\"/monami/detail?cmd=detail&id="+items.id+"\">" +
 				"				<span class=\"info\">\r\n" + 
 				"					<span class=\"txt_brand\">Monami / 모나미</span>\r\n" + 
 				"					<span class=\"txt-ti\">"+items.name+"</span>\r\n" + 
