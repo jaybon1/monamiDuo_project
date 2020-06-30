@@ -31,7 +31,7 @@
 				<div class="lnb-area">
 					<ul>
 						<li class="lnb-depth1"><a href="http://localhost:8000/monami/admin?cmd=product&page=0">상품관리</a></li>
-						<li class="lnb-depth1"><a href="#">회원관리</a></li>
+						<li class="lnb-depth1"><a href="http://localhost:8000/monami/admin?cmd=users">회원관리</a></li>
 						<li class="lnb-depth1"><a href="#">주문관리</a></li>
 					</ul>
 				</div>

@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.monami.db.DBConn;
 import com.monami.model.Users;
 
@@ -195,6 +198,43 @@ public class UsersRepository {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println(TAG + "findById : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt, rs);
+		}
+		return null; // 실패시
+	}
+	
+	public List<Users> findUserByUsername(String username) { // object 받기(안에 내용 다 받아야 하니까)
+		final String SQL = "SELECT * FROM users WHERE username like ?";
+		List<Users> userList = null;
+		try {
+			conn = DBConn.getConnection(); // DB에 연결
+			pstmt = conn.prepareStatement(SQL);
+			// 물음표 완성하기
+			pstmt.setString(1, "%"+username+"%");
+			// if 돌려서 rs -> java오브젝트에 집어넣기
+			rs = pstmt.executeQuery();
+			
+			userList = new ArrayList<>();
+			
+			while(rs.next()) {
+				Users user = Users.builder()
+						.id(rs.getInt("id"))
+						.username(rs.getString("username"))
+						.phonenumber(rs.getString("phonenumber"))
+						.email(rs.getString("email"))
+						.address(rs.getString("address"))
+						.createDate(rs.getTimestamp("createDate"))
+						.userProfile(rs.getString("userProfile"))
+						.userRole(rs.getString("userRole"))
+						.build();
+				
+				userList.add(user);
+			}
+			return userList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(TAG + "findUserByUsername : " + e.getMessage());
 		} finally {
 			DBConn.close(conn, pstmt, rs);
 		}
