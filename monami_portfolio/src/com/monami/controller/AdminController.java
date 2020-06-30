@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.monami.action.Action;
 import com.monami.action.admin.AdminProductAction;
 import com.monami.action.admin.AdminProductDeleteProcAction;
+import com.monami.action.admin.AdminProductDetailAction;
 
 @WebServlet("/admin")
 public class AdminController extends HttpServlet {
@@ -44,9 +45,12 @@ public class AdminController extends HttpServlet {
 		if (cmd.equals("product")) {
 			// 회원가입 페이지로 이동
 			return new AdminProductAction();
-		} else if (cmd.equals("productDeleteProc")) {
+		}else if (cmd.equals("productDeleteProc")) {
 			// 회원가입 페이지로 이동
 			return new AdminProductDeleteProcAction();
+		}else if (cmd.equals("productDetail")) {
+			// 회원가입 페이지로 이동
+			return new AdminProductDetailAction();
 		}
 		
 		return null;

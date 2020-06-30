@@ -25,6 +25,8 @@ public class ItemsRepository {
 	private ResultSet rs = null;
 	
 	
+	
+	// 삭제
 	public int deleteById(int id) { // object 받기(안에 내용 다 받아야 하니까)
 		
 		final String SQL = "DELETE FROM items WHERE id = ?";

@@ -8,121 +8,105 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<title>파일 수정</title>
+<title>상품정보 등록</title>
+<style type="text/css">
+	input{width:100%;}
+</style>
 </head>
 <body>
 	<br />
 	<div class="container">
-		<form action="/practiceProgress/classtable?cmd=detailUpdateProc" method="post">
+		<form action="/monami/admin?cmd=productDetail" method="post">
 			<div class="text-center">
-				<h2>${classTable.room }호 상세보기</h2>
-				<input name="id" type="hidden" value="${classTable.id }"> 
-				<input name="room" type="hidden" value="${classTable.room }">
+				<h2>상품등록</h2>
+				<input name="id" type="hidden" value="${items.id}">
 			</div>
 			<br />
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th>강의실</th>
-						<th>${classTable.room }</th>
+						<th>상품명</th>
+						<td><input name="itemsName" type="text" value="${items.name}" required="required"></td>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td>과정번호(임시)</td>
-						<td>${processCode }</td>
+						<th>메인 이미지 경로</th>
+						<td><input name="itemsImgUrl" type="text" value="${items.imgUrl}" required="required"></td>
 					</tr>
 					<tr>
-						<td>훈련명</td>
-						<td><input name="className" type="text" style="width: 100%" value="${classTable.className }" required="required"></td>
+						<th>상품가격</th>
+						<td><input name="itemsPrice" type="text" value="${items.price}" required="required"></td>
 					</tr>
 					<tr>
-						<td>분야</td>
-						<td><select name="classPart" required="required">
-								<option value="${classTable.classPart ne null ? classTable.classPart : '' }">
+						<th>상품분류</th>
+						<td><select name="valuePart" required="required">
+								<option value="${items.value ne null ? items.value : '' }">
 									<c:choose>
-										<c:when test="${classTable.classPart eq 'sw'}">정보기술개발</c:when>
-										<c:when test="${classTable.classPart eq 'de'}">디자인</c:when>
-										<c:when test="${classTable.classPart eq 'nw'}">네트웍보안</c:when>
+										<c:when test="${items.value eq 'prPen'}">프리미엄펜</c:when>
+										<c:when test="${items.value eq 'pen'}">펜/펜슬</c:when>
+										<c:when test="${items.value eq 'mark'}">마카</c:when>
+										<c:when test="${items.value eq 'brush'}">컬러링/브러쉬</c:when>
+										<c:when test="${items.value eq 'designSt'}">디자인문구</c:when>
 										<c:otherwise>없음</c:otherwise>
 									</c:choose>
 								</option>
 								<c:choose>
-									<c:when test="${classTable.classPart eq 'sw'}">
-										<option value="de">디자인</option>
-										<option value="nw">네트웍보안</option>
+									<c:when test="${items.value eq 'prPen'}">
+										<option value="prPen">프리미엄펜</option>
 									</c:when>
-									<c:when test="${classTable.classPart eq 'de'}">
-										<option value="sw">정보기술개발</option>
-										<option value="nw">네트웍보안</option>
+									<c:when test="${items.value eq 'pen'}">
+										<option value="pen">펜/펜슬</option>
 									</c:when>
-									<c:when test="${classTable.classPart eq 'nw'}">
-										<option value="sw">정보기술개발</option>
-										<option value="de">디자인</option>
+									<c:when test="${items.value eq 'mark'}">
+										<option value="sw">마카</option>
+									</c:when>
+									<c:when test="${items.value eq 'brush'}">
+										<option value="sw">컬러링/브러쉬</option>
+									</c:when>
+									<c:when test="${items.value eq 'designSt'}">
+										<option value="sw">디자인문구</option>
 									</c:when>
 									<c:otherwise>
-										<option value="sw">정보기술개발</option>
-										<option value="de">디자인</option>
-										<option value="ne">네트웍보안</option>
+										<option value="prPen">프리미엄펜</option>
+										<option value="pen">펜/펜슬</option>
+										<option value="mark">마카</option>
+										<option value="brush">컬러링/브러쉬</option>
+										<option value="designSt">디자인문구</option>
 									</c:otherwise>
 								</c:choose>
 						</select></td>
 					</tr>
 					<tr>
-						<td>개강일</td>
-						<td><input name="classOpen" type="date" value="${classTable.classOpen }" required="required"></td>
+						<th>상품스펙</th>
+						<td><input name="itemsProductSpec" type="text" value="${items.productSpec}" required="required" placeholder="이미지주소^^이름,,이미지주소^^이름 형식으로 작성해주세요"></td>
 					</tr>
 					<tr>
-						<td>종강일</td>
-						<td><input name="classClose" type="date" value="${classTable.classClose}" required="required"></td>
+						<th>상품특징</th>
+						<td><input name="itemsCharac" type="text" value="${items.charac}" required="required"></td>
 					</tr>
 					<tr>
-						<td>담임교사</td>
-						<td><input name="homeroomProf" type="text" style="width: 100%" value="${classTable.homeroomProf }" required="required"></td>
+						<th>상품주요특징</th>
+						<td><input name="itemsMainCharac" type="text" value="${items.mainCharac}" required="required" placeholder="주요특징,,주요특징 형식으로 작성해주세요"></td>
 					</tr>
 					<tr>
-						<td>파일명</td>
-						<c:choose>
-							<c:when test="${empty classTable.excelName }">
-								<td><input name="excelName" type="text" style="width: 100%" value="${classTable.excelName }" ></td>
-							</c:when>
-							<c:otherwise>
-								<td>${classTable.excelName }</td>
-								<input name="excelName" type="hidden" value="${classTable.excelName}">
-							</c:otherwise>
-						</c:choose>
+						<th>바디컬러</th>
+						<td><input name="itemsBodyColor" type="text" value="${items.bodyColor}" required="required"></td>
 					</tr>
 					<tr>
-						<td>상태</td>
-						<c:choose>
-							<c:when test="${classTable.status eq 'true'}">
-								<td>활성화</td>
-								<input name="status" type="hidden" value="${classTable.status}">
-							</c:when>
-							<c:otherwise>
-								<td>비활성화</td>
-								<input name="status" type="hidden" value="${classTable.status}">
-							</c:otherwise>
-						</c:choose>
-<!-- 						<td><select name="status" required="required"> -->
-<%-- 								<option value="${classTable.status }">${classTable.status }</option> --%>
-<%-- 								<c:choose> --%>
-<%-- 									<c:when test="${classTable.status }"> --%>
-<!-- 										<option value="false">false</option> -->
-<%-- 									</c:when> --%>
-<%-- 									<c:otherwise> --%>
-<!-- 										<option value="true">true</option> -->
-<%-- 									</c:otherwise> --%>
-<%-- 								</c:choose> --%>
-<!-- 						</select></td> -->
+						<th>잉크컬러</th>
+						<td><input name="itemsInkColor" type="text" value="${items.inkColor}" required="required"></td>
 					</tr>
-
+					<tr>
+						<th>상세페이지 주소</th>
+						<td><input name="itemsDetailImgUrl" type="text" value="${items.detailimgUrl}" required="required"></td>
+					</tr>
 				</tbody>
 			</table>
 			<br />
 			<div class="text-center">
-				<button type="submit" class="btn btn-warning btn-lg">변경하기</button>
-				<button type="button" onclick="deleteClass(${classTable.id })" class="btn btn-danger btn-lg">삭제하기</button>
+				<button type="submit" class="btn btn-warning">등록하기</button>
+<%-- 				<button type="button" onclick="deleteClass(${classTable.id })" class="btn btn-danger btn-lg">삭제하기</button> --%>
 			</div>
 		</form>
 	</div>

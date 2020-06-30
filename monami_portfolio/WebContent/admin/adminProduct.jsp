@@ -37,11 +37,10 @@
 				</div>
 				<div class="cont-area">
 					<section class="lately">
-						<h4 class="tit">상품관리</h4>
-<!-- 						<div class="btn-titarea"> -->
-<!-- 							<a href="#" class="btn-more">주문목록보기</a> -->
-<!-- 						</div> -->
-			
+						<div style="display: flex; justify-content: space-between;">
+							<h4 class="tit">상품관리</h4>
+							<button type="button" class="btn btn-primary" onclick="insertItem()">상품등록</button>
+						</div>
 								<div class="step-wrap">
 									<table class="table">
 									    <thead>
@@ -69,8 +68,6 @@
 									    </tbody>
 									  </table>
 								</div>
-							
-						
 					</section>
 				</div>
 			</div>
@@ -81,6 +78,10 @@
 	</div>
 	<script type="text/javascript">
 		
+		function insertItem() {
+			window.open("/monami/admin?cmd=productDetail", "", "width=600,height=800", "left=500,top=400")
+		}
+	
 		function deleteItem(id, page) {
 			
 			location.href = "/monami/admin?cmd=productDeleteProc&id="+id+"&page="+page;
