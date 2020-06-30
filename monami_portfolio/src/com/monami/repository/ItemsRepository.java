@@ -263,8 +263,7 @@ public class ItemsRepository {
 		return null; // 실패시
 	}
 	
-	
-	// 상세페이지 넣기
+
 	public Items findById(int id) {
 		final String SQL = "SELECT id, imgUrl, name, price, value, bodycolor, inkcolor, productspec, charac, maincharac, detailimgurl FROM items WHERE id = ? ";																																															// update
 		Items item = null;
@@ -304,8 +303,5 @@ public class ItemsRepository {
 		}
 		return null; // 실패시
 	}
-	
-	
-	
-	
+
 }
