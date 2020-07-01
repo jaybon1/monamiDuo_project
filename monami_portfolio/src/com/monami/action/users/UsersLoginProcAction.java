@@ -1,6 +1,7 @@
 package com.monami.action.users;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.monami.action.Action;
+import com.monami.dto.CartDto;
 import com.monami.model.Users;
+import com.monami.repository.CartRepository;
 import com.monami.repository.UsersRepository;
 import com.monami.util.SHA256;
 import com.monami.util.Script;
@@ -40,7 +43,16 @@ public class UsersLoginProcAction implements Action {
 		if(user != null) {
 			//로그인 성공 (세션은 request가 들고 있음)
 			HttpSession session = request.getSession();
+			
+			//장바구니 가져오기
+			int userId = user.getId();
+			
+			CartRepository cartRepository = CartRepository.getInstance();
+			List<CartDto> cartDtos = cartRepository.findCartDtoListById(userId);
+			
+			
 			session.setAttribute("principal", user); // 인증 주체
+			session.setAttribute("cartDtos", cartDtos);
 			
 			if(request.getParameter("remember") != null) {
 

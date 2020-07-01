@@ -152,6 +152,7 @@
 								<td class="info-cart-buy-name" style="padding-right:30px;">${idd.name}</td>
 								<td style="width:90px;">
 									<button onclick="mousedown(${idd.price})" type="button" class="btn-down" style="background-position: -200px -8px;">수량 낮추기</button>
+									<!-- 수량이 컴파일 후 변화하기 때문에, 자바스크립트로 따로 빼준다. -->
 									<input readonly title="수량입력" value="1" id="selCnt">
 									<button onclick="mouseup(${idd.price})" type="button" class="btn-up" style="background-position: -200px -28px;">수량 높이기</button>
 								</td>
@@ -167,7 +168,8 @@
 						</tbody>
 					</table>
 					<div class="product-btn">
-						<button type="button" class="btn-gray btn-cart" onclick="_addCart();">장바구니 담기</button>
+<!-- 					html에서 다른 태그의 바뀐정보를 가져올 수 없기 때문에 onclick에 자바스크립트 함수를 넣어서 처리한다 -->
+						<button type="button" class="btn-gray btn-cart"  onclick="cart(${sessionScope.principal.id}, ${idd.id})">장바구니 담기</button>
 						<button type="button" class="btn-black btn-buy" onclick="_orderGoods();">바로 구매하기</button>
 					</div>
 				</div>
@@ -190,6 +192,15 @@
 		<!-- footer 영역 -->
 		<%@include file="include/footer.jsp"%>
 
+
+		<script type="text/javascript">
+			function cart(userId, itemId){
+				var amount = $('#selCnt').val();
+				
+				location.href = "/monami/cart?cmd=cartProc&userId="+userId+"&itemId="+itemId+"&amount="+amount;
+				
+			}
+		</script>
 	</div>
 </body>
 </html>

@@ -1,5 +1,4 @@
 /*구매수량 증감*/
-
 function mousedown(price) {
 	
 	if ($('#selCnt').val() > 1) {
