@@ -299,7 +299,51 @@ public class ItemsRepository {
 			e.printStackTrace();
 			System.out.println(TAG + "findById : " + e.getMessage());
 		} finally {
-			DBConn.close(conn, pstmt);
+			DBConn.close(conn, pstmt, rs);
+		}
+		return null; // 실패시
+	}
+	
+	
+	public List<Items> findByName(String name) {
+		final String SQL = "SELECT id, imgUrl, name, price, value, bodycolor, inkcolor, productspec, charac, maincharac, detailimgurl FROM items WHERE LOWER(name) like LOWER(?) ";																																															// update
+		
+		List<Items> itemList = null;
+		
+		try {
+			conn = DBConn.getConnection(); // DB에 연결
+			pstmt = conn.prepareStatement(SQL);
+			// 물음표 완성하기
+			pstmt.setString(1, "%"+name+"%");
+			
+			rs = pstmt.executeQuery();
+			itemList = new ArrayList<>();
+			while(rs.next()) {
+				
+				Items item = Items.builder()
+						.id(rs.getInt(1))
+						.imgUrl(rs.getString(2))
+						.name(rs.getString(3))
+						.price(rs.getString(4))
+						.value(rs.getString(5))
+						.bodyColor(rs.getString(6))
+						.inkColor(rs.getString(7))
+						.productSpec(rs.getString(8))
+						.charac(rs.getString(9))
+						.mainCharac(rs.getString(10))
+						.detailImgUrl(rs.getString(11))
+						.build();
+				
+				itemList.add(item);
+			}
+			
+			return itemList;
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(TAG + "findByName : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt, rs);
 		}
 		return null; // 실패시
 	}

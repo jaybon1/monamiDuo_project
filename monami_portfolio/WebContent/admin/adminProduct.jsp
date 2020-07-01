@@ -39,7 +39,9 @@
 					<section class="lately">
 						<div style="display: flex; justify-content: space-between;">
 							<h4 class="tit">상품관리</h4>
-							<button type="button" class="btn btn-primary" onclick="insertItem()">상품등록</button>
+							<input id="inputName" type="text" placeholder="상품명을 입력하세요">
+							<button type="button" class="btn btn-primary" onclick="searchByName()">상품검색</button>
+							<button type="button" class="btn btn-info" onclick="insertItem()">상품등록</button>
 						</div>
 								<div class="step-wrap">
 									<table class="table">
@@ -51,7 +53,7 @@
 									        <th></th>
 									      </tr>
 									    </thead>
-									    <tbody>
+									    <tbody id="itemTbody">
 									    
 									    	<c:forEach var="item" items="${itemList}">
 										      <tr>
@@ -104,6 +106,50 @@
 	</div>
 	<script type="text/javascript">
 		
+		function searchByName() {
+			
+			var name = $("#inputName").val();
+			
+			$.ajax({
+
+				type : "get",
+				url : "/monami/admin?cmd=productSearchProc&name=" + name,
+				dataType: "json"
+
+			}).done(function(resultList) {
+				
+				if(resultList != null && resultList.length > 0){
+					
+					$("#itemTbody").empty();
+					
+					for (let result of resultList) {
+						
+						var string = "                               <tr>\r\n" + 
+						"										        <td>"+result.value+"</td>\r\n" + 
+						"										        <td>"+result.name+"</td>\r\n" + 
+						"										        <td>"+result.price+"</td>\r\n" + 
+						"										        <td>\r\n" + 
+						"											        <button type=\"button\" class=\"btn btn-secondary\"onclick=\"updateItem("+result.id+", "+result.page+")\">상품수정</button>\r\n" + 
+						"											        <button type=\"button\" class=\"btn btn-danger\" onclick=\"deleteItem("+result.id+", "+result.page+")\">상품삭제</button><span></span>\r\n" + 
+						"										        </td>\r\n" + 
+						"										     </tr>";
+							
+						$("#itemTbody").append(string);
+					}
+					
+					$(".pagination").remove();
+					
+				} else {
+					alert("해당 상품이 없습니다.");
+				}
+				
+
+			}).fail(function(error) {
+				alert("검색 실패");
+			});
+			
+		}
+	
 		function insertItem() {
 			
 			window.open("/monami/admin?cmd=productInput", "", "width=600,height=800", "left=500,top=400");
