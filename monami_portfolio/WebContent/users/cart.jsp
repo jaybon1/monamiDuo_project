@@ -1,4 +1,8 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.monami.dto.CartDto"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,51 +74,40 @@
 								</thead>
 
 								<tbody>
+								<!-- 장바구니 목록 -->
+								<c:forEach var="dto" items="${sessionScope.cartDtos}">
 									<tr>
-										<td><label><input type="checkbox" name="cartIdx" id="cartIdx_0" value="190815" class="small" data-orderseq="1" data-sellercode="1350053" data-sellerfreeshippingyn="Y" data-sellerfreeshippingprice="20000"
-												data-sellershippingprice="2500" data-packingsize="1" data-deliveryfee="0" data-deliveryfeetype="Y" data-rowcnt="1" data-goodsno="MG000003497" data-optionitemidx="64195" data-price="20000" data-gradediscountyn="Y"
-												data-gradediscountprice="0" data-gradediscountprice1="0" data-addserviceyn="N" data-addserviceprice="0" data-addservicecontent="" data-directshipyn="N" onclick="calcPrice();"><span></span></label></td>
+										<td><label><input type="checkbox" name="cartIdx" ><span></span></label></td>
 										<td><figure>
-												<img src="https://d1bg8rd1h4dvdb.cloudfront.net/upload/imgServer/product/goods/MG000003497/main/MG000003497_REP_THUMB_80X80_20191206103813.blob" onerror="this.src='/w/images/80x80.jpg'" alt="" class="loading" data-was-processed="true">
+												<img src="${dto.item.imgUrl}" onerror="this.src='/w/images/80x80.jpg'" alt="" class="loading">
 											</figure></td>
 										<td>
 											<div class="info-area">
-												<a href="/w/product/productDetail.do?goodsNo=MG000003497" class="txt-subject">[리필심증정] 153 블라썸</a> <span class="txt-option">리필심증정_비올라 </span> <a href="#popCartOption" class="btn-option" onclick="popOptionChange('190815');">옵션변경</a>
-
+												${dto.item.name}
 											</div>
 										</td>
-										<td class="txt-right"><em>20,000</em>원</td>
+										<td class="txt-right"><em>${dto.item.price}</em>원</td>
 
 
 
 										<td>
 											<div class="ea-area">
-												<input type="number" name="goodsCnt" id="goodsCnt_190815" title="수량 입력" value="1" readonly="" data-stockcnt="18" data-convstockcnt="1" data-oldcnt="1">
+												<input type="number" name="goodsCnt" id="goodsCnt_190815" title="수량 입력" value="${dto.cart.amount}" readonly>
 												<button type="button" class="btn-down" onclick="removeCnt(this);">수량 낮추기</button>
 												<button type="button" class="btn-up" onclick="addCnt(this);">수량 올리기</button>
 											</div>
 											<button type="button" class="btn-whitegray small" onclick="changeCnt('190815');">변경</button>
 
 										</td>
-										<td class="txt-right"><em id="payPrice_190815">20,000</em>원<small id="discountPrice_190815">(0원)</small></td>
+										<td class="txt-right"><em class="cartAllPrice">${dto.allPrice }</em>원<small>(0원)</small></td>
 
 
 										<td><small> 모나미배송 <span class="deliveryinfo"> <a href="#" class="btn-popinfo type-over"><strong>!</strong></a>
-<!-- 													<div class="popinfo"> -->
-<!-- 														<h4>배송정보</h4> -->
-<!-- 														<p>16시 30분 이전 주문시 당일출고(공휴일,토/일요일제외)</p> -->
-<!-- 													</div> -->
 											</span>
 										</small></td>
 
 
-										<td class="txt-right"><em>0</em>원 <span class="deliveryinfo"> <a href="#" class="btn-popinfo type-over"><strong>!</strong></a>
-<!-- 												<div class="popinfo"> -->
-<!-- 													<h4>배송정보</h4> -->
-<!-- 													<p> -->
-<!-- 														16시 30분 이전 주문/결제 시 당일 발송<br> (업체배송, 각인 상품 제외 전 품목) -->
-<!-- 													</p> -->
-<!-- 												</div> -->
+										<td class="txt-right"><em>0</em>원 <span class="deliveryinfo"><a href="#" class="btn-popinfo type-over"><strong>!</strong></a>
 										</span></td>
 
 										<td class="btn">
@@ -124,6 +117,7 @@
 											<button type="button" class="btn-whitegray small" onclick="removeCart('190815');">삭제</button>
 										</td>
 									</tr>
+								</c:forEach>
 
 								</tbody>
 							</table>
@@ -183,6 +177,25 @@
 		<%@include file="../include/footer.jsp"%>
 
 	</div>
+	
+	
+	<script>
+	
+		function sumPrice() {
+			var sumPrice = 0;
+			for (var i = 0; i < $(".cartAllPrice").length; i++) {
+				sumPrice = sumPrice + Number($(".cartAllPrice").get(i).textContent);
+			}
+			
+			$("#totalPayPrice").text(sumPrice);			
+		}
+		
+		sumPrice();
+		
+		
+	
+	</script>
+	
 	<script src="js/index.js"></script>
 	<script src="js/cart.js"></script>
 

@@ -15,4 +15,5 @@ import lombok.NoArgsConstructor;
 public class CartDto {
 	Cart cart;
 	Items item;
+	int allPrice;
 }

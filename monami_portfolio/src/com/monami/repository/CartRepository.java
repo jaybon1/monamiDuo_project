@@ -112,7 +112,11 @@ public class CartRepository {
 						.price(rs.getString(5))
 						.build();
 				
-				CartDto cartDto = new CartDto(cart, item);
+				CartDto cartDto = CartDto.builder()
+						.cart(cart)
+						.item(item)
+						.allPrice(Integer.parseInt(rs.getString(5).replace(",", ""))*rs.getInt(2))
+						.build();
 				
 				cartDtos.add(cartDto);
 			}
