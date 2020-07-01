@@ -171,6 +171,25 @@ public class UsersRepository {
 		}
 		return -1; // 실패시
 	}
+	
+	public int updateUserRole(int id, String userRole) { // object 받기(안에 내용 다 받아야 하니까)
+		final String SQL = "UPDATE users SET userRole = ? WHERE id=?";
+		try {
+			conn = DBConn.getConnection(); // DB에 연결
+			pstmt = conn.prepareStatement(SQL);
+			// 물음표 완성하기
+			pstmt.setString(1, userRole);
+			pstmt.setInt(2, id);
+			
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(TAG + "updateUserRole : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt);
+		}
+		return -1; // 실패시
+	}
 
 	// 아이디 찾기
 	public Users findById(int id) { // object 받기(안에 내용 다 받아야 하니까)
@@ -205,7 +224,8 @@ public class UsersRepository {
 	}
 	
 	public List<Users> findUserByUsername(String username) { // object 받기(안에 내용 다 받아야 하니까)
-		final String SQL = "SELECT * FROM users WHERE username like ?";
+		final String SQL = 
+				"SELECT * FROM users WHERE username like ? ";
 		List<Users> userList = null;
 		try {
 			conn = DBConn.getConnection(); // DB에 연결
