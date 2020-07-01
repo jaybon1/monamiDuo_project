@@ -1,4 +1,4 @@
-#### MONAMI 웹 포트폴리오 프로젝트
+# MONAMI 웹 포트폴리오 프로젝트
 
 
 ## 오라클 12C 사용자 생성
@@ -61,6 +61,13 @@ CREATE TABLE items(
     MAINCHARAC VARCHAR2(500),
     DETAILIMGURL VARCHAR2(300)
 );
+
+CREATE TABLE items(
+  id number primary key,
+  userId number,
+  itemId number,
+  amount number
+);
 ```
 
 ## 시퀀스
@@ -80,5 +87,9 @@ CREATE SEQUENCE REPLY_SEQ
 CREATE SEQUENCE ITEMS_SEQ
   START WITH 1
   INCREMENT BY 1;
+
+CREATE SEQUENCE CART_SEQ
+  START WITH 1
+  INCREMENT BY 1; 
 ```
 

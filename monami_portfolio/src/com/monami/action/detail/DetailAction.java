@@ -82,7 +82,7 @@ public class DetailAction implements Action{
 				.id(item.getId())
 				.name(item.getName())
 				.imgUrl(item.getImgUrl())
-				.price(item.getPrice())
+				.price(item.getPrice().replace(",", ""))
 				.value(item.getValue())
 				.charac(item.getCharac())
 				.detailImgUrl(item.getDetailImgUrl())

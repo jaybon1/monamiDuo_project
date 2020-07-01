@@ -34,7 +34,7 @@
 						<a class="product_tit" href="/monami/board?cmd=about">Monami / 모나미</a> <strong>${idd.name}</strong>
 					</h2>
 
-					<table>
+					<table class="product-table">
 						<tbody class="pinfo-txt">
 							<!-- 바디컬러 -->
 							<c:choose>
@@ -134,7 +134,7 @@
 						<c:when test="${empty idd.price}">
 						</c:when>
 						<c:otherwise>
-							<tbody class="pinfo-price">
+							<tbody class="info-price">
 								<tr>
 									<th>판매가</th>
 									<td>
@@ -147,6 +147,24 @@
 						</c:otherwise>
 						</c:choose>
 						
+						<tbody class="info-cart-buy">
+							<tr>
+								<td class="info-cart-buy-name" style="padding-right:30px;">${idd.name}</td>
+								<td style="width:90px;">
+									<button onclick="mousedown(${idd.price})" type="button" class="btn-down" style="background-position: -200px -8px;">수량 낮추기</button>
+									<input readonly title="수량입력" value="1" id="selCnt">
+									<button onclick="mouseup(${idd.price})" type="button" class="btn-up" style="background-position: -200px -28px;">수량 높이기</button>
+								</td>
+								
+							</tr>
+							<tr>
+								<td></td>
+								<td class="info-cart-buy-price" style="padding-left:400px;">
+										<span style="font-size:20px;">총 상품금액</span>
+										<strong class="price">${idd.price}</strong>원
+								</td>
+							</tr>
+						</tbody>
 					</table>
 					<div class="product-btn">
 						<button type="button" class="btn-gray btn-cart" onclick="_addCart();">장바구니 담기</button>
