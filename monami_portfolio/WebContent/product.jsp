@@ -91,8 +91,10 @@
 		// 섹션별 상품 뿌리는 ajax
 		var listAmount = 1;
 		var status = 0;
+		var part = "all";
 		
 		function productList(value){
+			part = value;
 			$.ajax({
 				type:"get",
 				url:"/monami/board?cmd=productList&value=" + value + "&listAmount" + listAmount,
@@ -122,11 +124,10 @@
 		 if(((window.scrollY + window.innerHeight) / $('body').prop("scrollHeight") * 100) > 80) 
 		  {
 			 if(status == 0){
-			 	console.log("work");
 				 status = 1;
 				 $.ajax({
 					 type: "get",
-					 url: "/monami/board?cmd=productScrollProc&listAmount=" + listAmount,
+					 url: "/monami/board?cmd=productScrollProc&listAmount=" + listAmount +"&part="+part,
 					 dataType: "json"
 				 }).done(function (result) {
 					console.log(result);

@@ -18,9 +18,16 @@ public class ProductScrollProcAction implements Action{
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int listAmount = Integer.parseInt(request.getParameter("listAmount"));
+		String part = request.getParameter("part");
 		
+		List<Items> itemss = null;
 		ItemsRepository itemsRepository = ItemsRepository.getInstance();
-		List<Items> itemss = itemsRepository.find20ItemsByPage(listAmount);
+		if(part.equals("all")) {
+			itemss = itemsRepository.find20ItemsByPage(listAmount);
+		} else {
+			itemss = itemsRepository.find20ItemsByPage(listAmount, part);	
+		}
+		
 		
 		Gson gson = new Gson();
 		String itemsList = gson.toJson(itemss);
