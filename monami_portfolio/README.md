@@ -68,6 +68,12 @@ CREATE TABLE items(
   itemId number,
   amount number
 );
+
+CREATE TABLE class(
+  id number primary key,
+  imgUrl VARCHAR2(4000),
+  aLink VARCHAR2(4000)
+);
 ```
 
 ## 시퀀스
@@ -89,6 +95,10 @@ CREATE SEQUENCE ITEMS_SEQ
   INCREMENT BY 1;
 
 CREATE SEQUENCE CART_SEQ
+  START WITH 1
+  INCREMENT BY 1; 
+
+CREATE SEQUENCE CLASS_SEQ
   START WITH 1
   INCREMENT BY 1; 
 ```
