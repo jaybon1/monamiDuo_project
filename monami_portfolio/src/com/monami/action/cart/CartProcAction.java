@@ -1,6 +1,7 @@
 package com.monami.action.cart;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
 import com.monami.action.Action;
 import com.monami.dto.BodyColor;
 import com.monami.dto.CartDto;
@@ -41,14 +43,23 @@ public class CartProcAction implements Action{
 		CartRepository cartRepository = CartRepository.getInstance();
 		int result = cartRepository.insertCartItem(cart);
 		
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json; charset=utf-8");
+		PrintWriter pw = response.getWriter();
+		
 		if(result == 1) {
 			// 장바구니 수량 증가 (빨간 동그라미)
 			List<CartDto> cartDtos = cartRepository.findCartDtoListById(userId);
 			HttpSession session = request.getSession();
 			session.setAttribute("cartDtos", cartDtos);
-			Script.href("장바구니로 이동", "/monami/users?cmd=cart", response);
+			
+			Gson gson = new Gson();
+			String cartDtosJson = gson.toJson(cartDtos);
+			
+			pw.println(cartDtosJson);
+
 		}else {
-			Script.back("다시 선택해주세요", response);
+			pw.println(-1+"");
 		}
 	}
 }

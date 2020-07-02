@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.monami.action.Action;
+import com.monami.action.cart.CartChangeCountProcAction;
 import com.monami.action.cart.CartDeleteProcAction;
 import com.monami.action.cart.CartDeleteSelectedProcAction;
 import com.monami.action.cart.CartProcAction;
@@ -51,6 +52,8 @@ public class CartController extends HttpServlet {
 			return new CartDeleteProcAction();
 		} else if (cmd.equals("cartDeleteSelectedProc")) {
 			return new CartDeleteSelectedProcAction();
+		} else if (cmd.equals("changeCountProc")) {
+			return new CartChangeCountProcAction();
 		}
 		return null;
 	}

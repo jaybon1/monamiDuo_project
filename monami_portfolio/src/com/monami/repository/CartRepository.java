@@ -26,6 +26,29 @@ public class CartRepository {
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
 	
+	
+	public int updateCartCount(int amount, int cartId) { // object 받기(안에 내용 다 받아야 하니까) // insert하고 싶으면 save
+		final String SQL = "UPDATE cart SET amount = ? WHERE id = ?";																																															// update
+		try {
+			conn = DBConn.getConnection(); // DB에 연결
+			pstmt = conn.prepareStatement(SQL);
+			
+			// 물음표 완성하기
+			pstmt.setInt(1, amount);
+			pstmt.setInt(2, cartId);
+			
+			return pstmt.executeUpdate();
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(TAG + "updateCartCount : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt);
+		}
+		return -1; // 실패시
+	}
+	
+	
 	public int deleteCartItem(int cartId) { // object 받기(안에 내용 다 받아야 하니까) // insert하고 싶으면 save
 		final String SQL = "DELETE FROM cart WHERE id = ?";																																															// update
 		try {

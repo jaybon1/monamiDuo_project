@@ -202,7 +202,28 @@
 			function cart(userId, itemId){
 				var amount = $('#selCnt').val();
 				
-				location.href = "/monami/cart?cmd=cartProc&userId="+userId+"&itemId="+itemId+"&amount="+amount;
+// 				location.href = "/monami/cart?cmd=cartProc&userId="+userId+"&itemId="+itemId+"&amount="+amount;
+
+				$.ajax({
+					type: "get",
+					url: "/monami/cart?cmd=cartProc&userId="+userId+"&itemId="+itemId+"&amount="+amount,
+					dataType: "json"
+					
+				}).done(function(result) {
+					
+					
+					var input = confirm('장바구니로 이동하시겠습니까?');
+					if(input == true){
+						location.href = "/monami/users?cmd=cart";	
+					} else {					
+						$("#cartCount").text(result.length);
+					}
+					
+				}).fail(function(error) {
+					
+					alert("장바구니 등록에 실패하였습니다.");
+					
+				});
 				
 			}
 		</script>

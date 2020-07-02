@@ -92,11 +92,11 @@
 
 										<td>
 											<div class="ea-area">
-												<input type="number" name="goodsCnt" id="goodsCnt_190815" title="수량 입력" value="${dto.cart.amount}" readonly>
-												<button type="button" class="btn-down" onclick="removeCnt(this);">수량 낮추기</button>
-												<button type="button" class="btn-up" onclick="addCnt(this);">수량 올리기</button>
+												<input type="number" name="goodsCnt" id="goodsCnt_${dto.cart.id}" title="수량 입력" value="${dto.cart.amount}" readonly>
+												<button type="button" class="btn-down" onclick="minusCnt(${dto.cart.id});">수량 낮추기</button>
+												<button type="button" class="btn-up" onclick="plusCnt(${dto.cart.id});">수량 올리기</button>
 											</div>
-											<button type="button" class="btn-whitegray small" onclick="changeCnt('190815');">변경</button>
+											<button type="button" class="btn-whitegray small" onclick="changeCnt(${dto.cart.id}, ${sessionScope.principal.id});">변경</button>
 
 										</td>
 										<td class="txt-right"><em class="cartAllPrice">${dto.allPrice }</em>원<small>(0원)</small></td>
@@ -196,6 +196,8 @@
 				
 				if($(".my__checkbox__"+i).prop("checked") == true){
 					checkedCartIdList[i-1] = Number($(".my__checkbox__"+i).prop("id").replace("checkbox_", ""));
+				} else{
+					checkedCartIdList[i-1] = -1;
 				}
 				
 			}
@@ -277,6 +279,44 @@
 			
 			$("#totalPayPrice").text(totalPayPrice);
 			
+			
+		}
+		
+		function plusCnt(cartId) {
+			
+			$("#goodsCnt_"+cartId).val(Number($("#goodsCnt_"+cartId).val())+1);
+			
+		}
+		
+		function minusCnt(cartId) {
+			
+			if (Number($("#goodsCnt_"+cartId).val()) > 1) {
+				$("#goodsCnt_"+cartId).val(Number($("#goodsCnt_"+cartId).val())-1);
+			}
+		}
+		
+		function changeCnt(cartId, userId) {
+			
+			var amount = Number($("#goodsCnt_"+cartId).val());
+			
+			$.ajax({
+				
+				type: "get",
+				url: "/monami/cart?cmd=changeCountProc&cartId="+cartId+"&userId="+userId+"&amount="+amount,
+				contentType: "text/plain; charset=utf-8",
+				dataType: "text"
+				
+			}).done(function(result) {
+				
+				alert("변경되었습니다.");
+				location.reload();
+				
+			}).fail(function(error) {
+				
+				alert("변경에 실패하였습니다.");
+				location.reload();
+				
+			});
 			
 		}
 		

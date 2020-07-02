@@ -18,7 +18,7 @@
 				</c:if>
 				<div class="count__con">
 					<a href="/monami/users?cmd=cart"><i class="large material-icons">shopping_basket</i></a> 
-					<span class="count">${sessionScope.cartDtos.size()}</span><!-- 리스트의 갯수만큼 size -->
+					<span class="count" id="cartCount">${sessionScope.cartDtos.size()}</span><!-- 리스트의 갯수만큼 size -->
 				</div>
 			</c:otherwise>
 		</c:choose>	
