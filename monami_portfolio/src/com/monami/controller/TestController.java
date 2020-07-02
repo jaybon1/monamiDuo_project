@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.monami.action.Action;
+import com.monami.action.test.JsoupClassTestAction;
 import com.monami.action.test.JsoupTest2Action;
 import com.monami.action.test.JsoupTestAction;
 
@@ -47,9 +48,12 @@ public class TestController extends HttpServlet {
 		if (cmd.equals("test")) {
 			// 회원가입 페이지로 이동
 			return new JsoupTestAction();
-		} else if (cmd.equals("data")) {
+		}else if (cmd.equals("data")) {
 			// 회원가입 페이지로 이동
 			return new JsoupTest2Action();
+		}else if (cmd.equals("classData")) {
+			// 회원가입 페이지로 이동
+			return new JsoupClassTestAction();
 		}
 		return null;
 	}
