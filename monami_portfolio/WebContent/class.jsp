@@ -31,7 +31,7 @@
 			<ul class="class__menu">
 				<p>ONEDAY CLASS</p>
 				<li style="font-weight:900; font-size:20px; padding:10px 0;">모나미에서 다양한 클래스를 만나보세요</li>
-<!-- 				<li style="font-weight:900; font-size:20px; padding:10px 0;"><a href="#">원데이 클래스</a></li> -->
+				<!-- <li style="font-weight:900; font-size:20px; padding:10px 0;"><a href="#">원데이 클래스</a></li> -->
 			</ul>
 		</section>
 
@@ -45,5 +45,48 @@
 		<!-- footer 영역 -->
 		<%@include file="include/footer.jsp"%>
 	</div>
+	
+	<!-- 무한 스크롤 이벤트 -->
+	
+	<script>
+	var page = 1;
+	var status = 0;
+
+	
+		$(window).scroll(function(){
+			 if(((window.scrollY + window.innerHeight) / $('body').prop("scrollHeight") * 100) > 99)
+			{
+				 if(status == 0){
+					 status = 1;
+					 $.ajax({
+						 type: "get",
+						 url: "/monami/board?cmd=classScrollProc&page=" + page,
+						 dataType: "json"
+					 }).done(function (result) {
+						console.log(result);
+						for(var classes of result) {
+							inputItem(classes);
+						}
+						page++;
+						if(result.length != 0){
+							status = 0;						
+						}
+						
+					}).fail(function (error) {
+						alert("실패");
+					})
+					 
+				 	}
+				}
+		});
+		
+		function inputItem(classItem){
+			var string = 
+				"			<div class=\"class__con"+classItem.id+"\" style=\"background-size:100%; background-image:url('"+classItem.imgUrl+"'); cursor:pointer;\" OnClick=\"location.href ='"+classItem.alink+"'\">\r\n" 
+				"			</div>";
+				$(".class__con__wrap").append(string);
+		}
+	</script>
+	
 </body>
 </html>

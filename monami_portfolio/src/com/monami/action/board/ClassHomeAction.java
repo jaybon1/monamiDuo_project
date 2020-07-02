@@ -16,8 +16,9 @@ public class ClassHomeAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		// 전체 아이템 뿌리는 액션
 		ClassesRepository classesRepository = ClassesRepository.getInstance();
-		List<Classes> classes = classesRepository.findAllClassItems();
+		List<Classes> classes = classesRepository.find20ClassItemsByPage(0);
 		
 		request.setAttribute("classes",classes);
 		

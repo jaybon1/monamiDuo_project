@@ -77,4 +77,36 @@ public class ClassesRepository {
 		return null; // 실패시
 	}
 	
+	
+	// 20개씩 나오면서 무한스크롤 적용시키기
+	public List<Classes> find20ClassItemsByPage(int page) { // object 받기(안에 내용 다 받아야 하니까)
+		final String SQL = 
+				"SELECT /*+ index_asc(class CLASS_PK)  */ id, imgurl, alink " + 
+				"FROM class " +
+				"OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY ";
+		List<Classes> classList = new ArrayList<>();
+		try {
+			conn = DBConn.getConnection(); // DB에 연결
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, page*20);
+			// while 돌려서 rs -> java오브젝트에 집어넣기
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Classes classItem = Classes.builder()
+								.id(rs.getInt(1))
+								.imgUrl(rs.getString(2))
+								.alink(rs.getString(3))
+								.build();
+				classList.add(classItem);
+			}
+			return classList;
+		} catch (SQLException e) {
+			e.printStackTrace(); 
+			System.out.println(TAG + "find20ClassItemsByPage : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt, rs);
+		}
+		return null; // 실패시
+	}
+	
 }

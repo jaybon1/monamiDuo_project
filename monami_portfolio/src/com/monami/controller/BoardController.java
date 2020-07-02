@@ -13,6 +13,7 @@ import com.monami.action.board.AboutHomeAction;
 import com.monami.action.board.BoardHomeAction;
 import com.monami.action.board.ClassHomeAction;
 import com.monami.action.board.ClassListAction;
+import com.monami.action.board.ClassScrollProcAction;
 import com.monami.action.board.MapHomeAction;
 import com.monami.action.board.ProductHomeAction;
 import com.monami.action.board.ProductListAction;
@@ -79,6 +80,9 @@ public class BoardController extends HttpServlet {
 		}else if (cmd.equals("classList")) {
 			// productList 페이지로 이동
 			return new ClassListAction();
+		}else if (cmd.equals("classScrollProc")) {
+			// productList 페이지로 이동
+			return new ClassScrollProcAction();
 		}
 		return null;
 	}
