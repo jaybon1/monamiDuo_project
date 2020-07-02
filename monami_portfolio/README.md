@@ -62,7 +62,7 @@ CREATE TABLE items(
     DETAILIMGURL VARCHAR2(300)
 );
 
-CREATE TABLE items(
+CREATE TABLE cart(
   id number primary key,
   userId number,
   itemId number,
