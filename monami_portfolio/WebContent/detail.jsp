@@ -21,6 +21,11 @@
 
 		<!-- header 영역 -->
 		<%@include file="include/header.jsp"%>
+		
+		<div class="l-popup__buttons">
+		  <a class="l-popup__button" href="http://monamiconcept.com/reservation/" target="_blank"><div class="l-popup__button-txt">예약하기</div></a>
+		  <a class="l-popup__button--close" onclick="jQuery(this).parent().hide(); return false;" href="#">예약하기 버튼 닫기</a>
+		</div>
 
 		<section style="text-align: center; margin: 150px 0;">
 			<div class="product_info">

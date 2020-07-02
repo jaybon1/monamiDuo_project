@@ -22,6 +22,11 @@
 		<!-- header 영역 -->
 		<%@include file="include/header.jsp"%>
 
+		<div class="l-popup__buttons">
+		  <a class="l-popup__button" href="http://monamiconcept.com/reservation/" target="_blank"><div class="l-popup__button-txt">예약하기</div></a>
+		  <a class="l-popup__button--close" onclick="jQuery(this).parent().hide(); return false;" href="#">예약하기 버튼 닫기</a>
+		</div>
+
 		<section class="product__menu__wrap">
 			<div class="product__menu">
 				<p>PRODUCT</p>
@@ -121,7 +126,7 @@
 		$(window).scroll(function() {
 		// 스크롤이 80% 이상이 되면 해당 컨텐츠가 자동 생성
 		console.log(((window.scrollY + window.innerHeight) / $('body').prop("scrollHeight") * 100));
-		 if(((window.scrollY + window.innerHeight) / $('body').prop("scrollHeight") * 100) > 80) 
+		 if(((window.scrollY + window.innerHeight) / $('body').prop("scrollHeight") * 100) > 99) 
 		  {
 			 if(status == 0){
 				 status = 1;
