@@ -238,7 +238,8 @@ button {
 	width:216px;
 	height:216px;
 	position:fixed;
-	top:700px;
+/* 	top:700px; */
+	top:70%;
 	right:50px;
 	text-align:center;
 	z-index:10000;

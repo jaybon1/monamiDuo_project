@@ -7,8 +7,10 @@
 <link rel="stylesheet" href="css/default.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="css/map.css">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=1skwdhjb4c"></script>
@@ -35,11 +37,11 @@
 		</section>
 
 		<section class="map__con1">
-			<div class="map__con1__img hideme top">
+			<div class="map__con1__img" data-aos="fade-up" data-aos-duration="500">
 				<h2>모나미 컨셉스토어</h2>
 				<button class="view__more">VIEW MORE</button>
 			</div>
-			<div class="map__con1__txt hideme top">
+			<div class="map__con1__txt" data-aos="fade-up" data-aos-duration="1000">
 				<a><img src="https://d1bg8rd1h4dvdb.cloudfront.net/upload/imgServer/allmain/thema3/60/2020060414124366103.jpg" /></a>
 				<h3>무료한 일상의 재발견, 모나미 스토어</h3>
 				<p>펜, 종이 그리고 모나미</p>
@@ -47,7 +49,7 @@
 			</div>
 		</section>
 
-		<section class="map_sec2 hideme right">
+		<section class="map_sec2" data-aos="fade-right" data-aos-duration="1500">
 			<div class="map__con2">
 				<h2>찾아오시는 길</h2>
 				<p>해당 지점을 클릭하시면 지점 위치를 확인 하실 수 있습니다.</p>
@@ -137,6 +139,10 @@
 
 	</script>
 	<script src="js/index.js"></script>
+	
+	<script>
+		AOS.init();
+	</script>
 
 </body>
 </html>

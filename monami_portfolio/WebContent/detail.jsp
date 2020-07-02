@@ -165,7 +165,7 @@
 							</tr>
 							<tr>
 								<td></td>
-								<td class="info-cart-buy-price" style="padding-left:400px;">
+								<td class="info-cart-buy-price" style="padding-left:400px; width:200px;">
 										<span style="font-size:20px;">총 상품금액</span>
 										<strong class="price">${idd.price}</strong>원
 								</td>

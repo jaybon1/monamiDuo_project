@@ -11,7 +11,7 @@
 			
 			<c:otherwise>
 				<a href="/monami/users?cmd=update">회원정보수정</a> 
-				<a href="/monami/users?cmd=order">주문관리</a> 
+<!-- 				<a href="/monami/users?cmd=order">주문관리</a>  -->
 				<a href="/monami/users?cmd=logout">로그아웃</a>
 				<c:if test="${sessionScope.principal.userRole eq 'ADMIN'}">
 					<a href="/monami/admin?cmd=product&page=0">관리</a>

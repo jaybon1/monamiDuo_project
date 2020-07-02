@@ -32,16 +32,20 @@
 					<ul>
 						<li class="lnb-depth1"><a href="http://localhost:8000/monami/admin?cmd=product&page=0">상품관리</a></li>
 						<li class="lnb-depth1"><a href="http://localhost:8000/monami/admin?cmd=users">회원관리</a></li>
-						<li class="lnb-depth1"><a href="#">주문관리</a></li>
+						<li class="lnb-depth1"><a href="http://localhost:8000/monami/users?cmd=order">주문관리</a></li>
 					</ul>
 				</div>
 				<div class="cont-area">
 					<section class="lately">
 						<div style="display: flex; justify-content: space-between;">
-							<h4 class="tit">상품관리</h4>
-							<input id="inputName" type="text" placeholder="상품명을 입력하세요">
-							<button type="button" class="btn btn-primary" onclick="searchByName()">상품검색</button>
-							<button type="button" class="btn btn-info" onclick="insertItem()">상품등록</button>
+							<div>
+								<h4 class="tit">상품관리</h4>
+							</div>
+							<div style="display:flex; align-items:center;">
+								<input id="inputName" type="text" placeholder="상품명을 입력하세요" style="width:200px; height:33px; margin-right:5px;">
+								<button type="button" class="btn btn-primary" onclick="searchByName()" style="margin-right:3px;">상품검색</button>
+								<button type="button" class="btn btn-info" onclick="insertItem()">상품등록</button>
+							</div>
 						</div>
 								<div class="step-wrap">
 									<table class="table">
@@ -57,9 +61,9 @@
 									    
 									    	<c:forEach var="item" items="${itemList}">
 										      <tr>
-										        <td>${item.value }</td>
-										        <td>${item.name }</td>
-										        <td>${item.price }</td>
+										        <td>${item.value}</td>
+										   	    <td>${item.name}</td>
+										        <td>${item.price}</td>
 										        <td>
 											        <button type="button" class="btn btn-secondary"onclick="updateItem(${item.id}, ${page})">상품수정</button>
 											        <button type="button" class="btn btn-danger" onclick="deleteItem(${item.id}, ${page})">상품삭제</button><span></span>

@@ -68,7 +68,7 @@
 										<th>수량</th>
 										<th>주문금액<small>(할인금액)</small></th>
 										<th>업체</th>
-										<th>배송비(지울부분)</th>
+										<th>배송비</th>
 										<th>주문</th>
 									</tr>
 								</thead>
@@ -125,7 +125,7 @@
 							<div class="btn-area">
 								<label><input type="checkbox" class="small" id="chkCartAll2"><span></span><span class="hide">전체선택</span></label>
 
-								<button type="button" class="btn-gray small" onclick="addWishList();">찜하기</button>
+<!-- 								<button type="button" class="btn-gray small" onclick="addWishList();">찜하기</button> -->
 
 								<button type="button" class="btn-whitegray small" onclick="removeSelected(${sessionScope.principal.id});">선택삭제</button>
 							</div>
@@ -134,15 +134,15 @@
 						<fieldset class="price-field">
 <!-- 							<legend class="hide">결제내역</legend> -->
 							<dl class="orderprice">
-								<dt>상품금액(수정필요)</dt>
+								<dt>상품금액</dt>
 								<dd>
 									<em id="totalPrice">0</em>원
 								</dd>
 							</dl>
 							<dl class="discount">
-								<dt>할인금액</dt>
+								<dt></dt>
 								<dd>
-									<em id="totalDiscountPrice">0</em>원
+									<em id="totalDiscountPrice"></em>
 								</dd>
 							</dl>
 							<dl class="shipping">

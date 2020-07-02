@@ -32,7 +32,7 @@
 					<ul>
 						<li class="lnb-depth1"><a href="http://localhost:8000/monami/admin?cmd=product&page=0">상품관리</a></li>
 						<li class="lnb-depth1"><a href="http://localhost:8000/monami/admin?cmd=users">회원관리</a></li>
-						<li class="lnb-depth1"><a href="#">주문관리</a></li>
+						<li class="lnb-depth1"><a href="http://localhost:8000/monami/users?cmd=order">주문관리</a></li>
 					</ul>
 				</div>
 				<div class="cont-area">
