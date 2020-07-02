@@ -26,6 +26,43 @@ public class CartRepository {
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
 	
+	public int deleteCartItem(int cartId) { // object 받기(안에 내용 다 받아야 하니까) // insert하고 싶으면 save
+		final String SQL = "DELETE FROM cart WHERE id = ?";																																															// update
+		try {
+			conn = DBConn.getConnection(); // DB에 연결
+			pstmt = conn.prepareStatement(SQL);
+			
+			// 물음표 완성하기
+			pstmt.setInt(1, cartId);
+			
+			return pstmt.executeUpdate();
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(TAG + "deleteCartItem : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt);
+		}
+		return -1; // 실패시
+	}
+	
+	public int deleteCartItems(String data) {
+		final String SQL = "DELETE FROM cart WHERE id in "+data;																																													// update
+		try {
+			conn = DBConn.getConnection(); // DB에 연결
+			pstmt = conn.prepareStatement(SQL);
+			
+			return pstmt.executeUpdate();
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(TAG + "deleteCartItems : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt);
+		}
+		return -1; // 실패시
+	}
+	
 	public int insertCartItem(Cart cart) { // object 받기(안에 내용 다 받아야 하니까) // insert하고 싶으면 save
 		final String SQL = "INSERT INTO cart(id, userId, itemId, amount) " + "VALUES(CART_SEQ.nextval,?,?,?) ";																																															// update
 		try {
@@ -43,7 +80,7 @@ public class CartRepository {
 			e.printStackTrace();
 			System.out.println(TAG + "insertCartItem : " + e.getMessage());
 		} finally {
-			DBConn.close(conn, pstmt, rs);
+			DBConn.close(conn, pstmt);
 		}
 		return -1; // 실패시
 	}
@@ -83,7 +120,7 @@ public class CartRepository {
 	}
 	
 	public List<CartDto> findCartDtoListById(int userId) {
-		final String SQL = "SELECT cart.id, cart.amount, items.imgurl, items.name, items.price "
+		final String SQL = "SELECT cart.id, cart.userId, cart.amount, items.id, items.imgurl, items.name, items.price "
 				+ "FROM cart, items "
 				+ "where cart.itemid = items.id and cart.userid = ?";
 		
@@ -103,19 +140,21 @@ public class CartRepository {
 				
 				Cart cart = Cart.builder()
 						.id(rs.getInt(1))
-						.amount(rs.getInt(2))
+						.userId(rs.getInt(2))
+						.amount(rs.getInt(3))
 						.build();
 				
 				Items item = Items.builder()
-						.imgUrl(rs.getString(3))
-						.name(rs.getString(4))
-						.price(rs.getString(5))
+						.id(rs.getInt(4))
+						.imgUrl(rs.getString(5))
+						.name(rs.getString(6))
+						.price(rs.getString(7))
 						.build();
 				
 				CartDto cartDto = CartDto.builder()
 						.cart(cart)
 						.item(item)
-						.allPrice(Integer.parseInt(rs.getString(5).replace(",", ""))*rs.getInt(2))
+						.allPrice(Integer.parseInt(rs.getString(7).replace(",", ""))*rs.getInt(3))
 						.build();
 				
 				cartDtos.add(cartDto);

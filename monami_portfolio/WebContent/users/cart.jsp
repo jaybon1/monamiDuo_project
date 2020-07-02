@@ -62,22 +62,22 @@
 
 								<thead>
 									<tr>
-										<th><label><input type="checkbox" class="small" id="chkCartAll"><span></span><span class="hide"></span></label></th>
+										<th><label><input type="checkbox" class="small" id="chkCartAll" onchange="checkboxProc()" checked="checked"><span></span><span class="hide"></span></label></th>
 										<th colspan="2">상품명</th>
 										<th>상품금액</th>
 										<th>수량</th>
 										<th>주문금액<small>(할인금액)</small></th>
 										<th>업체</th>
-										<th>배송비</th>
+										<th>배송비(지울부분)</th>
 										<th>주문</th>
 									</tr>
 								</thead>
 
 								<tbody>
 								<!-- 장바구니 목록 -->
-								<c:forEach var="dto" items="${sessionScope.cartDtos}">
+								<c:forEach var="dto" items="${sessionScope.cartDtos}" varStatus="num">
 									<tr>
-										<td><label><input type="checkbox" name="cartIdx" ><span></span></label></td>
+										<td><label><input type="checkbox" class="my__checkbox my__checkbox__${num.count }" id="checkbox_${dto.cart.id}" onchange="subCheckboxProc()" name="cartIdx" checked="checked"><span></span></label></td>
 										<td><figure>
 												<img src="${dto.item.imgUrl}" onerror="this.src='/w/images/80x80.jpg'" alt="" class="loading">
 											</figure></td>
@@ -112,9 +112,9 @@
 
 										<td class="btn">
 
-											<button type="button" class="btn-gray small" onclick="orderCheck('190815');">바로주문</button>
+											<button type="button" class="btn-gray small" onclick="orderCheck(${dto.cart.id}, ${sessionScope.principal.id});">바로주문</button>
 
-											<button type="button" class="btn-whitegray small" onclick="removeCart('190815');">삭제</button>
+											<button type="button" class="btn-whitegray small" onclick="removeCart(${dto.cart.id}, ${sessionScope.principal.id});">삭제</button>
 										</td>
 									</tr>
 								</c:forEach>
@@ -127,16 +127,16 @@
 
 								<button type="button" class="btn-gray small" onclick="addWishList();">찜하기</button>
 
-								<button type="button" class="btn-whitegray small" onclick="removeSelected();">선택삭제</button>
+								<button type="button" class="btn-whitegray small" onclick="removeSelected(${sessionScope.principal.id});">선택삭제</button>
 							</div>
 						</fieldset>
 
 						<fieldset class="price-field">
 <!-- 							<legend class="hide">결제내역</legend> -->
 							<dl class="orderprice">
-								<dt>상품금액</dt>
+								<dt>상품금액(수정필요)</dt>
 								<dd>
-									<em id="totalPrice">20,000</em>원
+									<em id="totalPrice">0</em>원
 								</dd>
 							</dl>
 							<dl class="discount">
@@ -148,13 +148,20 @@
 							<dl class="shipping">
 								<dt>배송비</dt>
 								<dd>
-									<em id="deliveryPrice">0</em>원
+									<c:choose>
+										<c:when test="${empty sessionScope.cartDtos}">
+											<em id="deliveryPrice">0</em>원
+										</c:when>
+										<c:otherwise>
+											<em id="deliveryPrice">3000</em>원									
+										</c:otherwise>
+									</c:choose>
 								</dd>
 							</dl>
 							<dl class="total">
 								<dt>총 결제금액</dt>
 								<dd>
-									<em id="totalPayPrice">20,000</em>원
+									<em id="totalPayPrice">0</em>원
 								</dd>
 							</dl>
 						</fieldset>
@@ -181,13 +188,96 @@
 	
 	<script>
 	
+		function removeSelected(userId) {
+			
+			var checkedCartIdList = new Array();
+			
+			for (var i = 1; i <= $(".my__checkbox").length; i++) {
+				
+				if($(".my__checkbox__"+i).prop("checked") == true){
+					checkedCartIdList[i-1] = Number($(".my__checkbox__"+i).prop("id").replace("checkbox_", ""));
+				}
+				
+			}
+			
+			if(checkedCartIdList.length > 0){
+				
+				var result = JSON.stringify(checkedCartIdList).replace("[", "(").replace("]", ")");
+				
+				$.ajax({
+					
+					type: "post",
+					url: "/monami/cart?cmd=cartDeleteSelectedProc&userId="+userId,
+					contentType: "text/plain; charset=utf-8",
+					data: result,
+					dataType: "text"
+					
+				}).done(function(result) {
+					
+					alert("삭제에 성공하였습니다.");
+					location.href = "/monami/users?cmd=cart";
+					
+				}).fail(function(error) {
+					
+					alert("삭제에 실패하였습니다.");
+					location.href = "/monami/users?cmd=cart";
+					
+				});
+				
+			} else {
+				alert("선택된 항목이 없습니다.");
+			}
+			
+		}
+		
+		function removeCart(cartId, userId) {
+			
+			location.href = "/monami/cart?cmd=cartDeleteProc&cartId="+cartId+"&userId="+userId;
+			
+		}
+		
+		function checkboxProc() {
+			
+			if ($("#chkCartAll").prop("checked") == false) {
+				$(".my__checkbox").prop("checked", false);
+			} else {
+				$(".my__checkbox").prop("checked", true);
+			}
+			
+		}
+		
+		function subCheckboxProc() {
+			
+			var checked = 1;
+			
+			for (var i = 1; i <= $(".my__checkbox").length; i++) {
+				
+				if($(".my__checkbox__"+i).prop("checked") == false){
+					checked = 0;
+				}
+				
+			}
+			if(checked == 0){
+				$("#chkCartAll").prop("checked", false);
+			} else {
+				$("#chkCartAll").prop("checked", true);
+			}
+		}
+	
+	
 		function sumPrice() {
 			var sumPrice = 0;
 			for (var i = 0; i < $(".cartAllPrice").length; i++) {
 				sumPrice = sumPrice + Number($(".cartAllPrice").get(i).textContent);
 			}
 			
-			$("#totalPayPrice").text(sumPrice);			
+			$("#totalPrice").text(sumPrice);
+			
+			var totalPayPrice = sumPrice + Number($("#deliveryPrice").text());
+			
+			$("#totalPayPrice").text(totalPayPrice);
+			
+			
 		}
 		
 		sumPrice();

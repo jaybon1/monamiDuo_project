@@ -9,16 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.monami.action.Action;
-import com.monami.action.board.AboutHomeAction;
-import com.monami.action.board.BoardHomeAction;
-import com.monami.action.board.ClassHomeAction;
-import com.monami.action.board.MapHomeAction;
-import com.monami.action.board.ProductHomeAction;
-import com.monami.action.board.ProductListAction;
+import com.monami.action.cart.CartDeleteProcAction;
+import com.monami.action.cart.CartDeleteSelectedProcAction;
 import com.monami.action.cart.CartProcAction;
-import com.monami.action.board.ProductDetailAction;
-import com.monami.action.detail.DetailAction;
-import com.monami.action.test.JsoupTestAction;
 
 
 @WebServlet("/cart")
@@ -53,8 +46,11 @@ public class CartController extends HttpServlet {
 	// execute로 실행
 	public Action router(String cmd) {
 		if (cmd.equals("cartProc")) {
-			// 회원가입 페이지로 이동
 			return new CartProcAction();
+		} else if (cmd.equals("cartDeleteProc")) {
+			return new CartDeleteProcAction();
+		} else if (cmd.equals("cartDeleteSelectedProc")) {
+			return new CartDeleteSelectedProcAction();
 		}
 		return null;
 	}
