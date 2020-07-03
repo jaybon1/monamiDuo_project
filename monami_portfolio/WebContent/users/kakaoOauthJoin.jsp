@@ -73,7 +73,7 @@
 				</p>
 			</div>
 		</div>
-	<script src="/blog/js/join.js"></script>	
+	<script src="/monami/js/join.js"></script>	
 	</div>
 	
 	<%@ include file="/include/footer.jsp" %>
