@@ -30,7 +30,7 @@
 		<section class="class__menu__wrap">
 			<ul class="class__menu">
 				<p>ONEDAY CLASS</p>
-				<li style="font-weight:900; font-size:20px; padding:10px 0;">모나미에서 다양한 클래스를 만나보세요</li>
+				<li style="font-weight:400; font-size:20px; padding:10px 0;">모나미에서 다양한 클래스를 만나보세요</li>
 				<!-- <li style="font-weight:900; font-size:20px; padding:10px 0;"><a href="#">원데이 클래스</a></li> -->
 			</ul>
 		</section>

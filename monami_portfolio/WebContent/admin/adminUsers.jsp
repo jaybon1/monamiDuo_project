@@ -37,11 +37,13 @@
 				</div>
 				<div class="cont-area">
 					<section class="lately">
-						<div style="display: flex; justify-content: space-between;">
+						<div style="display: flex; justify-content: space-between; align-items:center;">
 							<h4 class="tit">회원관리</h4>
-							<input id="inputUsername" type="text" placeholder="아이디를 입력하세요">
-							<button type="button" class="btn btn-primary" onclick="searchByUsername()">회원검색</button>
-						</div>
+							<div>
+								<input id="inputUsername" type="text" placeholder="아이디를 입력하세요" style="width:200px; height:33px; vertical-align:middle;">
+								<button type="button" class="btn btn-primary" onclick="searchByUsername()">회원검색</button>
+							</div>
+							</div>
 						<div class="step-wrap">
 							<table class="table">
 								<thead>

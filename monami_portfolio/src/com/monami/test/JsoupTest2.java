@@ -65,7 +65,7 @@ public class JsoupTest2 {
 					for (int j = 0; j < elements.select("td").get(i).select("li").size(); j++) {
 						
 						sb.append(elements.select("td").get(i).select("li").get(j).select("img").attr("src"));
-						sb.append("^^");
+						sb.append("!!");
 						sb.append(elements.select("td").get(i).select("li").get(j).select("span").text());
 						if(j < elements.select("td").get(i).select("li").size() - 1) {
 							sb.append(",,");
@@ -82,7 +82,7 @@ public class JsoupTest2 {
 						for (int j = 0; j < elements.select("td").get(i).select("li").size(); j++) {
 						
 						sb.append(elements.select("td").get(i).select("li").get(j).select("img").attr("src"));
-						sb.append("^^");
+						sb.append("!!");
 						sb.append(elements.select("td").get(i).select("li").get(j).select("span").text());
 						if(j < elements.select("td").get(i).select("li").size() - 1) {
 							sb.append(",,");
@@ -101,7 +101,7 @@ public class JsoupTest2 {
 					for (int j = 0; j < elements.select("td").get(i).select("li").size(); j++) {
 						
 						sb.append(elements.select("td").get(i).select("li").get(j).select("img").attr("src"));
-						sb.append("^^");
+						sb.append("!!");
 						sb.append(elements.select("td").get(i).select("li").get(j).text());
 						if(j < elements.select("td").get(i).select("li").size() - 1) {
 							sb.append(",,");

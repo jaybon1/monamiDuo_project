@@ -55,10 +55,10 @@
 				<p>해당 지점을 클릭하시면 지점 위치를 확인 하실 수 있습니다.</p>
 				<div class="map__api">
 					<div id="map" style="width: 534px; height: 418px;"></div>
-<!-- 					<a href=#><img src="http://prt.map.naver.com/mashupmap/print?key=p1512648006831_-1492038271"></a> -->
 				</div>
 				<div class="map__tit">
 					<h3>
+						<!-- javascript:void(0) a태그의 무효화 -->
 						<a href="javascript:void(0);" onclick="changeMap(0)">본사 수지점 [스토리 연구소]</a>
 					</h3>
 					<h3>
