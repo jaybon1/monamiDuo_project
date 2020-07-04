@@ -2,11 +2,15 @@
 
 
 
+
+
 ## 웹 사이트 구현기능(Front-end)
 
 - ##### main page - 상단메뉴 클릭시 화면을 가득 채우는 메뉴 슬라이딩 효과
 
 - ##### About page - 메인배너영역 슬라이드, 스크롤시 타이밍별 fade up, down, left 효과
+
+
 
 
 
@@ -35,10 +39,6 @@
 ## 초기 데이터 입력 
 
 - ##### 상품 카테고리별 상품 및 상세페이지 웹 크롤링
-
-![img](https://lh4.googleusercontent.com/AxKJdGXPCsj7X-Hp5NmTChg8yyPY3iNQrKeqx5XFR-Q1-rcrAgtRfAF2MspdFn3FwLOQMmdxsGomOIoDVRqcKgMqSvrO-UUmbpHkV43ixZIS1qvR6_jru4R_IWeHpcuDtaBzmMrIF5Y)
-
-
 
 
 
