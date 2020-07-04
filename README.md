@@ -1,7 +1,69 @@
 # MONAMI 웹 포트폴리오 프로젝트
 
 
-## 오라클 12C 사용자 생성
+
+## 웹 사이트 구현기능(Front-end)
+
+- ##### main page - 상단메뉴 클릭시 화면을 가득 채우는 메뉴 슬라이딩 효과
+
+- ##### About page - 메인배너영역 슬라이드, 스크롤시 타이밍별 fade up, down, left 효과
+
+
+
+## 웹 사이트 구현기능(Back-end)
+
+- ##### 무한스크롤 AJAX
+
+- ##### 장바구니 기능
+
+- ##### 네이버, 카카오 로그인
+
+- ##### 로그인, 회원가입, 회원정보수정
+
+- ##### 네이버 지도 api 삽입
+
+- ##### 관리자페이지 - 상품관리 (상품검색, 상품등록, 상품수정, 상품삭제)
+
+- ##### 관리자페이지 - 회원관리 (회원검색, 회원권한변경)
+
+- ##### 페이징 기능
+
+
+
+
+
+## 초기 데이터 입력 
+
+- ##### 상품 카테고리별 상품 및 상세페이지 웹 크롤링
+
+![img](https://lh4.googleusercontent.com/AxKJdGXPCsj7X-Hp5NmTChg8yyPY3iNQrKeqx5XFR-Q1-rcrAgtRfAF2MspdFn3FwLOQMmdxsGomOIoDVRqcKgMqSvrO-UUmbpHkV43ixZIS1qvR6_jru4R_IWeHpcuDtaBzmMrIF5Y)
+
+
+
+
+
+
+
+## 프레젠테이션 링크
+
+https://docs.google.com/presentation/d/1VjXvZXobMZod0hAQs_EvRePEGYiNmIRJ9iJMkHMtI-o/edit#slide=id.g8b173d8935_0_0
+
+
+
+
+
+## 포트폴리오 영상 링크
+
+https://www.youtube.com/watch?v=jTGl9vEyzMo&feature=youtu.be
+
+
+
+
+
+## DataBase
+
+##### 오라클 12C 사용자 생성
+
 ```sql
 alter session set "_ORACLE_SCRIPT"=true;  
 CREATE USER monami IDENTIFIED BY bitc5600;
@@ -13,7 +75,7 @@ GRANT CREATE SEQUENCE TO monami;
 alter user monami default tablespace users quota unlimited on users;
 ```
 
-## 테이블
+##### 테이블
 ```sql
 CREATE TABLE users(
   	id number primary key,
@@ -26,26 +88,6 @@ CREATE TABLE users(
     userRole varchar2(20),
     createDate timestamp
 ) ;
-
-CREATE TABLE board(
-  	id number primary key,
-    userId number,
-    title varchar2(100) not null,
-    content clob,
-    readCount number default 0,
-    createDate timestamp,
-    foreign key (userId) references users (id)
-);
-
-CREATE TABLE reply(
-  	id number primary key,
-    userId number,
-    boardId number,
-    content varchar2(300) not null,
-    createDate timestamp,
-    foreign key (userId) references users (id) on delete set null,
-    foreign key (boardId) references board (id) on delete cascade
-);
 
 CREATE TABLE items(
   	id number primary key,
@@ -76,17 +118,9 @@ CREATE TABLE class(
 );
 ```
 
-## 시퀀스
+##### 시퀀스
 ```sql
 CREATE SEQUENCE USERS_SEQ
-  START WITH 1
-  INCREMENT BY 1;
-  
-CREATE SEQUENCE BOARD_SEQ
-  START WITH 1
-  INCREMENT BY 1;
-  
-CREATE SEQUENCE REPLY_SEQ
   START WITH 1
   INCREMENT BY 1;
 

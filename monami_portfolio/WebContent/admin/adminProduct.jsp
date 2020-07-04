@@ -128,15 +128,15 @@
 					
 					for (let result of resultList) {
 						
-						var string = "                               <tr>\r\n" + 
-						"										        <td>"+result.value+"</td>\r\n" + 
-						"										        <td>"+result.name+"</td>\r\n" + 
-						"										        <td>"+result.price+"</td>\r\n" + 
-						"										        <td>\r\n" + 
-						"											        <button type=\"button\" class=\"btn btn-secondary\"onclick=\"updateItem("+result.id+", "+result.page+")\">상품수정</button>\r\n" + 
-						"											        <button type=\"button\" class=\"btn btn-danger\" onclick=\"deleteItem("+result.id+", "+result.page+")\">상품삭제</button><span></span>\r\n" + 
-						"										        </td>\r\n" + 
-						"										     </tr>";
+						var string = " <tr>\r\n" + 
+						"				<td>"+result.value+"</td>\r\n" + 
+						"				<td>"+result.name+"</td>\r\n" + 
+						"				<td>"+result.price+"</td>\r\n" + 
+						"				<td>\r\n" + 
+						"					<button type=\"button\" class=\"btn btn-secondary\"onclick=\"updateItem("+result.id+", "+result.page+")\">상품수정</button>\r\n" + 
+						"					<button type=\"button\" class=\"btn btn-danger\" onclick=\"deleteItem("+result.id+", "+result.page+")\">상품삭제</button><span></span>\r\n" + 
+						"				</td>\r\n" + 
+						"				</tr>";
 							
 						$("#itemTbody").append(string);
 					}
