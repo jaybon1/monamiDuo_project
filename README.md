@@ -1,8 +1,8 @@
 # MONAMI 웹 포트폴리오 프로젝트
 
-###
+&nbsp;
 
-###
+&nbsp;
 
 ## 웹 사이트 구현기능(Front-end)
 
@@ -10,9 +10,9 @@
 
 - ##### About page - 메인배너영역 슬라이드, 스크롤시 타이밍별 fade up, down, left 효과
 
-###
+&nbsp;
 
-###
+&nbsp;
 
 ## 웹 사이트 구현기능(Back-end)
 
@@ -32,33 +32,33 @@
 
 - ##### 페이징 기능
 
-###
+&nbsp;
 
-###
+&nbsp;
 
 ## 초기 데이터 입력 
 
 - ##### 상품 카테고리별 상품 및 상세페이지 웹 크롤링
 
-###
+&nbsp;
 
-###
+&nbsp;
 
 ## 프레젠테이션 링크
 
 https://docs.google.com/presentation/d/1VjXvZXobMZod0hAQs_EvRePEGYiNmIRJ9iJMkHMtI-o/edit#slide=id.g8b173d8935_0_0
 
-###
+&nbsp;
 
-###
+&nbsp;
 
 ## 포트폴리오 영상 링크
 
 https://www.youtube.com/watch?v=jTGl9vEyzMo&feature=youtu.be
 
-###
+&nbsp;
 
-###
+&nbsp;
 
 ## DataBase
 
