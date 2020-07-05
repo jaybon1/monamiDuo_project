@@ -1,7 +1,9 @@
-#### MONAMI 웹 포트폴리오 프로젝트
+# MONAMI 웹 포트폴리오 프로젝트
+
+![monami]()
 
 
-## 오라클 12C 사용자 생성
+### 오라클 12C 사용자 생성
 ```sql
 alter session set "_ORACLE_SCRIPT"=true;  
 CREATE USER monami IDENTIFIED BY bitc5600;
@@ -13,7 +15,7 @@ GRANT CREATE SEQUENCE TO monami;
 alter user monami default tablespace users quota unlimited on users;
 ```
 
-## 테이블
+### 테이블
 ```sql
 CREATE TABLE users(
   	id number primary key,
@@ -63,7 +65,7 @@ CREATE TABLE items(
 );
 ```
 
-## 시퀀스
+### 시퀀스
 ```sql
 CREATE SEQUENCE USERS_SEQ
   START WITH 1

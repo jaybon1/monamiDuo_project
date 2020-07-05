@@ -1,6 +1,6 @@
 
 /*****************************************/
-/* .cart__con1 {position:relative;margin:0;padding:100px 0 100px 0;width:100%;min-width:1260px;min-height:560px;overflow:hidden;z-index:20;} */
+
 .cart__con1 .inner {position:relative;margin:0 auto;}
 .cart__con1 .innerfull {position:relative;margin-left:-360px;width:1920px;}
 .cart__con1 .innerfull-event {position:relative;width:100%;}
@@ -24,12 +24,7 @@
 }
 
 .cart__con1 {
-/* 	display: flex; */
-/* 	flex-wrap: wrap; */
-	/* align-items: center; */
-/* 	justify-content: center; */
 	max-width: 1080px;
-/* 	height: 830px; */
 	paddin:30px 0;
 	margin: 100px auto 0;
 	position: relative;
@@ -38,7 +33,6 @@
 .cart__con1 .info{
 	position: relative;
 	height:150px;
-/* 	padding-left: 160px; */
 	box-sizing:bcart-box;
 	background: #f9f9f9;
 	border:1px solid #ddd;
@@ -69,11 +63,7 @@
 	letter-spacing: -1px;
 }
 
-.cart__con1 div {
-/* 	width: 50%; */
-/* 	text-align: center; */
-	margin-top:40px;
-}
+
 
 .tag {
 	background-color: #f2f2f2;
@@ -285,9 +275,9 @@ table tbody td.txt-right {text-align:right;}
 .order.cart .cartcon .form-area .list-field .popinfo {top:30px;left:7px;padding:15px 16px;width:245px;text-align:left;}
 .order.cart .cartcon .form-area .list-field .ea-area {width:74px;height:32px;}
 .order.cart .cartcon .form-area .list-field .ea-area .btn-down {width:24px;height:30px;border-right:none;background-image:none;}
-.order.cart .cartcon .form-area .list-field .ea-area .btn-down:before {content:"";position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);display:inline-block;width:9px;height:9px;background:url("../../images/w/sub/order.png") no-repeat -9px 0;}
+.order.cart .cartcon .form-area .list-field .ea-area .btn-down:before {content:"";position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);display:inline-block;width:9px;height:9px;background:url("../images/order.png") no-repeat -9px 0;}
 .order.cart .cartcon .form-area .list-field .ea-area .btn-up {width:24px;height:30px;border-left:none;background-image:none;}
-.order.cart .cartcon .form-area .list-field .ea-area .btn-up:before {content:"";position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);display:inline-block;width:9px;height:9px;background:url("../../images/w/sub/order.png") no-repeat -20px 0;}
+.order.cart .cartcon .form-area .list-field .ea-area .btn-up:before {content:"";position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);display:inline-block;width:9px;height:9px;background:url("../images/order.png") no-repeat -20px 0;}
 .order.cart .cartcon .form-area .list-field .ea-area input {padding:0;border-color:#ccc;font-size:14px;color:#000;}
 .order.cart .cartcon .form-area .list-field .ea-area + button {margin-top:6px;width:74px;font-size:13px;border-color:#ececec;color:#999;}
 .order.cart .cartcon .form-area .list-field .ea-area + button.active {border-color:#000;color:#000;}
@@ -295,7 +285,7 @@ table tbody td.txt-right {text-align:right;}
 .order.cart .cartcon .form-area .list-field .btn-delivery:after {content:"";display:inline-block;margin-bottom:2px;margin-left:5px;width:8px;height:11px;background:url("../../images/w/sub/order.png") no-repeat 0 -110px;vertical-align:middle;}
 .order.cart .cartcon .form-area .list-field .disabled td {color:#999;}
 .order.cart .cartcon .form-area .list-field .disabled figure {position:relative;}
-.order.cart .cartcon .form-area .list-field .disabled figure:after {content:"";position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);display:inline-block;width:73px;height:73px;background:url("../../images/w/sub/order.png") no-repeat 0 -33px;}
+.order.cart .cartcon .form-area .list-field .disabled figure:after {content:"";position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);display:inline-block;width:73px;height:73px;background:url("../images/order.png") no-repeat 0 -33px;}
 .order.cart .cartcon .form-area .list-field .disabled figure img {opacity:.3;}
 .order.cart .cartcon .form-area .list-field .disabled .info-area .txt-option {color:#999;}
 .order.cart .cartcon .form-area .list-field .disabled .info-area .btn-option {color:#999;border-color:#999;cursor:default;}

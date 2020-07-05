@@ -44,7 +44,7 @@ public class AdminProductInputProcAction implements Action{
 		int result = itemsRepository.insertItem(item);
 		
 		if(result == 1) {
-			Script.useScript("등록에 성공하였습니다.", "opener.location.reload(); window.close();", response);
+			Script.useScript("alert(\"등록에 성공하였습니다.\");opener.location.reload(); window.close();", response);
 		} else {
 			Script.back("등록에 실패하였습니다.", response);
 		}

@@ -22,6 +22,15 @@
 		<!-- header 영역 -->
 		<%@include file="include/header.jsp"%>
 
+		<!-- fixed ad 영역 -->
+		<div class="l-popup__buttons">
+		  <a class="l-popup__button" href="http://monamiconcept.com/reservation/" target="_blank">
+		  <div class="l-popup__button-txt">예약하기</div>
+		  </a>
+		  <a class="l-popup__button--close" onclick="jQuery(this).parent().hide(); return false;" href="#">예약하기 버튼 닫기</a>
+		</div>
+		
+		<!-- product menu 영역 -->
 		<section class="product__menu__wrap">
 			<div class="product__menu">
 				<p>PRODUCT</p>
@@ -69,6 +78,7 @@
 			</div>
 		</section>
 
+		<!-- product__con__wrap 영역 -->
 		<section class="product__con__wrap">
 			<!-- items:모델 / itemss:list배열  -->
 			<c:forEach var="items" items="${itemss}">
@@ -77,7 +87,7 @@
 					<span class="info"> 
 						<span class="txt_brand">Monami / 모나미</span> 
 						<span class="txt-ti">${items.name}</span>
-					</span> 
+					</span>
 					<span class="txt-price">${items.price}</span> 
 					<span class="tag"></span>
 					</a>
@@ -87,12 +97,13 @@
 		<!-- 전체 상품 뿌리는 코드 -->
 
 		<script>
-		
 		// 섹션별 상품 뿌리는 ajax
 		var listAmount = 1;
 		var status = 0;
+		var part = "all";
 		
 		function productList(value){
+			part = value;
 			$.ajax({
 				type:"get",
 				url:"/monami/board?cmd=productList&value=" + value + "&listAmount" + listAmount,
@@ -119,14 +130,13 @@
 		$(window).scroll(function() {
 		// 스크롤이 80% 이상이 되면 해당 컨텐츠가 자동 생성
 		console.log(((window.scrollY + window.innerHeight) / $('body').prop("scrollHeight") * 100));
-		 if(((window.scrollY + window.innerHeight) / $('body').prop("scrollHeight") * 100) > 80) 
+		 if(((window.scrollY + window.innerHeight) / $('body').prop("scrollHeight") * 100) > 99) 
 		  {
 			 if(status == 0){
-			 	console.log("work");
 				 status = 1;
 				 $.ajax({
 					 type: "get",
-					 url: "/monami/board?cmd=productScrollProc&listAmount=" + listAmount,
+					 url: "/monami/board?cmd=productScrollProc&listAmount=" + listAmount +"&part="+part,
 					 dataType: "json"
 				 }).done(function (result) {
 					console.log(result);

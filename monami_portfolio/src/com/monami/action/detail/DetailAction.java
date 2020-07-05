@@ -42,9 +42,16 @@ public class DetailAction implements Action{
 		if(item.getBodyColor() != null) {
 			String[] bodyColors = item.getBodyColor().split(",,");
 			for (int i = 0; i < bodyColors.length; i++) {
+				
+				String tempName = "";
+				
+				if(bodyColors[i].split("!!").length == 2) {
+					tempName = bodyColors[i].split("!!")[1];
+				}
+				
 				BodyColor bodyColor = BodyColor.builder()
 						.url(bodyColors[i].split("!!")[0])
-						.name(bodyColors[i].split("!!")[1])
+						.name(tempName)
 						.build();
 				bodyColorList.add(bodyColor);
 			}			
@@ -54,9 +61,16 @@ public class DetailAction implements Action{
 		if(item.getInkColor() != null) {
 			String[] inkColors = item.getInkColor().split(",,");
 			for (int i = 0; i < inkColors.length; i++) {
+				
+				String tempName = "";
+				
+				if(inkColors[i].split("!!").length == 2) {
+					tempName = inkColors[i].split("!!")[1];
+				}
+				
 				InkColor inkColor = InkColor.builder()
 						.url(inkColors[i].split("!!")[0])
-						.name(inkColors[i].split("!!")[1])
+						.name(tempName)
 						.build();
 				inkColorList.add(inkColor);
 			}
@@ -67,9 +81,16 @@ public class DetailAction implements Action{
 		if(item.getProductSpec() != null) {
 			String[] productSepcs = item.getProductSpec().split(",,");
 			for (int i = 0; i < productSepcs.length; i++) {
+				
+				String tempName = "";
+				
+				if(productSepcs[i].split("!!").length == 2) {
+					tempName = productSepcs[i].split("!!")[1];
+				}
+				
 				ProductSpec productSpec = ProductSpec.builder()
 						.url(productSepcs[i].split("!!")[0])
-						.name(productSepcs[i].split("!!")[1])
+						.name(tempName)
 						.build();
 				productSpecList.add(productSpec);
 			}
@@ -82,7 +103,7 @@ public class DetailAction implements Action{
 				.id(item.getId())
 				.name(item.getName())
 				.imgUrl(item.getImgUrl())
-				.price(item.getPrice())
+				.price(item.getPrice().replace(",", ""))
 				.value(item.getValue())
 				.charac(item.getCharac())
 				.detailImgUrl(item.getDetailImgUrl())

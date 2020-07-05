@@ -45,7 +45,7 @@ public class AdminProductUpdateProcAction implements Action{
 			int result = itemsRepository.updateItem(item, id);
 			
 			if(result == 1) {
-				Script.useScript("수정에 성공하였습니다.", "opener.location.reload(); window.close();", response);
+				Script.useScript("alert(\"등록에 성공하였습니다.\");opener.location.reload(); window.close();", response);
 			} else {
 				Script.back("수정에 실패하였습니다.", response);
 			}

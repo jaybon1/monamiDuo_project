@@ -3,7 +3,7 @@
 	// juso.go.kr 라이브러리 함수 (시작) ----------------------------------------------
 
 		function goPopup() {
-			window.open("/blog/juso/jusoPopup.jsp", "pop","width=570,height=420, scrollbars=yes, resizable=yes");
+			window.open("/monami/juso/jusoPopup.jsp", "pop","width=570,height=420, scrollbars=yes, resizable=yes");
 		}
 		
 		function jusoCallBack(roadFullAddr) {
@@ -49,7 +49,8 @@
 				console.log(result);
 				if(result == 1){ // == 값만 비교, === 타입까지 비교
 					alert('아이디가 중복되었습니다.');
-					
+					$('#username').focus();
+					$('#username').val('');
 				}else if(result == 0 ){
 					alert('사용하실 수 있는 아이디입니다.');
  					isCheckedUsername = true; // 이 값이 나와야 넘어갈 수 있음

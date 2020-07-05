@@ -21,6 +21,11 @@
 
 		<!-- header 영역 -->
 		<%@include file="include/header.jsp"%>
+		
+		<div class="l-popup__buttons">
+		  <a class="l-popup__button" href="http://monamiconcept.com/reservation/" target="_blank"><div class="l-popup__button-txt">예약하기</div></a>
+		  <a class="l-popup__button--close" onclick="jQuery(this).parent().hide(); return false;" href="#">예약하기 버튼 닫기</a>
+		</div>
 
 		<section style="text-align: center; margin: 150px 0;">
 			<div class="product_info">
@@ -34,7 +39,7 @@
 						<a class="product_tit" href="/monami/board?cmd=about">Monami / 모나미</a> <strong>${idd.name}</strong>
 					</h2>
 
-					<table>
+					<table class="product-table">
 						<tbody class="pinfo-txt">
 							<!-- 바디컬러 -->
 							<c:choose>
@@ -134,7 +139,7 @@
 						<c:when test="${empty idd.price}">
 						</c:when>
 						<c:otherwise>
-							<tbody class="pinfo-price">
+							<tbody class="info-price">
 								<tr>
 									<th>판매가</th>
 									<td>
@@ -147,9 +152,29 @@
 						</c:otherwise>
 						</c:choose>
 						
+						<tbody class="info-cart-buy">
+							<tr>
+								<td class="info-cart-buy-name" style="padding-right:30px;">${idd.name}</td>
+								<td style="width:90px;">
+									<button onclick="mousedown(${idd.price})" type="button" class="btn-down" style="background-position: -200px -8px;">수량 낮추기</button>
+									<!-- 수량이 컴파일 후 변화하기 때문에, 자바스크립트로 따로 빼준다. -->
+									<input readonly title="수량입력" value="1" id="selCnt">
+									<button onclick="mouseup(${idd.price})" type="button" class="btn-up" style="background-position: -200px -28px;">수량 높이기</button>
+								</td>
+								
+							</tr>
+							<tr>
+								<td></td>
+								<td class="info-cart-buy-price" style="padding-left:400px; width:200px;">
+										<span style="font-size:20px;">총 상품금액</span>
+										<strong class="price">${idd.price}</strong>원
+								</td>
+							</tr>
+						</tbody>
 					</table>
 					<div class="product-btn">
-						<button type="button" class="btn-gray btn-cart" onclick="_addCart();">장바구니 담기</button>
+<!-- 					html에서 다른 태그의 바뀐정보를 가져올 수 없기 때문에 onclick에 자바스크립트 함수를 넣어서 처리한다 -->
+						<button type="button" class="btn-gray btn-cart"  onclick="cart(${sessionScope.principal.id}, ${idd.id})">장바구니 담기</button>
 						<button type="button" class="btn-black btn-buy" onclick="_orderGoods();">바로 구매하기</button>
 					</div>
 				</div>
@@ -172,6 +197,36 @@
 		<!-- footer 영역 -->
 		<%@include file="include/footer.jsp"%>
 
+
+		<script type="text/javascript">
+			function cart(userId, itemId){
+				var amount = $('#selCnt').val();
+				
+// 				location.href = "/monami/cart?cmd=cartProc&userId="+userId+"&itemId="+itemId+"&amount="+amount;
+
+				$.ajax({
+					type: "get",
+					url: "/monami/cart?cmd=cartProc&userId="+userId+"&itemId="+itemId+"&amount="+amount,
+					dataType: "json"
+					
+				}).done(function(result) {
+					
+					
+					var input = confirm('장바구니로 이동하시겠습니까?');
+					if(input == true){
+						location.href = "/monami/users?cmd=cart";	
+					} else {					
+						$("#cartCount").text(result.length);
+					}
+					
+				}).fail(function(error) {
+					
+					alert("장바구니 등록에 실패하였습니다.");
+					
+				});
+				
+			}
+		</script>
 	</div>
 </body>
 </html>

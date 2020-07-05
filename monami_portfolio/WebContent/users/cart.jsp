@@ -1,4 +1,8 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.monami.dto.CartDto"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,7 +62,7 @@
 
 								<thead>
 									<tr>
-										<th><label><input type="checkbox" class="small" id="chkCartAll"><span></span><span class="hide"></span></label></th>
+										<th><label><input type="checkbox" class="small" id="chkCartAll" onchange="checkboxProc()" checked="checked"><span></span><span class="hide"></span></label></th>
 										<th colspan="2">상품명</th>
 										<th>상품금액</th>
 										<th>수량</th>
@@ -70,60 +74,50 @@
 								</thead>
 
 								<tbody>
+								<!-- 장바구니 목록 -->
+								<c:forEach var="dto" items="${sessionScope.cartDtos}" varStatus="num">
 									<tr>
-										<td><label><input type="checkbox" name="cartIdx" id="cartIdx_0" value="190815" class="small" data-orderseq="1" data-sellercode="1350053" data-sellerfreeshippingyn="Y" data-sellerfreeshippingprice="20000"
-												data-sellershippingprice="2500" data-packingsize="1" data-deliveryfee="0" data-deliveryfeetype="Y" data-rowcnt="1" data-goodsno="MG000003497" data-optionitemidx="64195" data-price="20000" data-gradediscountyn="Y"
-												data-gradediscountprice="0" data-gradediscountprice1="0" data-addserviceyn="N" data-addserviceprice="0" data-addservicecontent="" data-directshipyn="N" onclick="calcPrice();"><span></span></label></td>
+										<td><label><input type="checkbox" class="my__checkbox my__checkbox__${num.count }" id="checkbox_${dto.cart.id}" onchange="subCheckboxProc()" name="cartIdx" checked="checked"><span></span></label></td>
 										<td><figure>
-												<img src="https://d1bg8rd1h4dvdb.cloudfront.net/upload/imgServer/product/goods/MG000003497/main/MG000003497_REP_THUMB_80X80_20191206103813.blob" onerror="this.src='/w/images/80x80.jpg'" alt="" class="loading" data-was-processed="true">
+												<img src="${dto.item.imgUrl}" onerror="this.src='/w/images/80x80.jpg'" alt="" class="loading">
 											</figure></td>
 										<td>
 											<div class="info-area">
-												<a href="/w/product/productDetail.do?goodsNo=MG000003497" class="txt-subject">[리필심증정] 153 블라썸</a> <span class="txt-option">리필심증정_비올라 </span> <a href="#popCartOption" class="btn-option" onclick="popOptionChange('190815');">옵션변경</a>
-
+												${dto.item.name}
 											</div>
 										</td>
-										<td class="txt-right"><em>20,000</em>원</td>
+										<td class="txt-right"><em>${dto.item.price}</em>원</td>
 
 
 
 										<td>
 											<div class="ea-area">
-												<input type="number" name="goodsCnt" id="goodsCnt_190815" title="수량 입력" value="1" readonly="" data-stockcnt="18" data-convstockcnt="1" data-oldcnt="1">
-												<button type="button" class="btn-down" onclick="removeCnt(this);">수량 낮추기</button>
-												<button type="button" class="btn-up" onclick="addCnt(this);">수량 올리기</button>
+												<input type="number" name="goodsCnt" id="goodsCnt_${dto.cart.id}" title="수량 입력" value="${dto.cart.amount}" readonly>
+												<button type="button" class="btn-down" onclick="minusCnt(${dto.cart.id});">수량 낮추기</button>
+												<button type="button" class="btn-up" onclick="plusCnt(${dto.cart.id});">수량 올리기</button>
 											</div>
-											<button type="button" class="btn-whitegray small" onclick="changeCnt('190815');">변경</button>
+											<button type="button" class="btn-whitegray small" onclick="changeCnt(${dto.cart.id}, ${sessionScope.principal.id});">변경</button>
 
 										</td>
-										<td class="txt-right"><em id="payPrice_190815">20,000</em>원<small id="discountPrice_190815">(0원)</small></td>
+										<td class="txt-right"><em class="cartAllPrice">${dto.allPrice }</em>원<small>(0원)</small></td>
 
 
 										<td><small> 모나미배송 <span class="deliveryinfo"> <a href="#" class="btn-popinfo type-over"><strong>!</strong></a>
-<!-- 													<div class="popinfo"> -->
-<!-- 														<h4>배송정보</h4> -->
-<!-- 														<p>16시 30분 이전 주문시 당일출고(공휴일,토/일요일제외)</p> -->
-<!-- 													</div> -->
 											</span>
 										</small></td>
 
 
-										<td class="txt-right"><em>0</em>원 <span class="deliveryinfo"> <a href="#" class="btn-popinfo type-over"><strong>!</strong></a>
-<!-- 												<div class="popinfo"> -->
-<!-- 													<h4>배송정보</h4> -->
-<!-- 													<p> -->
-<!-- 														16시 30분 이전 주문/결제 시 당일 발송<br> (업체배송, 각인 상품 제외 전 품목) -->
-<!-- 													</p> -->
-<!-- 												</div> -->
+										<td class="txt-right"><em>0</em>원 <span class="deliveryinfo"><a href="#" class="btn-popinfo type-over"><strong>!</strong></a>
 										</span></td>
 
 										<td class="btn">
 
-											<button type="button" class="btn-gray small" onclick="orderCheck('190815');">바로주문</button>
+											<button type="button" class="btn-gray small" onclick="orderCheck(${dto.cart.id}, ${sessionScope.principal.id});">바로주문</button>
 
-											<button type="button" class="btn-whitegray small" onclick="removeCart('190815');">삭제</button>
+											<button type="button" class="btn-whitegray small" onclick="removeCart(${dto.cart.id}, ${sessionScope.principal.id});">삭제</button>
 										</td>
 									</tr>
+								</c:forEach>
 
 								</tbody>
 							</table>
@@ -131,9 +125,9 @@
 							<div class="btn-area">
 								<label><input type="checkbox" class="small" id="chkCartAll2"><span></span><span class="hide">전체선택</span></label>
 
-								<button type="button" class="btn-gray small" onclick="addWishList();">찜하기</button>
+<!-- 								<button type="button" class="btn-gray small" onclick="addWishList();">찜하기</button> -->
 
-								<button type="button" class="btn-whitegray small" onclick="removeSelected();">선택삭제</button>
+								<button type="button" class="btn-whitegray small" onclick="removeSelected(${sessionScope.principal.id});">선택삭제</button>
 							</div>
 						</fieldset>
 
@@ -142,25 +136,32 @@
 							<dl class="orderprice">
 								<dt>상품금액</dt>
 								<dd>
-									<em id="totalPrice">20,000</em>원
+									<em id="totalPrice">0</em>원
 								</dd>
 							</dl>
 							<dl class="discount">
-								<dt>할인금액</dt>
+								<dt></dt>
 								<dd>
-									<em id="totalDiscountPrice">0</em>원
+									<em id="totalDiscountPrice"></em>
 								</dd>
 							</dl>
 							<dl class="shipping">
 								<dt>배송비</dt>
 								<dd>
-									<em id="deliveryPrice">0</em>원
+									<c:choose>
+										<c:when test="${empty sessionScope.cartDtos}">
+											<em id="deliveryPrice">0</em>원
+										</c:when>
+										<c:otherwise>
+											<em id="deliveryPrice">3000</em>원									
+										</c:otherwise>
+									</c:choose>
 								</dd>
 							</dl>
 							<dl class="total">
 								<dt>총 결제금액</dt>
 								<dd>
-									<em id="totalPayPrice">20,000</em>원
+									<em id="totalPayPrice">0</em>원
 								</dd>
 							</dl>
 						</fieldset>
@@ -183,6 +184,148 @@
 		<%@include file="../include/footer.jsp"%>
 
 	</div>
+	
+	
+	<script>
+	
+		function removeSelected(userId) {
+			
+			var checkedCartIdList = new Array();
+			
+			for (var i = 1; i <= $(".my__checkbox").length; i++) {
+				
+				if($(".my__checkbox__"+i).prop("checked") == true){
+					checkedCartIdList[i-1] = Number($(".my__checkbox__"+i).prop("id").replace("checkbox_", ""));
+				} else{
+					checkedCartIdList[i-1] = -1;
+				}
+				
+			}
+			
+			if(checkedCartIdList.length > 0){
+				
+				var result = JSON.stringify(checkedCartIdList).replace("[", "(").replace("]", ")");
+				
+				$.ajax({
+					
+					type: "post",
+					url: "/monami/cart?cmd=cartDeleteSelectedProc&userId="+userId,
+					contentType: "text/plain; charset=utf-8",
+					data: result,
+					dataType: "text"
+					
+				}).done(function(result) {
+					
+					alert("삭제에 성공하였습니다.");
+					location.href = "/monami/users?cmd=cart";
+					
+				}).fail(function(error) {
+					
+					alert("삭제에 실패하였습니다.");
+					location.href = "/monami/users?cmd=cart";
+					
+				});
+				
+			} else {
+				alert("선택된 항목이 없습니다.");
+			}
+			
+		}
+		
+		function removeCart(cartId, userId) {
+			
+			location.href = "/monami/cart?cmd=cartDeleteProc&cartId="+cartId+"&userId="+userId;
+			
+		}
+		
+		function checkboxProc() {
+			
+			if ($("#chkCartAll").prop("checked") == false) {
+				$(".my__checkbox").prop("checked", false);
+			} else {
+				$(".my__checkbox").prop("checked", true);
+			}
+			
+		}
+		
+		function subCheckboxProc() {
+			
+			var checked = 1;
+			
+			for (var i = 1; i <= $(".my__checkbox").length; i++) {
+				
+				if($(".my__checkbox__"+i).prop("checked") == false){
+					checked = 0;
+				}
+				
+			}
+			if(checked == 0){
+				$("#chkCartAll").prop("checked", false);
+			} else {
+				$("#chkCartAll").prop("checked", true);
+			}
+		}
+	
+	
+		function sumPrice() {
+			var sumPrice = 0;
+			for (var i = 0; i < $(".cartAllPrice").length; i++) {
+				sumPrice = sumPrice + Number($(".cartAllPrice").get(i).textContent);
+			}
+			
+			$("#totalPrice").text(sumPrice);
+			
+			var totalPayPrice = sumPrice + Number($("#deliveryPrice").text());
+			
+			$("#totalPayPrice").text(totalPayPrice);
+			
+			
+		}
+		
+		function plusCnt(cartId) {
+			
+			$("#goodsCnt_"+cartId).val(Number($("#goodsCnt_"+cartId).val())+1);
+			
+		}
+		
+		function minusCnt(cartId) {
+			
+			if (Number($("#goodsCnt_"+cartId).val()) > 1) {
+				$("#goodsCnt_"+cartId).val(Number($("#goodsCnt_"+cartId).val())-1);
+			}
+		}
+		
+		function changeCnt(cartId, userId) {
+			
+			var amount = Number($("#goodsCnt_"+cartId).val());
+			
+			$.ajax({
+				
+				type: "get",
+				url: "/monami/cart?cmd=changeCountProc&cartId="+cartId+"&userId="+userId+"&amount="+amount,
+				contentType: "text/plain; charset=utf-8",
+				dataType: "text"
+				
+			}).done(function(result) {
+				
+				alert("변경되었습니다.");
+				location.reload();
+				
+			}).fail(function(error) {
+				
+				alert("변경에 실패하였습니다.");
+				location.reload();
+				
+			});
+			
+		}
+		
+		sumPrice();
+		
+		
+	
+	</script>
+	
 	<script src="js/index.js"></script>
 	<script src="js/cart.js"></script>
 

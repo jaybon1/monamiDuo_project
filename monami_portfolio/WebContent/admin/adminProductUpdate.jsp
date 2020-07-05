@@ -64,15 +64,15 @@ input {
 					</tr>
 					<tr>
 						<th>바디컬러</th>
-						<td><input name="itemsBodyColor" type="text" value="${item.bodyColor }" placeholder="이미지주소^^이름,,이미지주소^^이름 형식으로 작성해주세요"></td>
+						<td><input name="itemsBodyColor" type="text" value="${item.bodyColor }" placeholder="이미지주소!!이름,,이미지주소!!이름 형식으로 작성해주세요"></td>
 					</tr>
 					<tr>
 						<th>잉크컬러</th>
-						<td><input name="itemsInkColor" type="text" value="${item.inkColor }" placeholder="이미지주소^^이름,,이미지주소^^이름 형식으로 작성해주세요"></td>
+						<td><input name="itemsInkColor" type="text" value="${item.inkColor }" placeholder="이미지주소!!이름,,이미지주소!!이름 형식으로 작성해주세요"></td>
 					</tr>
 					<tr>
 						<th>상품스펙</th>
-						<td><input name="itemsProductSpec" type="text" value="${item.productSpec }" placeholder="이미지주소^^이름,,이미지주소^^이름 형식으로 작성해주세요"></td>
+						<td><input name="itemsProductSpec" type="text" value="${item.productSpec }" placeholder="이미지주소!!이름,,이미지주소!!이름 형식으로 작성해주세요"></td>
 					</tr>
 					<tr>
 						<th>상품특징</th>

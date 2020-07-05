@@ -13,11 +13,12 @@ import com.monami.action.admin.AdminProductAction;
 import com.monami.action.admin.AdminProductDeleteProcAction;
 import com.monami.action.admin.AdminProductInputAction;
 import com.monami.action.admin.AdminProductInputProcAction;
+import com.monami.action.admin.AdminProductSearchProcAction;
 import com.monami.action.admin.AdminProductUpdateAction;
 import com.monami.action.admin.AdminProductUpdateProcAction;
 import com.monami.action.admin.AdminUsersAction;
+import com.monami.action.admin.AdminUsersChangeRoleProcAction;
 import com.monami.action.admin.AdminUsersSearchProcAction;
-
 @WebServlet("/admin")
 public class AdminController extends HttpServlet {
 	private final static String TAG = "AdminController : ";
@@ -65,12 +66,18 @@ public class AdminController extends HttpServlet {
 		} else if (cmd.equals("productDeleteProc")) {
 			// 회원가입 페이지로 이동
 			return new AdminProductDeleteProcAction();
+		} else if (cmd.equals("productSearchProc")) {
+			// 회원가입 페이지로 이동
+			return new AdminProductSearchProcAction();
 		} else if (cmd.equals("users")) {
 			// 회원가입 페이지로 이동
 			return new AdminUsersAction();
 		} else if (cmd.equals("usersSearchProc")) {
 			// 회원가입 페이지로 이동
 			return new AdminUsersSearchProcAction();
+		} else if (cmd.equals("usersChangeRoleProc")) {
+			// 회원가입 페이지로 이동
+			return new AdminUsersChangeRoleProcAction();
 		}
 		
 		return null;

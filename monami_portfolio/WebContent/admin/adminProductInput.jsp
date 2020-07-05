@@ -55,15 +55,15 @@ input {
 					</tr>
 					<tr>
 						<th>바디컬러</th>
-						<td><input name="itemsBodyColor" type="text" placeholder="이미지주소^^이름,,이미지주소^^이름 형식으로 작성해주세요"></td>
+						<td><input name="itemsBodyColor" type="text" placeholder="이미지주소!!이름,,이미지주소!!이름 형식으로 작성해주세요"></td>
 					</tr>
 					<tr>
 						<th>잉크컬러</th>
-						<td><input name="itemsInkColor" type="text" placeholder="이미지주소^^이름,,이미지주소^^이름 형식으로 작성해주세요"></td>
+						<td><input name="itemsInkColor" type="text" placeholder="이미지주소!!이름,,이미지주소!!이름 형식으로 작성해주세요"></td>
 					</tr>
 					<tr>
 						<th>상품스펙</th>
-						<td><input name="itemsProductSpec" type="text" placeholder="이미지주소^^이름,,이미지주소^^이름 형식으로 작성해주세요"></td>
+						<td><input name="itemsProductSpec" type="text" placeholder="이미지주소!!이름,,이미지주소!!이름 형식으로 작성해주세요"></td>
 					</tr>
 					<tr>
 						<th>상품특징</th>
@@ -71,7 +71,7 @@ input {
 					</tr>
 					<tr>
 						<th>상품주요특징</th>
-						<td><input name="itemsMainCharac" type="text" placeholder="주요특징,,주요특징 형식으로 작성해주세요"></td>
+						<td><input name="itemsMainCharac" type="text" placeholder="주요특징!!주요특징 형식으로 작성해주세요"></td>
 					</tr>
 					<tr>
 						<th>상세페이지 주소</th>
