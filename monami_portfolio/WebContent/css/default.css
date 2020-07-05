@@ -232,13 +232,13 @@ button {
 
 
 
-/*sticky 영역*/
+
 /*sticky 영역*/
 .l-popup__buttons {
 	width:216px;
 	height:216px;
 	position:fixed;
-	top:700px;
+	top:500px;
 	right:50px;
 	text-align:center;
 	z-index:10000;

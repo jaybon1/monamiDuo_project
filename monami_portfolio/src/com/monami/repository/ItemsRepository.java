@@ -111,6 +111,7 @@ public class ItemsRepository {
 		return null; // 실패시
 	}
 	
+	
 	// 파트별로 가져오기 (새로운 기능을 추가할 때는 새로 액션도 새로 추가 하기)
 	public List<Items> find20ItemsByPage(int page, String value) { // object 받기(안에 내용 다 받아야 하니까)
 		final String SQL = 
