@@ -232,14 +232,18 @@ button {
 
 
 
-/*sticky 영역*/
+
 /*sticky 영역*/
 .l-popup__buttons {
 	width:216px;
 	height:216px;
 	position:fixed;
+<<<<<<< HEAD
+	top:500px;
+=======
 /* 	top:700px; */
 	top:70%;
+>>>>>>> 5682463958a1c5d41e0c25b4c2a512dafbe7d9fe
 	right:50px;
 	text-align:center;
 	z-index:10000;

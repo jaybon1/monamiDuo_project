@@ -80,10 +80,10 @@ alter user monami default tablespace users quota unlimited on users;
 ##### 테이블
 ```sql
 CREATE TABLE users(
-  	id number primary key,
+    id number primary key,
     username varchar2(100) not null unique,
     password varchar2(100) not null,
-  	phonenumber varchar2(20) not null,
+    phonenumber varchar2(20) not null,
     email varchar2(100) not null,
     address varchar2(100) not null,
     userProfile varchar2(200),
@@ -92,7 +92,7 @@ CREATE TABLE users(
 ) ;
 
 CREATE TABLE items(
-  	id number primary key,
+    id number primary key,
     imgUrl varchar2(300),
     name varchar2(200),
     price varchar2(100),
