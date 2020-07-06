@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="css/cart.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;900&display=swap" rel="stylesheet">
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <title>cart</title>
@@ -112,7 +113,7 @@
 
 										<td class="btn">
 
-											<button type="button" class="btn-gray small" onclick="orderCheck(${dto.cart.id}, ${sessionScope.principal.id});">바로주문</button>
+											<button type="button" class="btn-gray small" onclick="pay(${dto.cart.id}, ${sessionScope.principal.id});">바로주문</button>
 
 											<button type="button" class="btn-whitegray small" onclick="removeCart(${dto.cart.id}, ${sessionScope.principal.id});">삭제</button>
 										</td>
@@ -171,8 +172,8 @@
 <!-- 							<a href="#popCartClubSelect" class="btn-gray" onclick="addClubCartPop();">클럽장바구니담기</a> -->
 
 
-							<button type="button" class="btn-whitegray" onclick="orderSelected();">선택상품주문</button>
-							<button type="button" class="btn-black" onclick="orderTotal();">전체상품주문</button>
+							<button type="button" class="btn-whitegray" onclick="pay()">선택상품주문</button>
+							<button type="button" class="btn-black" onclick="pay()">전체상품주문</button>
 						</div>
 					</form>
 				</div>
@@ -187,6 +188,37 @@
 	
 	
 	<script>
+	
+	// 결제시스템 아임포트
+		var IMP = window.IMP; // 생략가능
+		IMP.init('imp82788621'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
+		
+		function pay(){
+		IMP.request_pay({
+		    pg : 'inicis', // version 1.1.0부터 지원.
+		    pay_method : 'card',
+		    merchant_uid : 'merchant_' + new Date().getTime(),
+		    name : '주문명:결제테스트',
+		    amount : 1000, //판매 가격
+		    buyer_email : 'iamport@siot.do',
+		    buyer_name : '구매자이름',
+		    buyer_tel : '010-1234-5678',
+		    buyer_addr : '서울특별시 강남구 삼성동',
+		    buyer_postcode : '123-456'
+		}, function(rsp) {
+		    if ( rsp.success ) {
+		        var msg = '결제가 완료되었습니다.';
+		        msg += '고유ID : ' + rsp.imp_uid;
+		        msg += '상점 거래ID : ' + rsp.merchant_uid;
+		        msg += '결제 금액 : ' + rsp.paid_amount;
+		        msg += '카드 승인번호 : ' + rsp.apply_num;
+		    } else {
+		        var msg = '결제에 실패하였습니다.';
+		        msg += '에러내용 : ' + rsp.error_msg;
+		    }
+		    alert(msg);
+		});	
+		}
 	
 		function removeSelected(userId) {
 			
