@@ -1,4 +1,4 @@
-# MONAMI 웹 포트폴리오 프로젝트
+# MONAMI 예제
 
 &nbsp;
 
@@ -43,12 +43,6 @@
 - ##### 상품 카테고리별 상품 및 상세페이지 웹 크롤링
 
 &nbsp;
-
-&nbsp;
-
-## 프레젠테이션 링크
-
-https://docs.google.com/presentation/d/1VjXvZXobMZod0hAQs_EvRePEGYiNmIRJ9iJMkHMtI-o/edit#slide=id.g8b173d8935_0_0
 
 &nbsp;
 
